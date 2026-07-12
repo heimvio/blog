@@ -78,8 +78,27 @@ async function loadQueue() {
     </li>`).join('');
 }
 
+async function loadStats() {
+  const rows = await api('/admin/api/stats');
+  const tbody = document.querySelector('#stats tbody');
+  $('stats-empty').hidden = rows.length > 0;
+  tbody.innerHTML = rows.map((r) => `
+    <tr>
+      <td style="padding:.35rem"><a class="slug" href="/blog/${esc(r.post_slug)}" target="_blank" rel="noopener">${esc(r.post_slug)}</a></td>
+      <td style="text-align:right;padding:.35rem">${r.views_total}</td>
+      <td style="text-align:right;padding:.35rem">${r.views_30d}</td>
+      <td style="text-align:right;padding:.35rem">${r.up}</td>
+      <td style="text-align:right;padding:.35rem">${r.down}</td>
+      <td style="text-align:right;padding:.35rem">${r.comments}</td>
+    </tr>`).join('');
+}
+
 function showLogin() { $('login').hidden = false; $('app').hidden = true; }
-function showApp() { $('login').hidden = true; $('app').hidden = false; loadQueue().catch(console.error); }
+function showApp() {
+  $('login').hidden = true; $('app').hidden = false;
+  loadQueue().catch(console.error);
+  loadStats().catch(console.error);
+}
 
 // --- Events -------------------------------------------------------------------
 $('login-btn').addEventListener('click', () => startLogin().catch(console.error));

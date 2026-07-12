@@ -59,6 +59,12 @@ const jsonLd = JSON.stringify({
       <FeedbackWidget slug={slug} />
       <Comments slug={slug} />
     </main>
+
+    <!-- Aufrufzähler: reines Tagesaggregat serverseitig (keine IP/Cookies) — sendBeacon
+         blockiert das Rendering nicht und feuert auch bei schnellem Weiternavigieren. -->
+    <script define:vars={{ slug }}>
+      try { navigator.sendBeacon(`/api/comments/${encodeURIComponent(slug)}/view`); } catch { /* optional */ }
+    </script>
     <footer class="site">
       <p>
         <a href="/blog/">Blog</a> · <a href="/blog/rss.xml">RSS</a> ·

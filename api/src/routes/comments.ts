@@ -82,6 +82,17 @@ commentRoutes.post('/', async (c) => {
   return c.json({ status }, 201);
 });
 
+// --- Aufrufzähler (sendBeacon aus dem Blog-Layout; Tagesaggregat ohne Personenbezug) ---
+
+commentRoutes.post('/:slug/view', async (c) => {
+  const slug = c.req.param('slug');
+  if (!SLUG_RE.test(slug)) return c.body(null, 204);
+  await sql()`
+    INSERT INTO page_views (post_slug, day, views) VALUES (${slug}, current_date, 1)
+    ON CONFLICT (post_slug, day) DO UPDATE SET views = page_views.views + 1`;
+  return c.body(null, 204);
+});
+
 // --- 👍/👎-Feedback (unter /api/comments/:slug/feedback, spart eigene Caddy-Route) ---
 
 commentRoutes.get('/:slug/feedback', async (c) => {
