@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Blog-Kommentare · Review</title>
+  <style>
+    :root { --fg:#1c2733; --muted:#5b6b7b; --border:#dde4ea; --accent:#1976d2; --bg:#fff; --surface:#f5f7f9;
+      --ok:#1d6f42; --bad:#b3362c; }
+    @media (prefers-color-scheme: dark) {
+      :root { --fg:#e4e9ee; --muted:#93a3b3; --border:#2e3b47; --accent:#64a9e8; --bg:#10161c; --surface:#1a222b; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { max-width: 48rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    h1 { font-size: 1.4rem; }
+    .bar { display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem; }
+    select,button { font:inherit; padding:.4rem .8rem; border:1px solid var(--border); border-radius:6px;
+      background:var(--surface); color:var(--fg); cursor:pointer; }
+    button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1rem; }
+    li { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1rem; }
+    .head { display:flex; gap:.75rem; align-items:baseline; flex-wrap:wrap; font-size:.9rem; }
+    .head .slug { color:var(--accent); }
+    .head time { color:var(--muted); }
+    .reason { color:var(--muted); font-size:.85rem; margin:.35rem 0; }
+    .content { white-space:pre-wrap; margin:.5rem 0 1rem; }
+    .acts { display:flex; gap:.5rem; }
+    .approve { color:#fff; background:var(--ok); border-color:var(--ok); }
+    .reject { color:#fff; background:var(--bad); border-color:var(--bad); }
+    .muted { color:var(--muted); }
+    #login { text-align:center; margin-top:4rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Blog-Kommentare · Review-Queue</h1>
+    <div id="login" hidden>
+      <p class="muted">Anmeldung erforderlich.</p>
+      <button class="primary" id="login-btn">Mit Zitadel anmelden</button>
+    </div>
+    <div id="app" hidden>
+      <div class="bar">
+        <label>Status
+          <select id="status">
+            <option value="review" selected>review</option>
+            <option value="pending">pending</option>
+            <option value="approved">approved</option>
+            <option value="rejected">rejected</option>
+          </select>
+        </label>
+        <button id="reload">Aktualisieren</button>
+        <span id="count" class="muted"></span>
+      </div>
+      <ul id="list"></ul>
+      <p id="empty" class="muted" hidden>Keine Kommentare mit diesem Status.</p>
+    </div>
+  </main>
+  <script src="/admin/config.js"></script>
+  <script src="/admin/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+---
+// Dynamisches Routing: /blog/<slug> — rendert einen MDX-Post im BlogPost-Layout.
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.data.slug ?? post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const slug = post.data.slug ?? post.id;
+---
+
+<BlogPost
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+  slug={slug}
+>
+  <Content />
+</BlogPost>

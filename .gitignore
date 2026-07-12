@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+api/node_modules/
+api/dist/
+.env
+.env.*
+!deploy/env.blog.example
+.DS_Store

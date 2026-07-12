@@ -1,0 +1,40 @@
+---
+// 👍/👎-Feedback (dynamisch, SEO-neutral). V1: rein clientseitig (localStorage),
+// damit kein zusätzlicher Endpoint nötig ist — der Server-Teil kann später an
+// die Kommentar-API angebaut werden, ohne dieses Markup zu ändern.
+interface Props { slug: string }
+const { slug } = Astro.props;
+---
+
+<aside class="feedback" aria-label="War dieser Artikel hilfreich?">
+  <span>War dieser Artikel hilfreich?</span>
+  <button type="button" data-vote="up" aria-label="Ja">👍</button>
+  <button type="button" data-vote="down" aria-label="Nein">👎</button>
+  <span class="thanks" hidden>Danke für dein Feedback!</span>
+</aside>
+
+<script define:vars={{ slug }}>
+  const root = document.querySelector('.feedback');
+  const key = `heimvio-blog-feedback:${slug}`;
+  const done = () => {
+    root.querySelectorAll('button').forEach((b) => (b.disabled = true));
+    root.querySelector('.thanks').hidden = false;
+  };
+  if (localStorage.getItem(key)) done();
+  root.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('button[data-vote]');
+    if (!btn) return;
+    localStorage.setItem(key, btn.dataset.vote);
+    done();
+  });
+</script>
+
+<style>
+  .feedback { display: flex; align-items: center; gap: .6rem; margin-top: 2.5rem; padding: .75rem 1rem;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; }
+  .feedback button { font: inherit; font-size: 1.15rem; background: none; border: 1px solid var(--border);
+    border-radius: 6px; padding: .2rem .55rem; cursor: pointer; }
+  .feedback button:hover:not(:disabled) { border-color: var(--accent); }
+  .feedback button:disabled { opacity: .5; cursor: default; }
+  .thanks { color: var(--muted); }
+</style>

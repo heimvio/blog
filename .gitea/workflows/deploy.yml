@@ -1,0 +1,39 @@
+# Blog-Deploy: Push auf main → Astro-Build (containerisiert) → /var/www/blog
+# (von Caddy read-only gemountet) → blog-api-Image bauen + rollen → Smoke-Check.
+# Läuft auf dem Host-Label (rsync-Ziel und Docker liegen auf derselben Maschine).
+name: deploy-blog
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-blog
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: hetzner-host
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Astro-Site bauen (im Container — kein Node auf dem Host nötig)
+        run: |
+          docker run --rm -v "$PWD:/repo" -w /repo \
+            -v heimvio_blog_node_modules:/repo/node_modules \
+            node:24-trixie-slim sh -ec "npm ci --no-audit --no-fund && npm run build"
+
+      - name: Statische Site veröffentlichen
+        run: rsync -a --delete --delay-updates dist/ /var/www/blog/
+
+      - name: Kommentar-API bauen und rollen
+        run: |
+          docker compose -f deploy/docker-compose.blog.yml build blog-api
+          docker compose -f deploy/docker-compose.blog.yml up -d blog-api
+
+      - name: Smoke-Check
+        run: |
+          sleep 3
+          curl -fsS https://heimvio.de/blog/ >/dev/null && echo "ok /blog/"
+          curl -fsS https://heimvio.de/api/comments/smoke-test >/dev/null && echo "ok /api/comments"

@@ -1,0 +1,26 @@
+# Blog-API neben dem heimvio-prod-Stack: hängt im EXTERNEN Netz
+# heimvio-prod_default, damit Caddy → blog-api:8787 proxien kann und die
+# blog-api postgres:5432 erreicht. Keine Host-Ports. Secrets ausschließlich
+# in /etc/heimvio-blog/.env.blog (root:act-runner, 640) — nicht im Repo.
+name: heimvio-blog
+services:
+  blog-api:
+    image: heimvio-blog-api:prod
+    build: ../api
+    restart: unless-stopped
+    env_file:
+      - /etc/heimvio-blog/.env.blog
+    environment:
+      NODE_ENV: production
+      PORT: "8787"
+      ZITADEL_ISSUER: https://auth.heimvio.de
+      JWKS_URL: https://auth.heimvio.de/oauth/v2/keys
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "5" }
+    networks: [heimvio]
+
+networks:
+  heimvio:
+    external: true
+    name: heimvio-prod_default
