@@ -10,12 +10,26 @@ import { env } from '../env.js';
 
 export const commentRoutes = new Hono();
 
-function ipHash(c: { req: { header: (n: string) => string | undefined } }): string {
-  // Nur Caddy erreicht die blog-api (internes Docker-Netz) → erster XFF-Eintrag
-  // ist die echte Client-IP. Nie die Socket-Adresse nehmen (wäre immer Caddy).
+function clientIp(c: { req: { header: (n: string) => string | undefined } }): string {
+  // Nur Caddy erreicht die blog-api (internes Docker-Netz). Caddy HÄNGT die
+  // Peer-IP an ein evtl. vorhandenes XFF AN → der LETZTE Eintrag ist vertrauens-
+  // würdig; der erste wäre Client-spoofbar.
   const xff = c.req.header('x-forwarded-for') ?? '';
-  const ip = xff.split(',')[0]?.trim() || 'unknown';
+  const parts = xff.split(',').map((s) => s.trim()).filter(Boolean);
+  return parts[parts.length - 1] || 'unknown';
+}
+
+function ipHash(ip: string): string {
   return createHmac('sha256', env.IP_HASH_SECRET).update(ip).digest('hex');
+}
+
+/** IPv6-Clients laufen über den Docker userland-proxy auf und teilen sich die
+ *  Bridge-Gateway-IP (172.x.0.1) — ein Sammel-Bucket. Dort wäre 1/h faktisch ein
+ *  globales Limit; der Sammel-Bucket bekommt deshalb mehr Spielraum (Honeypot +
+ *  Claude-Moderation filtern Spam weiterhin). Echte (öffentliche) IPs: 1/h. */
+function hourlyLimit(ip: string): number {
+  const shared = /^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.)/.test(ip) || ip === 'unknown';
+  return shared ? 10 : 1;
 }
 
 const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,120}$/;
@@ -33,12 +47,13 @@ commentRoutes.post('/', async (c) => {
   if (String(body.website ?? '') !== '') return c.json({ status: 'pending' }, 201);
 
   const db = sql();
-  const hash = ipHash(c);
+  const ip = clientIp(c);
+  const hash = ipHash(ip);
 
   const [{ n }] = await db`
     SELECT count(*)::int AS n FROM comments
     WHERE ip_hash = ${hash} AND created_at > now() - interval '1 hour'`;
-  if (n >= 1) return c.json({ error: 'rate_limited' }, 429);
+  if (n >= hourlyLimit(ip)) return c.json({ error: 'rate_limited' }, 429);
 
   const [row] = await db`
     INSERT INTO comments (post_slug, author_name, content, ip_hash)
