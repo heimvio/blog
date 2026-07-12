@@ -1,6 +1,7 @@
 ---
 // Blog-Übersicht (https://heimvio.de/blog/): alle Posts, neueste zuerst.
 import { getCollection } from 'astro:content';
+import SiteHeader from '../components/SiteHeader.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -15,8 +16,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <meta name="description" content="Praxisnahe Artikel für Kleinvermieter: Nebenkostenabrechnung, Heizkostenabrechnung, Anlage V und Messdienstleister — verständlich erklärt." />
     <link rel="canonical" href="https://heimvio.de/blog/" />
     <link rel="alternate" type="application/rss+xml" title="Heimvio Blog" href="/blog/rss.xml" />
+    <link rel="icon" type="image/svg+xml" href="/blog/favicon.svg" />
   </head>
   <body>
+    <SiteHeader />
     <main>
       <h1>Heimvio Blog</h1>
       <p class="lead">

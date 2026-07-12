@@ -3,6 +3,7 @@
 // schlanke Typografie, danach Feedback-Widget + Kommentare (dynamisch, SEO-neutral).
 import Comments from '../components/Comments.astro';
 import FeedbackWidget from '../components/FeedbackWidget.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 
 interface Props {
   title: string;
@@ -41,12 +42,11 @@ const jsonLd = JSON.stringify({
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="de_DE" />
+    <link rel="icon" type="image/svg+xml" href="/blog/favicon.svg" />
     <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
-    <header class="site">
-      <nav><a href="/blog/">← Heimvio Blog</a></nav>
-    </header>
+    <SiteHeader />
     <main>
       <article>
         <h1>{title}</h1>
