@@ -82,6 +82,41 @@ commentRoutes.post('/', async (c) => {
   return c.json({ status }, 201);
 });
 
+// --- 👍/👎-Feedback (unter /api/comments/:slug/feedback, spart eigene Caddy-Route) ---
+
+commentRoutes.get('/:slug/feedback', async (c) => {
+  const slug = c.req.param('slug');
+  if (!SLUG_RE.test(slug)) return c.json({ up: 0, down: 0 });
+  const [row] = await sql()`
+    SELECT count(*) FILTER (WHERE vote = 'up')::int AS up,
+           count(*) FILTER (WHERE vote = 'down')::int AS down
+    FROM feedback WHERE post_slug = ${slug}`;
+  return c.json(row);
+});
+
+commentRoutes.post('/:slug/feedback', async (c) => {
+  const slug = c.req.param('slug');
+  let body: { vote?: string };
+  try { body = await c.req.json(); } catch { return c.json({ error: 'bad_json' }, 400); }
+  const vote = body.vote === 'up' || body.vote === 'down' ? body.vote : null;
+  if (!SLUG_RE.test(slug) || !vote) return c.json({ error: 'invalid' }, 400);
+
+  const db = sql();
+  const hash = ipHash(clientIp(c));
+  // Grobes Bot-Limit: 20 Votes/h je Bucket (Dedupe je Besucher macht der Client).
+  const [{ n }] = await db`
+    SELECT count(*)::int AS n FROM feedback
+    WHERE ip_hash = ${hash} AND created_at > now() - interval '1 hour'`;
+  if (n >= 20) return c.json({ error: 'rate_limited' }, 429);
+
+  await db`INSERT INTO feedback (post_slug, vote, ip_hash) VALUES (${slug}, ${vote}, ${hash})`;
+  const [row] = await db`
+    SELECT count(*) FILTER (WHERE vote = 'up')::int AS up,
+           count(*) FILTER (WHERE vote = 'down')::int AS down
+    FROM feedback WHERE post_slug = ${slug}`;
+  return c.json(row, 201);
+});
+
 commentRoutes.get('/:slug', async (c) => {
   const slug = c.req.param('slug');
   if (!SLUG_RE.test(slug)) return c.json([], 200);

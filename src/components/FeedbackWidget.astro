@@ -1,40 +1,58 @@
 ---
-// 👍/👎-Feedback (dynamisch, SEO-neutral). V1: rein clientseitig (localStorage),
-// damit kein zusätzlicher Endpoint nötig ist — der Server-Teil kann später an
-// die Kommentar-API angebaut werden, ohne dieses Markup zu ändern.
+// 👍/👎-Feedback (dynamisch, SEO-neutral — kein Rating-Markup, Zahlen per JS).
+// Votes gehen an die Kommentar-API (/api/comments/:slug/feedback); Dedupe je
+// Besucher macht localStorage, serverseitig bremst ein grobes Rate-Limit Bots.
 interface Props { slug: string }
 const { slug } = Astro.props;
 ---
 
 <aside class="feedback" aria-label="War dieser Artikel hilfreich?">
   <span>War dieser Artikel hilfreich?</span>
-  <button type="button" data-vote="up" aria-label="Ja">👍</button>
-  <button type="button" data-vote="down" aria-label="Nein">👎</button>
+  <button type="button" data-vote="up" aria-label="Ja">👍 <span data-count="up"></span></button>
+  <button type="button" data-vote="down" aria-label="Nein">👎 <span data-count="down"></span></button>
   <span class="thanks" hidden>Danke für dein Feedback!</span>
 </aside>
 
 <script define:vars={{ slug }}>
   const root = document.querySelector('.feedback');
   const key = `heimvio-blog-feedback:${slug}`;
+  const api = `/api/comments/${encodeURIComponent(slug)}/feedback`;
+
+  const render = (sums) => {
+    root.querySelector('[data-count="up"]').textContent = sums.up > 0 ? String(sums.up) : '';
+    root.querySelector('[data-count="down"]').textContent = sums.down > 0 ? String(sums.down) : '';
+  };
   const done = () => {
     root.querySelectorAll('button').forEach((b) => (b.disabled = true));
     root.querySelector('.thanks').hidden = false;
   };
+
+  fetch(api).then((r) => (r.ok ? r.json() : null)).then((s) => s && render(s)).catch(() => {});
   if (localStorage.getItem(key)) done();
-  root.addEventListener('click', (ev) => {
+
+  root.addEventListener('click', async (ev) => {
     const btn = ev.target.closest('button[data-vote]');
-    if (!btn) return;
+    if (!btn || localStorage.getItem(key)) return;
     localStorage.setItem(key, btn.dataset.vote);
     done();
+    try {
+      const res = await fetch(api, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ vote: btn.dataset.vote }),
+      });
+      if (res.ok) render(await res.json());
+    } catch { /* Anzeige bleibt beim alten Stand — Vote war best effort. */ }
   });
 </script>
 
 <style>
   .feedback { display: flex; align-items: center; gap: .6rem; margin-top: 2.5rem; padding: .75rem 1rem;
     background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; }
-  .feedback button { font: inherit; font-size: 1.15rem; background: none; border: 1px solid var(--border);
-    border-radius: 6px; padding: .2rem .55rem; cursor: pointer; }
+  .feedback button { font: inherit; font-size: 1.05rem; background: none; border: 1px solid var(--border);
+    border-radius: 6px; padding: .2rem .55rem; cursor: pointer; display: inline-flex; align-items: center; gap: .3rem; }
   .feedback button:hover:not(:disabled) { border-color: var(--accent); }
-  .feedback button:disabled { opacity: .5; cursor: default; }
+  .feedback button:disabled { opacity: .55; cursor: default; }
+  .feedback [data-count] { font-size: .85rem; color: var(--muted); min-width: 0; }
   .thanks { color: var(--muted); }
 </style>
