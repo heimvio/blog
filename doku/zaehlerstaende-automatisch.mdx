@@ -1,0 +1,82 @@
+---
+title: Zählerstände automatisch einspeisen
+description: Einen Feeder anschließen, damit niemand mehr von Hand abliest — Token, Push-URL und die Zuordnung.
+section: Weitere Themen
+order: 80
+updated: 2026-07-14
+---
+
+Zählerstände von Hand abzulesen ist die lästigste wiederkehrende Aufgabe an der ganzen
+Abrechnung. Wenn Ihre Zähler ohnehin digital sind, können Sie das automatisieren: Ein
+**Feeder** — ein kleines Skript, ein node-red-Flow, ein Home-Assistant-Automatismus —
+schickt die Werte selbst an heimvio.
+
+## In drei Schritten
+
+### 1. Feeder-Token erzeugen
+
+In der App unter **Team & Feeder** → „Feeder-Token erzeugen". Geben Sie ihm ein sprechendes
+Label („Strom Dachgeschoss", „node-red Keller"), damit Sie ihn später gezielt widerrufen
+können.
+
+> **Das Token erscheint genau einmal.** heimvio speichert es nicht im Klartext. Kopieren Sie
+> es sofort in Ihren Feeder. Verloren heißt: neues erzeugen, altes widerrufen.
+
+### 2. Werte senden
+
+Ein Feeder schickt pro Zähler eine Anfrage:
+
+```
+POST https://heimvio.de/heimvio/readings/250934682
+Authorization: Bearer hv_…
+Content-Type: application/json
+
+[{ "obis_code": "1-0:1.8.0", "value": 69.35 }]
+```
+
+Drei Dinge, die man leicht falsch macht:
+
+- **Der Pfad beginnt mit `/heimvio/`.** Ohne dieses Segment landen Sie auf der Website statt
+  bei der Schnittstelle und bekommen einen Fehler, der nichts erklärt.
+- **Die Seriennummer steht im Pfad** — die Nummer, die auf dem Gerät aufgedruckt ist.
+- **Die Felder heißen `obis_code` und `value`.** `obis_code` ist die genormte Kennung dessen,
+  *was* gemessen wurde; `value` ist die Zahl. Andere Schreibweisen werden abgelehnt.
+
+Der Zeitpunkt ist optional. Lassen Sie ihn weg, nimmt heimvio den Moment des Eingangs.
+
+### 3. Zähler zuordnen
+
+Beim ersten Mal antwortet heimvio mit `pending`. Das ist **kein Fehler**: Der Zähler war
+unbekannt, wurde angelegt — aber er hängt noch an keiner
+[Messstelle](/doku/messstelle-und-zaehler), also weiß niemand, wohin sein Wert gehört. Der
+erste Wert wird deshalb verworfen.
+
+Öffnen Sie die Zählerliste, ordnen Sie das neu aufgetauchte Gerät der richtigen Messstelle
+zu. Ab dem nächsten Wert steht dort `stored`, und Sie sind fertig.
+
+Das heißt übrigens: Sie können den Feeder anschließen, **bevor** Sie in heimvio irgendwas
+angelegt haben. Die Geräte melden sich von selbst.
+
+## Wenn es nicht klappt
+
+heimvio sagt Ihnen, was falsch ist — aber nur, wenn Sie hinhören. **Loggen Sie die Antwort,
+nicht nur den Statuscode.** Ein Fehler sieht so aus:
+
+```json
+{
+  "error": "invalid_request",
+  "detail": "readings[0]: \"obis_code\" is missing",
+  "expected": [{ "obis_code": "1-0:1.8.0", "value": 69.35 }]
+}
+```
+
+Da steht wörtlich, welches Feld in welchem Element fehlt. Ein Feeder, der nur „HTTP 400"
+protokolliert, verschenkt genau die Information, die das Problem löst.
+
+## Der vollständige Vertrag
+
+Mehrkanal-Zähler, wM-Bus-Telegramme, alle Fehlercodes, Lesezugriff fürs Smart Home: Das
+steht in der technischen Referenz. Die pflegen wir direkt neben dem Code, damit sie nicht
+veraltet:
+
+**[Daten-Ingest-API →](https://git.ohnewarum.de/volkmar.nissen/heimvio/src/branch/main/docs/integration/data-ingest-api.md)**

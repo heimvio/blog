@@ -1,0 +1,56 @@
+---
+// Gemeinsames Grundgerüst für Blog und Doku: <head> (SEO), Header, Footer, Styles.
+// Alles Sektions-Spezifische (Artikel-Meta, Doku-Navigation) liegt in den Layouts,
+// die dieses hier umschliessen — BlogPost.astro bzw. DocPage.astro.
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Vollständige kanonische URL dieser Seite. */
+  canonical: string;
+  section: 'blog' | 'doku';
+  /** Optionales JSON-LD (bereits serialisiert). */
+  jsonLd?: string;
+  ogType?: string;
+}
+const { title, description, canonical, section, jsonLd, ogType = 'website' } = Astro.props;
+
+// Logo/Favicon liegen NICHT in public/: sie werden von der SPA unter /logo.svg bzw.
+// /favicon.svg same-origin ausgeliefert. Eine Kopie im Content-Build wäre tote Fracht,
+// weil Caddy dort nur /blog/*, /doku/*, Sitemap und robots.txt bedient.
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {section === 'blog' && (
+      <link rel="alternate" type="application/rss+xml" title="Heimvio Blog" href="/blog/rss.xml" />
+    )}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="de_DE" />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  </head>
+  <body>
+    <SiteHeader section={section} />
+    <slot />
+    <footer class="site">
+      <p>
+        <a href="/doku/">Doku</a> · <a href="/blog/">Blog</a> · <a href="/blog/rss.xml">RSS</a> ·
+        <a href="https://heimvio.de/">heimvio.de</a> ·
+        <a href="https://heimvio.de/impressum">Impressum</a> ·
+        <a href="https://heimvio.de/datenschutz">Datenschutz</a>
+      </p>
+    </footer>
+  </body>
+</html>

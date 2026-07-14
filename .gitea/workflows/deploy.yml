@@ -1,5 +1,6 @@
-# Blog-Deploy: Push auf main → Astro-Build (containerisiert) → /var/www/blog
+# Content-Deploy: Push auf main → Astro-Build (containerisiert) → /var/www/heimvio-content
 # (von Caddy read-only gemountet) → blog-api-Image bauen + rollen → Smoke-Check.
+# EIN Build liefert beide Sektionen: dist/blog/ → /blog/ und dist/doku/ → /doku/.
 # Läuft auf dem Host-Label (rsync-Ziel und Docker liegen auf derselben Maschine).
 name: deploy-blog
 
@@ -24,8 +25,10 @@ jobs:
             -v heimvio_blog_node_modules:/repo/node_modules \
             node:24-trixie-slim sh -ec "npm ci --no-audit --no-fund && npm run build"
 
+      # dist/ IST der Content-Root (blog/, doku/, sitemap*, robots.txt) — --delete
+      # ist deshalb korrekt und raeumt entfernte Seiten sauber weg.
       - name: Statische Site veröffentlichen
-        run: rsync -a --delete --delay-updates dist/ /var/www/blog/
+        run: rsync -a --delete --delay-updates dist/ /var/www/heimvio-content/
 
       - name: Kommentar-API bauen und rollen
         run: |
@@ -36,4 +39,5 @@ jobs:
         run: |
           sleep 3
           curl -fsS https://heimvio.de/blog/ >/dev/null && echo "ok /blog/"
+          curl -fsS https://heimvio.de/doku/ >/dev/null && echo "ok /doku/"
           curl -fsS https://heimvio.de/api/comments/smoke-test >/dev/null && echo "ok /api/comments"

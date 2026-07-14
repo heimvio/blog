@@ -1,0 +1,120 @@
+---
+// Layout einer Doku-Seite: Inhaltsnavigation (alle Seiten, nach Sektion gruppiert)
+// plus Zurück/Weiter. Bewusst OHNE Kommentare und Feedback-Widget — der post_slug in
+// der blog-api ist ein globaler Namensraum, Doku- und Blog-Slugs würden sich sonst
+// die Zähler teilen, sobald zwei gleich heissen.
+import { getCollection } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+}
+const { title, description, slug } = Astro.props;
+const canonical = `https://heimvio.de/doku/${slug}`;
+
+const pages = (await getCollection('doku', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+// Sektionen in der Reihenfolge ihres ersten Auftretens (nicht alphabetisch) — die
+// Autorenreihenfolge über `order` ist die didaktische Reihenfolge.
+const sections: { name: string; pages: typeof pages }[] = [];
+for (const p of pages) {
+  const existing = sections.find((s) => s.name === p.data.section);
+  if (existing) existing.pages.push(p);
+  else sections.push({ name: p.data.section, pages: [p] });
+}
+
+const href = (p: (typeof pages)[number]) => `/doku/${p.data.slug ?? p.id}`;
+const idx = pages.findIndex((p) => (p.data.slug ?? p.id) === slug);
+const prev = idx > 0 ? pages[idx - 1] : undefined;
+const next = idx >= 0 && idx < pages.length - 1 ? pages[idx + 1] : undefined;
+---
+
+<BaseLayout title={`${title} · heimvio Doku`} description={description} canonical={canonical} section="doku">
+  <div class="doc">
+    <nav class="doc__nav" aria-label="Inhalt">
+      {sections.map((s) => (
+        <>
+          <h2 class="doc__section">{s.name}</h2>
+          <ul>
+            {s.pages.map((p) => (
+              <li>
+                <a
+                  href={href(p)}
+                  class:list={[{ current: (p.data.slug ?? p.id) === slug }]}
+                  aria-current={(p.data.slug ?? p.id) === slug ? 'page' : undefined}
+                >
+                  {p.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))}
+    </nav>
+
+    <main class="doc__main">
+      <article>
+        <h1>{title}</h1>
+        <p class="lead">{description}</p>
+        <slot />
+      </article>
+
+      <nav class="doc__pager" aria-label="Blättern">
+        {prev ? <a class="doc__pager-prev" href={href(prev)}>← {prev.data.title}</a> : <span></span>}
+        {next && <a class="doc__pager-next" href={href(next)}>{next.data.title} →</a>}
+      </nav>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Einspaltig auf dem Handy, Navigation links ab Tablet-Breite. */
+  .doc {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 56rem) {
+    .doc { grid-template-columns: 15rem 1fr; }
+    .doc__nav { position: sticky; top: 1.5rem; align-self: start; }
+  }
+
+  .doc__nav { font-size: 0.92rem; }
+  .doc__section {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 1.5rem 0 0.4rem;
+  }
+  .doc__nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+  .doc__nav a {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-left: 2px solid var(--border);
+    color: var(--fg);
+    border-radius: 0 4px 4px 0;
+  }
+  .doc__nav a:hover { background: var(--surface); text-decoration: none; }
+  .doc__nav a.current { border-left-color: var(--accent); color: var(--accent); font-weight: 600; background: var(--surface); }
+
+  /* main aus global.css hat max-width + auto-margin — hier füllt es die Grid-Spalte. */
+  .doc__main { max-width: none; margin: 0; padding: 0; }
+
+  .doc__pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .doc__pager-next { margin-left: auto; text-align: right; }
+</style>

@@ -1,0 +1,71 @@
+---
+title: Messstelle und Zähler
+description: Der Unterschied, an dem jeder einmal stolpert — und ohne den der Rest nicht klickt.
+section: Konzepte
+order: 50
+updated: 2026-07-14
+---
+
+heimvio kennt zwei Dinge, die im Alltag beide „Zähler" heißen, aber grundverschieden sind.
+Wer den Unterschied einmal verstanden hat, versteht danach sehr viel andere Dinge sofort.
+
+## Die Messstelle ist die Frage
+
+Eine **Messstelle** ist eine Stelle, an der etwas gemessen werden *soll*. Sie ist ein
+fachlicher Begriff, kein Gerät:
+
+- „Strom Allgemein" (Treppenhaus, Keller, Außenbeleuchtung)
+- „Heizung Wohnung 2"
+- „Kaltwasser Wohnung 1"
+
+Die Messstelle sagt, **was** gemessen wird und **wem** es zugerechnet wird. Sie ist das,
+was in der Abrechnung auftaucht.
+
+## Der Zähler ist die Antwort
+
+Ein **Zähler** ist das physische Gerät an der Wand, mit einer Seriennummer, die aufgedruckt
+ist. Er liefert Zahlen. Er kann kaputtgehen, getauscht, abmontiert werden.
+
+Ein Zähler wird einer Messstelle **zugeordnet**. Erst durch diese Zuordnung wissen seine
+Zahlen, wohin sie gehören.
+
+## Warum die Trennung wichtig ist
+
+Weil Geräte sterben und Abrechnungen nicht.
+
+Tauschen Sie im Mai den Wärmemengenzähler von Wohnung 2 aus, bleibt die **Messstelle**
+„Heizung Wohnung 2" bestehen. Sie ordnen ihr nur ein neues Gerät zu. Die Abrechnung
+verrechnet weiterhin sauber über das ganze Jahr — die Zählerstände des alten Geräts bis Mai,
+die des neuen ab Mai. Die Historie reißt nicht.
+
+Gäbe es nur „den Zähler", müssten Sie beim Gerätetausch eine neue Abrechnungsposition
+anlegen und den Bruch von Hand erklären. Genau diesen Ärger nimmt Ihnen die Trennung ab.
+
+## Was das im Alltag bedeutet
+
+**Ein neuer Zähler taucht von selbst auf.** Sobald ein Gerät zum ersten Mal Daten schickt,
+legt heimvio es an — mit seiner Seriennummer, aber **ohne Messstelle**. Es steht dann in der
+Zählerliste und wartet auf Sie.
+
+**Sein erster Messwert wird verworfen.** Das ist kein Fehler, sondern Absicht: Ein Wert, von
+dem niemand weiß, wohin er gehört, ist kein Wert — er wäre nur eine Zahl, die man später
+mühsam wieder herausrechnen müsste. In der Antwort des Systems heißt dieser Zustand
+`pending`.
+
+**Sie ordnen ihn einmalig zu.** Zählerliste öffnen, das neue Gerät der richtigen Messstelle
+zuweisen, fertig. Ab dem nächsten Messwert wird gespeichert.
+
+Wenn Sie [Zählerstände automatisch einspeisen](/doku/zaehlerstaende-automatisch), können Sie
+den Feeder deshalb anschließen, **bevor** Sie in heimvio irgendetwas angelegt haben. Die
+Geräte melden sich von selbst, und Sie räumen hinterher auf. Das ist der bequemere Weg
+herum.
+
+## Mehrkanal-Geräte
+
+Manche Geräte messen mehrere Dinge unter *einer* Seriennummer — eine Wärmepumpe etwa
+getrennt für Heizung und Warmwasser. heimvio erkennt das an der Kennung, die das Gerät
+mitschickt, und legt daraus **mehrere Zähler** an: einen je Kanal.
+
+In der Zählerliste sehen Sie dann Einträge wie `HP1-c1` und `HP1-c3`, obwohl auf dem Gerät
+nur `HP1` steht. Jeder davon wird einer eigenen Messstelle zugeordnet — genau richtig, denn
+Heizung und Warmwasser werden unterschiedlich abgerechnet.

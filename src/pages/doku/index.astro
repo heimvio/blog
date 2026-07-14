@@ -1,0 +1,120 @@
+---
+// Doku-Einstieg (https://heimvio.de/doku/). Bewusst KEINE blosse Linkliste: wer hier
+// landet, hat eine Absicht ("ich fange an" / "ich verstehe X nicht" / "ich will
+// automatisieren"). Die drei Karten bedienen genau die. Die vollständige Liste steht
+// darunter — für alle, die schon wissen, wonach sie suchen.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pages = (await getCollection('doku', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const sections: { name: string; pages: typeof pages }[] = [];
+for (const p of pages) {
+  const existing = sections.find((s) => s.name === p.data.section);
+  if (existing) existing.pages.push(p);
+  else sections.push({ name: p.data.section, pages: [p] });
+}
+
+const href = (p: (typeof pages)[number]) => `/doku/${p.data.slug ?? p.id}`;
+
+const entries = [
+  {
+    icon: '🚀',
+    title: 'Ich fange gerade an',
+    text: 'Der Einrichtungs-Assistent führt Sie durch Liegenschaft, Wohnungen, Heizung und Zähler. Was Sie vorher bereitlegen sollten.',
+    href: '/doku/einrichtung',
+    cta: 'Zur Einrichtung',
+  },
+  {
+    icon: '🧭',
+    title: 'Ich verstehe ein Konzept nicht',
+    text: 'Messstelle oder Zähler? Welcher Verteilerschlüssel? Was passiert beim Ausstellen? Die Konzepte, ohne die der Rest nicht klickt.',
+    href: '/doku/messstelle-und-zaehler',
+    cta: 'Zu den Konzepten',
+  },
+  {
+    icon: '⚡',
+    title: 'Ich will Zählerstände automatisieren',
+    text: 'Feeder-Token erzeugen, Push-URL bauen, Zähler zuordnen — danach liest niemand mehr von Hand ab.',
+    href: '/doku/zaehlerstaende-automatisch',
+    cta: 'Zur Automatisierung',
+  },
+];
+---
+
+<BaseLayout
+  title="heimvio Doku — Nebenkostenabrechnung Schritt für Schritt"
+  description="Benutzerdokumentation für heimvio: Einrichtung, Mieter einladen, Nebenkostenabrechnung, Jahresabschluss und automatische Zählerstände."
+  canonical="https://heimvio.de/doku/"
+  section="doku"
+>
+  <main>
+    <h1>heimvio Doku</h1>
+    <p class="lead">
+      Die Fragen, an denen man in den ersten Wochen hängenbleibt — und sonst nichts.
+      Alles, was die Anwendung selbst erklärt, steht hier bewusst nicht.
+    </p>
+
+    <div class="entries">
+      {entries.map((e) => (
+        <a class="entry" href={e.href}>
+          <span class="entry__icon" aria-hidden="true">{e.icon}</span>
+          <h2>{e.title}</h2>
+          <p>{e.text}</p>
+          <span class="entry__cta">{e.cta} →</span>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="all">Alle Seiten</h2>
+    {sections.map((s) => (
+      <>
+        <h3>{s.name}</h3>
+        <ul class="pages">
+          {s.pages.map((p) => (
+            <li>
+              <a href={href(p)}>{p.data.title}</a>
+              <span class="pages__desc">{p.data.description}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+  </main>
+</BaseLayout>
+
+<style>
+  .entries {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    margin: 2rem 0 3rem;
+  }
+  @media (min-width: 48rem) {
+    .entries { grid-template-columns: repeat(3, 1fr); }
+  }
+  .entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .entry:hover { border-color: var(--accent); text-decoration: none; }
+  .entry__icon { font-size: 1.5rem; }
+  .entry h2 { margin: 0; font-size: 1.05rem; }
+  .entry p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .entry__cta { margin-top: auto; padding-top: 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+
+  .all { margin-top: 3rem; }
+  .pages { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .pages li { display: flex; flex-direction: column; }
+  .pages__desc { color: var(--muted); font-size: 0.88rem; }
+</style>

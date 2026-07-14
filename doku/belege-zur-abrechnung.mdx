@@ -1,0 +1,94 @@
+---
+title: Von Belegen zur Nebenkostenabrechnung
+description: Wie aus einer Rechnung eine Position auf der Abrechnung wird — Kostenart, Verteilerschlüssel und die drei fachlichen Sonderfälle.
+section: Konzepte
+order: 60
+updated: 2026-07-14
+---
+
+Zwischen der Rechnung des Heizöllieferanten und der Zeile auf der Abrechnung Ihres Mieters
+liegen ein paar Entscheidungen. heimvio trifft die meisten für Sie — aber Sie sollten
+wissen, welche.
+
+## Die Kette
+
+**Beleg erfassen → Kostenart wählen → Verteilerschlüssel → Zeitraum → Position je Wohnung.**
+
+Der einzige Schritt, an dem Sie wirklich nachdenken müssen, ist die **Kostenart**.
+
+## Die Kostenart entscheidet fast alles
+
+Wenn Sie einen Beleg erfassen, wählen Sie eine Kostenart: Abfall, Wasser, Grundsteuer,
+Versicherung, Betrieb allgemein, Verwaltung, Reparatur, Brennstoff, Wärmequelle, Tarif,
+Sonstiges.
+
+Diese eine Auswahl setzt im Hintergrund gleich mehrere Dinge:
+
+- **wie umgelegt wird** (der Verteilerschlüssel),
+- **ob überhaupt umgelegt werden darf** — Verwaltungskosten und Reparaturen sind *nicht*
+  umlagefähig, das erledigt heimvio, ohne dass Sie es sich merken müssen,
+- **wo der Betrag in der Anlage V landet** (Werbungskosten-Kategorie),
+- **ob ein Lohnanteil nach § 35a abziehbar ist** (haushaltsnahe Dienstleistungen,
+  Handwerkerleistungen).
+
+Sie können den vorgeschlagenen Schlüssel jederzeit überstimmen. Aber der Vorschlag ist in
+neun von zehn Fällen richtig — und er ist der Grund, warum Sie sich das Umlagerecht nicht
+selbst aneignen müssen.
+
+## Die Verteilerschlüssel
+
+| Schlüssel | Verteilt nach | Typisch für |
+| --- | --- | --- |
+| **Fläche** | Quadratmeter Wohnfläche | Grundsteuer, Versicherung, Hausreinigung |
+| **Personen** | Personentagen im Zeitraum | Müllabfuhr, Wasser (ohne Zähler) |
+| **Verbrauch** | gemessenen Zählerständen | Heizung, Warmwasser, Strom |
+| **je Wohnung** | gleichmäßig, unabhängig von Größe | Kabelanschluss, Rauchmelder-Wartung |
+| **nicht umlagefähig** | gar nicht — bleibt bei Ihnen | Verwaltung, Instandhaltung |
+
+„Personentage" statt „Personen": Zieht jemand im Juli ein, zahlt er die Müllabfuhr nur ab
+Juli. heimvio rechnet das taggenau, ohne dass Sie den Bruchteil ausrechnen.
+
+## Drei fachliche Sonderfälle
+
+Hier steckt die Arbeit, die Excel-Tabellen typischerweise falsch machen.
+
+### Grundkosten und Verbrauchskosten (§ 7, § 8 HeizkostenV)
+
+Heizkosten werden **nicht** vollständig nach Verbrauch verteilt. Ein Teil — üblicherweise
+30 %, in älteren Gebäuden bis 50 % — wird als **Grundkosten** nach Fläche umgelegt. Der Rest
+nach gemessenem Verbrauch.
+
+Das ist Absicht des Gesetzgebers: Eine Wohnung im Erdgeschoss zwischen zwei beheizten
+Nachbarn braucht weniger Energie als die Dachwohnung, ohne dass ihr Bewohner sparsamer wäre.
+Der Grundkostenanteil gleicht diese Lageunterschiede aus.
+
+heimvio kennt die Regel und wendet sie an. Das Baujahr entscheidet mit, welcher Anteil
+zulässig ist.
+
+### Warmwasser abgrenzen (§ 9 HeizkostenV)
+
+Wenn dieselbe Heizung sowohl heizt als auch Warmwasser bereitet, muss die Energie
+aufgeteilt werden — sonst zahlt der, der viel duscht, über die Heizkosten mit.
+
+Die Abgrenzung erfolgt über die Wassermenge und ihre Temperatur: Wie viel Energie war nötig,
+um dieses Volumen von Kaltwasser auf Warmwassertemperatur zu bringen? Der Rest ist Heizung.
+Bei einer Wärmepumpe wird zusätzlich berücksichtigt, dass sie Warmwasser weniger effizient
+erzeugt als Heizwärme.
+
+### CO₂-Kosten teilen (CO2KostAufG)
+
+Seit 2023 zahlen Sie als Vermieter einen Teil des CO₂-Preises selbst. Wie viel, hängt davon
+ab, **wie schlecht Ihr Gebäude gedämmt ist**: Bei einem sehr sparsamen Haus tragen Sie
+nichts, bei einem sehr schlechten bis zu 95 %.
+
+Die Logik dahinter: Der Mieter kann die Dämmung nicht verbessern — Sie schon. Also trägt der
+das CO₂-Risiko, der es beeinflussen kann.
+
+heimvio stuft Ihr Gebäude anhand seines CO₂-Ausstoßes pro Quadratmeter ein und zieht Ihren
+Anteil als eigene Zeile von den umlagefähigen Kosten ab. Sie sehen ihn auf der Abrechnung —
+und der Mieter auch.
+
+## Und dann?
+
+Sind alle Belege erfasst und alle Zählerstände da, geht es an
+[das Abrechnungsjahr](/doku/abrechnungsjahr).

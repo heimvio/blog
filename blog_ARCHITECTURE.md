@@ -30,9 +30,10 @@ Der Heimvio Blog ist eine eigenständige Astro-basierte Anwendung im Gitea-Repo 
 │                  Hetzner CCX13                  │
 │                                                 │
 │  ┌─────────────┐    ┌──────────────────────┐   │
-│  │    Nginx    │    │   /var/www/blog/      │   │
-│  │             │    │   statische HTML-     │   │
-│  │ /blog/*  ───│───▶│   Files (Astro-Out)  │   │
+│  │    Caddy    │    │ /var/www/heimvio-    │   │
+│  │             │    │ content/             │   │
+│  │ /blog/*  ───│───▶│   blog/  (Astro-Out) │   │
+│  │ /doku/*  ───│───▶│   doku/  (Astro-Out) │   │
 │  │ /api/*   ───│───▶┐                      │   │
 │  │ /admin/* ───│───▶┤  └──────────────────┘   │
 │  └─────────────┘    │                          │
@@ -73,10 +74,17 @@ Der Heimvio Blog ist eine eigenständige Astro-basierte Anwendung im Gitea-Repo 
 ## Routing
 
 ```
-heimvio.de/blog/*           → Nginx → /var/www/blog/ (statisch, Astro)
-heimvio.de/api/comments/*   → Nginx → Hono (öffentlich)
-heimvio.de/admin/comments   → Nginx → Hono (ZITADEL-geschützt)
+heimvio.de/blog/*           → Caddy → /var/www/heimvio-content/blog/ (statisch, Astro)
+heimvio.de/doku/*           → Caddy → /var/www/heimvio-content/doku/ (statisch, Astro)
+heimvio.de/api/comments/*   → Caddy → Hono (öffentlich)
+heimvio.de/admin/comments   → Caddy → Hono (ZITADEL-geschützt)
 ```
+
+Beide statischen Sektionen kommen aus **einem** Astro-Build. Es gibt bewusst **kein**
+`base` in der astro.config: `base` ist ein globaler Wert pro Build, zwei Prefixe gingen
+damit nicht. Stattdessen sind `/blog/` und `/doku/` echte Verzeichnisse im Build — Caddy
+serviert `dist/` als Root und darf den Pfad daher **nicht** strippen (`handle`, nicht
+`handle_path`). Die Caddy-Konfiguration lebt im green-Repo (`ops/deploy/Caddyfile`).
 
 ---
 
@@ -196,13 +204,13 @@ jobs:
         run: npm run build
 
       - name: Deploy
-        run: cp -r dist/* /var/www/blog/
-
-      - name: Reload Nginx
-        run: systemctl reload nginx
+        run: rsync -a --delete --delay-updates dist/ /var/www/heimvio-content/
 ```
 
-Kein rsync nötig – Runner und Zielverzeichnis sind auf demselben Server.
+Runner und Zielverzeichnis liegen auf demselben Server. `--delete` ist korrekt, weil
+`dist/` genau der Content-Root ist (`blog/`, `doku/`, `sitemap*`, `robots.txt`) — entfernte
+Seiten verschwinden damit auch wirklich. Caddy liest das Verzeichnis read-only über einen
+Bind-Mount; ein Reload ist nicht nötig.
 
 ---
 

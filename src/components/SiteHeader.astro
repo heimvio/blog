@@ -1,25 +1,44 @@
 ---
-// Gemeinsamer Blog-Header: heimvio-Logo (Absprung zur Welcome-Seite),
-// Blog-Übersicht, rechts der Weg in die App. Auf Post- UND Index-Seite.
+// Gemeinsamer Header beider Sektionen: heimvio-Logo (Absprung zur Startseite),
+// Doku + Blog als Geschwister, rechts der Weg in die App. Die aktive Sektion wird
+// unterstrichen — sonst weiss der Leser nicht, in welchem der beiden er gelandet ist.
+interface Props {
+  section: 'blog' | 'doku';
+}
+const { section } = Astro.props;
 ---
 
 <header class="site-head">
   <a class="brand" href="https://heimvio.de/" aria-label="heimvio — zur Startseite">
-    <img src="/blog/logo.svg" alt="heimvio" height="28" />
+    <img src="/logo.svg" alt="heimvio" height="28" />
   </a>
-  <a class="blog-home" href="/blog/">Blog</a>
+  <a class="nav" class:list={[{ active: section === 'doku' }]} href="/doku/">Doku</a>
+  <a class="nav" class:list={[{ active: section === 'blog' }]} href="/blog/">Blog</a>
   <span class="spacer"></span>
   <a class="to-app" href="https://heimvio.de/">heimvio.de →</a>
 </header>
 
 <style>
-  .site-head { max-width: 44rem; margin: 0 auto; padding: 1rem 1.25rem; display: flex;
-    align-items: center; gap: 1rem; }
+  .site-head {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   .brand { display: inline-flex; align-items: center; }
   .brand img { display: block; }
-  .blog-home { font-weight: 700; color: var(--fg); text-decoration: none;
-    border-bottom: 2px solid var(--accent); padding-bottom: 1px; }
+  .nav {
+    font-weight: 700;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+  }
+  .nav:hover { color: var(--fg); text-decoration: none; }
+  .nav.active { color: var(--fg); border-bottom-color: var(--accent); }
   .spacer { flex: 1; }
-  .to-app { color: var(--muted); text-decoration: none; font-size: .95rem; }
+  .to-app { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
   .to-app:hover { color: var(--accent); }
 </style>

@@ -1,9 +1,9 @@
 ---
-// Layout für einen Blog-Post: SEO-Head (Title/Description/Canonical/OG/JSON-LD),
-// schlanke Typografie, danach Feedback-Widget + Kommentare (dynamisch, SEO-neutral).
+// Layout für einen Blog-Post: Artikel-Meta (Datum/Tags), danach Feedback-Widget +
+// Kommentare (dynamisch, SEO-neutral). Head/Header/Footer/Styles kommen aus BaseLayout.
+import BaseLayout from './BaseLayout.astro';
 import Comments from '../components/Comments.astro';
 import FeedbackWidget from '../components/FeedbackWidget.astro';
-import SiteHeader from '../components/SiteHeader.astro';
 
 interface Props {
   title: string;
@@ -28,74 +28,35 @@ const jsonLd = JSON.stringify({
 });
 ---
 
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · Heimvio Blog</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="application/rss+xml" title="Heimvio Blog" href="/blog/rss.xml" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="de_DE" />
-    <link rel="icon" type="image/svg+xml" href="/blog/favicon.svg" />
-    <script type="application/ld+json" set:html={jsonLd} />
-  </head>
-  <body>
-    <SiteHeader />
-    <main>
-      <article>
-        <h1>{title}</h1>
-        <p class="meta">
-          <time datetime={dateIso}>{dateHuman}</time>
-          {tags.length > 0 && <span class="tags">{tags.map((t) => <span class="tag">{t}</span>)}</span>}
-        </p>
-        <slot />
-      </article>
-      <FeedbackWidget slug={slug} />
-      <Comments slug={slug} />
-    </main>
-
-    <!-- Aufrufzähler: reines Tagesaggregat serverseitig (keine IP/Cookies) — sendBeacon
-         blockiert das Rendering nicht und feuert auch bei schnellem Weiternavigieren. -->
-    <script define:vars={{ slug }}>
-      try { navigator.sendBeacon(`/api/comments/${encodeURIComponent(slug)}/view`); } catch { /* optional */ }
-    </script>
-    <footer class="site">
-      <p>
-        <a href="/blog/">Blog</a> · <a href="/blog/rss.xml">RSS</a> ·
-        <a href="https://heimvio.de/">heimvio.de</a> ·
-        <a href="https://heimvio.de/impressum">Impressum</a> ·
-        <a href="https://heimvio.de/datenschutz">Datenschutz</a>
+<BaseLayout
+  title={`${title} · Heimvio Blog`}
+  description={description}
+  canonical={canonical}
+  section="blog"
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <main>
+    <article>
+      <h1>{title}</h1>
+      <p class="meta">
+        <time datetime={dateIso}>{dateHuman}</time>
+        {tags.length > 0 && <span class="tags">{tags.map((t) => <span class="tag">{t}</span>)}</span>}
       </p>
-    </footer>
-  </body>
-</html>
+      <slot />
+    </article>
+    <FeedbackWidget slug={slug} />
+    <Comments slug={slug} />
+  </main>
 
-<style is:global>
-  :root { --fg: #1c2733; --muted: #5b6b7b; --border: #dde4ea; --accent: #1976d2; --bg: #ffffff; --surface: #f5f7f9; }
-  @media (prefers-color-scheme: dark) {
-    :root { --fg: #e4e9ee; --muted: #93a3b3; --border: #2e3b47; --accent: #64a9e8; --bg: #10161c; --surface: #1a222b; }
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem 3rem; }
-  header.site, footer.site { max-width: 44rem; margin: 0 auto; padding: 1rem 1.25rem; font-size: .9rem; }
-  footer.site { border-top: 1px solid var(--border); margin-top: 2rem; color: var(--muted); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  h1 { font-size: 1.9rem; line-height: 1.25; margin: 1rem 0 .25rem; }
-  h2 { font-size: 1.35rem; margin-top: 2rem; }
-  h3 { font-size: 1.1rem; }
+  <!-- Aufrufzähler: reines Tagesaggregat serverseitig (keine IP/Cookies) — sendBeacon
+       blockiert das Rendering nicht und feuert auch bei schnellem Weiternavigieren. -->
+  <script define:vars={{ slug }}>
+    try { navigator.sendBeacon(`/api/comments/${encodeURIComponent(slug)}/view`); } catch { /* optional */ }
+  </script>
+</BaseLayout>
+
+<style>
   .meta { color: var(--muted); font-size: .9rem; display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
   .tag { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: .05rem .6rem; margin-right: .35rem; font-size: .8rem; }
-  article img { max-width: 100%; height: auto; border-radius: 8px; }
-  blockquote { border-left: 3px solid var(--border); margin: 1rem 0; padding: .25rem 1rem; color: var(--muted); }
-  code { background: var(--surface); border-radius: 4px; padding: .1rem .35rem; font-size: .9em; }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { border: 1px solid var(--border); padding: .4rem .6rem; text-align: left; }
 </style>

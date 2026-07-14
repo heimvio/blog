@@ -1,0 +1,45 @@
+---
+// Blog-Übersicht (https://heimvio.de/blog/): alle Posts, neueste zuerst.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="Heimvio Blog — Nebenkosten, Heizkosten & Anlage V für Kleinvermieter"
+  description="Praxisnahe Artikel für Kleinvermieter: Nebenkostenabrechnung, Heizkostenabrechnung, Anlage V und Messdienstleister — verständlich erklärt."
+  canonical="https://heimvio.de/blog/"
+  section="blog"
+>
+  <main>
+    <h1>Heimvio Blog</h1>
+    <p class="lead">
+      Nebenkostenabrechnung, Heizkosten und Anlage V — praxisnah erklärt für private Vermieter.
+    </p>
+    <ul class="posts">
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.data.slug ?? p.id}`}>
+            <h2>{p.data.title}</h2>
+            <p class="desc">{p.data.description}</p>
+            <time datetime={p.data.date.toISOString().slice(0, 10)}>
+              {p.data.date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  .posts { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .posts a { display: block; color: inherit; text-decoration: none; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; transition: border-color .15s; }
+  .posts a:hover { border-color: var(--accent); }
+  .posts h2 { margin: 0 0 .25rem; font-size: 1.2rem; color: var(--accent); }
+  .desc { margin: 0 0 .35rem; }
+  time { color: var(--muted); font-size: .85rem; }
+</style>
