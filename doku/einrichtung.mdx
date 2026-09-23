@@ -3,12 +3,17 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-07-14
+updated: 2026-09-23
 ---
 
-Nach der Registrierung führt Sie ein Assistent durch die Ersteinrichtung. Er ist in zwei
-Teile geschnitten, die Sie unabhängig voneinander durchlaufen können: **Wärme** und
-**Wasser**.
+Nach der Registrierung wählen Sie zuerst einen **Tarif** und geben Ihrer Verwaltung einen
+Namen. Das ist kein Beiwerk: Solange kein Tarif gewählt ist, ist die Verwaltung
+schreibgeschützt — Sie können sie ansehen, aber nichts anlegen. Der Standard-Tarif kostet
+nichts, gilt zwei Jahre und reicht für eine Wohneinheit; wechseln können Sie jederzeit.
+
+Haben Sie den Tarif schon auf der Preisseite ausgewählt, ist er nach der Registrierung
+bereits vorausgewählt — Sie ergänzen nur noch den Namen und bestätigen. Auch wenn die
+Anmeldung in einem neuen Fenster endete.
 
 ## Legen Sie das vorher bereit
 
@@ -20,32 +25,80 @@ Fluss. Halten Sie bereit:
 - **Heizungsart und Baujahr** des Gebäudes. Das Baujahr entscheidet unter anderem darüber,
   wie hoch der Grundkostenanteil ausfallen darf und wie die CO₂-Kosten aufgeteilt werden.
 - **Zählernummern**, falls Sie schon Zähler haben. Die Nummer steht auf dem Gerät.
+- In einer WEG zusätzlich die **Teilungserklärung**: Sie brauchen je Wohnung den
+  Eigentümer und den Miteigentumsanteil.
 
-## Teil 1: Wärme
+## Ein Einstieg, sechs Bereiche
 
-Sieben Schritte: **Liegenschaft → Wohnungen → Heizung → Tarif → Wärmequelle → Wärme messen
-→ Übersicht**.
+Der Assistent ist keine einzelne lange Kette, sondern eine Übersicht mit Bereichen, die
+Sie einzeln durchlaufen können. Oben stellen Sie das **Abrechnungsjahr** ein — es gilt ab
+dem 1. Januar für alles, was Sie danach anlegen. Bei einer Bestandsliegenschaft wählen Sie
+hier das Jahr, ab dem Sie abrechnen wollen; sonst bleibt eine Abrechnung für dieses Jahr
+leer.
 
-Die Reihenfolge ist nicht willkürlich. Jeder Schritt baut auf dem vorherigen auf: Der Tarif
-hängt am Wärmeerzeuger, die Messstellen hängen an den Wohnungen.
+| Bereich | Worum es geht |
+| --- | --- |
+| **Liegenschaft & Wohnung** | Eigentumsform, Adresse, Wohnungen, Eigentümer bzw. Mieter |
+| **Belege** | Wasser-, Müll- und Grundsteuerbescheid hochladen |
+| **Heizung** | Wärmeerzeuger, Tarif, Wärmemengenzähler |
+| **Wasser** | Frischwasser, Abwasser, Kalt- und Warmwasser |
+| **Allgemeinstrom** | Treppenhaus, Außenbeleuchtung, Pumpen |
+| **wMBus** | Funk-Empfänger und die Verteilung der Zähler |
 
-## Teil 2: Wasser
+Ein Punkt neben jedem Bereich zeigt, ob er offen, angefangen oder fertig ist. Gehen Sie
+einen Bereich mit „Weiter" zu Ende, führt der Assistent Sie von selbst in den nächsten —
+von der Liegenschaft über die Belege zur Heizung und weiter zum Wasser. Sie können aber
+jederzeit zurück zur Übersicht und einen anderen Bereich vorziehen.
 
-Fünf Schritte: **Frischwasser → Abwasser → Kaltwasser → Warmwasser → Übersicht**. Startet
-im Anschluss an den Wärme-Teil, lässt sich aber auch später einzeln aufrufen.
+Die Reihenfolge ist nicht willkürlich: Der Tarif hängt am Wärmeerzeuger, die Messstellen
+hängen an den Wohnungen. Wasser vor Wohnungen einzurichten geht, bringt Sie aber nicht
+weiter.
 
-## Sie können jederzeit aufhören
+## Die erste Entscheidung: Mietobjekt oder WEG
 
-Der Assistent speichert **nach jedem Schritt**. Es gibt kein „Fertigstellen", das alles auf
-einmal wegschreibt, und keinen Zustand, den Sie verlieren können. Schließen Sie den Browser
-mitten in Schritt 4, sind die Schritte 1 bis 3 gespeichert, und Sie steigen später dort
-wieder ein. Der „Später"-Knopf oben rechts tut nichts anderes, als das explizit zu machen.
+Ganz oben im Schritt **Liegenschaft** wählen Sie die Eigentumsform. Diese eine Auswahl
+entscheidet über fast alles, was danach kommt:
+
+| | **Mietobjekt** | **WEG** |
+| --- | --- | --- |
+| Eigentümer | einer, für die ganze Liegenschaft | einer **je Wohnung**, mit Miteigentumsanteil |
+| Erfasst wird er | gleich hier, im Kopf der Liegenschaft | im Schritt Wohnungen und danach unter „Eigentümer" |
+| Mietverhältnisse | führen Sie selbst | führt der jeweilige Eigentümer selbst |
+| Zusätzlich | Anlage V für die Steuererklärung | Wirtschaftsplan, Hausgeld, Eigentümerversammlung |
+
+Sobald die erste Wohnung angelegt ist, lässt sich die Eigentumsform **nicht mehr
+umschalten**. Das ist Absicht — mit ihr hängen Eigentümer, Mietverhältnisse und
+Abrechnungsart zusammen. Wenn Sie unsicher sind, lesen Sie vorher
+[Eigentümer und Eigentumsverhältnisse](/doku/eigentuemer).
+
+Statt alles abzutippen, können Sie an dieser Stelle auch eine Tabelle aus immocloud
+importieren; sie legt Liegenschaft, Wohnungen und Mietverhältnisse in einem Zug an.
+
+## Vorlagen: einmal beschreiben, zwölfmal anlegen
+
+Nach der Liegenschaft kommt der Schritt **Vorlagen**. Eine Vorlage beschreibt eine Wohnung
+vollständig — Wohnfläche, Zimmer, Zählerkombination, Heizkörper. In einem Haus, in dem
+„links" und „rechts" auf jeder Etage gleich geschnitten sind, beschreiben Sie also zwei
+Wohnungen statt zwölf.
+
+Der Schritt ist **überspringbar**. Ohne Vorlage erfassen Sie die Wohnungen im nächsten
+Schritt einzeln — bei drei Wohnungen ist das der schnellere Weg.
+
+Haben Sie Vorlagen angelegt, zeigt der Schritt **Wohnungen** ein Raster: Zeilen sind die
+Etagen (UG, EG, die Obergeschosse, DG), Spalten die Vorlagen. Jedes freie Feld gilt als
+„wird angelegt" — Sie klicken nur die Ausnahmen weg, etwa das Dachgeschoss, in dem es
+keine rechte Wohnung gibt. „Jetzt anlegen" erzeugt alle markierten Wohnungen samt ihren
+erwarteten Messstellen. Ein Klick auf eine bereits angelegte Wohnung öffnet sie zum
+Bearbeiten oder Löschen.
+
+Ändern Sie später eine Vorlage, fragt heimvio gezielt nach, welche Wohnungen die Änderung
+übernehmen sollen. Eine Wohnung, die bewusst abweicht, bleibt abweichend.
 
 ## Die eine Regel, die Sie verstanden haben müssen
 
-Bei jeder Wohnung fragt der Assistent nach der **Personenzahl**. Diese Zahl entscheidet
-über mehr als die Kostenverteilung — sie entscheidet, ob heimvio die Wohnung als **vermietet**
-oder als **selbst genutzt** behandelt:
+Sie gilt im **Mietobjekt**. Bei jeder Wohnung fragt der Assistent nach der
+**Personenzahl**, und diese Zahl entscheidet über mehr als die Kostenverteilung — sie
+entscheidet, ob heimvio die Wohnung als vermietet oder als selbst genutzt behandelt:
 
 | Personenzahl | Bedeutung |
 | --- | --- |
@@ -56,11 +109,34 @@ Das wirkt zunächst verdreht — „0 Personen" heißt ja gerade nicht, dass nie
 Gemeint ist: *keine Personen aus Ihrem eigenen Haushalt*. Die Bewohnerzahl des Mieters
 erfassen Sie danach beim Mietverhältnis.
 
+**In der WEG gilt diese Regel nicht.** Dort ist die Personenzahl schlicht der
+Verteilschlüssel für personenbezogene Kosten, und Mietverhältnisse legt der Verwalter gar
+nicht an — das tut der Eigentümer der Wohnung selbst. Stattdessen tragen Sie je Wohnung
+den Eigentümer und den Miteigentumsanteil ein.
+
+## Belege: die drei, die sich lohnen
+
+Der Bereich **Belege** nimmt drei Bescheide entgegen — Wasser, Müll, Grundsteuer — und
+liest Tarife und Kosten daraus heraus, sodass die folgenden Schritte schon ausgefüllt
+sind. Das ist eine KI-Funktion und setzt Ihre Einwilligung voraus. Ohne sie funktioniert
+der Schritt trotzdem: Die Belege werden gespeichert, die Werte tragen Sie selbst ein.
+
+Sie können den Bereich auch ganz auslassen und die Belege später ergänzen.
+
+## Sie können jederzeit aufhören
+
+Der Assistent speichert **nach jedem Schritt**. Es gibt kein „Fertigstellen", das alles auf
+einmal wegschreibt, und keinen Zustand, den Sie verlieren können. Schließen Sie den Browser
+mitten in Schritt 4, sind die Schritte 1 bis 3 gespeichert, und Sie steigen später dort
+wieder ein. Der „Später"-Knopf oben rechts tut nichts anderes, als das explizit zu machen.
+
 ## Danach
 
-Steht die Liegenschaft, landen Sie auf dem Wartungs-Dashboard. Das ist von da an Ihr
-Ausgangspunkt: Es zeigt, was ansteht, und führt zu Belegen, Zählerständen und der
-Abrechnung.
+Steht die Liegenschaft, landen Sie auf dem Dashboard. Das ist von da an Ihr Ausgangspunkt:
+Es zeigt, was ansteht, und führt zu Belegen, Zählerständen und der Abrechnung. Die
+Liegenschaft mit ihren Wohnungen finden Sie dort jederzeit unter **Liegenschaft** wieder.
 
-Der nächste sinnvolle Schritt ist meist, die [Mieter einzuladen](/doku/mieter-einladen) —
-dann sehen sie ihre Abrechnung selbst und fragen nicht bei Ihnen nach.
+In der WEG ist der nächste sinnvolle Schritt, die
+[Eigentümer zu vervollständigen und ihnen Zugang zu geben](/doku/eigentuemer). Im
+Mietobjekt ist es meist, die [Mieter einzuladen](/doku/mieter-einladen) — dann sehen sie
+ihre Abrechnung selbst und fragen nicht bei Ihnen nach.
