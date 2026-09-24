@@ -3,7 +3,7 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-09-23
+updated: 2026-09-24
 ---
 
 Nach der Registrierung wählen Sie zuerst einen **Tarif** und geben Ihrer Verwaltung einen
@@ -41,7 +41,7 @@ leer.
 | **Liegenschaft & Wohnung** | Eigentumsform, Adresse, Wohnungen, Eigentümer bzw. Mieter |
 | **Belege** | Wasser-, Müll- und Grundsteuerbescheid hochladen |
 | **Heizung** | Wärmeerzeuger, Tarif, Wärmemengenzähler |
-| **Wasser** | Frischwasser, Abwasser, Kalt- und Warmwasser |
+| **Wasser** | Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
 | **Allgemeinstrom** | Treppenhaus, Außenbeleuchtung, Pumpen |
 | **wMBus** | Funk-Empfänger und die Verteilung der Zähler |
 
@@ -77,9 +77,19 @@ importieren; sie legt Liegenschaft, Wohnungen und Mietverhältnisse in einem Zug
 ## Vorlagen: einmal beschreiben, zwölfmal anlegen
 
 Nach der Liegenschaft kommt der Schritt **Vorlagen**. Eine Vorlage beschreibt eine Wohnung
-vollständig — Wohnfläche, Zimmer, Zählerkombination, Heizkörper. In einem Haus, in dem
-„links" und „rechts" auf jeder Etage gleich geschnitten sind, beschreiben Sie also zwei
-Wohnungen statt zwölf.
+vollständig — Wohnfläche, Zimmer, Zählerkombination, Heizkörper, in der WEG auch den
+Miteigentumsanteil. In einem Haus, in dem „links" und „rechts" auf jeder Etage gleich
+geschnitten sind, beschreiben Sie also zwei Wohnungen statt zwölf.
+
+Alles, was in der Vorlage steht, ist eine **Vorgabe für den Moment des Anlegens**. Ändern
+Sie später den Miteigentumsanteil in der Vorlage, bleiben bereits angelegte Wohnungen bei
+ihrem Wert — er ist Grundlage von Abrechnung und Stimmgewicht und wird nie stillschweigend
+nachgezogen.
+
+Bei den Heizkörpern tragen Sie je Heizkörper entweder die **Leistung in Watt** ein (sie
+steht meist auf dem Typenschild) oder Sie lassen schätzen und geben Höhe und Breite an.
+Den Bewertungsfaktor rechnet heimvio daraus aus; ohne eine dieser Angaben lässt sich die
+Zeile nicht übernehmen.
 
 Der Schritt ist **überspringbar**. Ohne Vorlage erfassen Sie die Wohnungen im nächsten
 Schritt einzeln — bei drei Wohnungen ist das der schnellere Weg.
@@ -122,6 +132,25 @@ sind. Das ist eine KI-Funktion und setzt Ihre Einwilligung voraus. Ohne sie funk
 der Schritt trotzdem: Die Belege werden gespeichert, die Werte tragen Sie selbst ein.
 
 Sie können den Bereich auch ganz auslassen und die Belege später ergänzen.
+
+## Wasser: ein Bescheid, zwei Preise
+
+Ihr Wasserbescheid der Stadtwerke nennt zwei Preise nebeneinander — den
+Frischwasser-Preis und den Abwasser-Preis. Genau so fragt der Assistent sie auch ab: Der
+erste Schritt im Bereich **Wasser** heißt **Wasserpreise** und nimmt beide auf einer Seite
+entgegen, jeweils mit Grundpreis pro Monat und Preis pro Kubikmeter. Haben Sie den Bescheid
+vorher hochgeladen, stehen die Zahlen schon da und Sie bestätigen nur.
+
+Zwei Dinge, die dabei oft für Rückfragen sorgen:
+
+1. Der **Frischwasser-Preis gilt für kalt und warm**. Die Warmwasserzähler messen nur die
+   Menge; einen eigenen Wasserpreis haben sie nicht — die Erwärmung kommt aus der Heizung.
+2. **Abwasser braucht keinen eigenen Zähler.** Die Menge ist das Kalt- plus Warmwasser der
+   Wohnung (Frischwassermaßstab). Suchen Sie also nicht nach einem Abwasserzähler — es gibt
+   keinen.
+
+Erst danach kommen die Zähler: **Kaltwasser** je Wohnung (oder pauschal nach Wohnfläche)
+und **Warmwasser**.
 
 ## Sie können jederzeit aufhören
 
