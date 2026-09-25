@@ -37,9 +37,19 @@ cd api && npm install && npm run dev   # API (braucht DATABASE_URL etc., siehe d
 
 ## Deploy
 
-`git push origin main` — der Gitea-Runner auf heimvio.de baut und deployt
-(statische Site nach `/var/www/heimvio-content`, Caddy liefert; API als Container).
+`git push origin main` — der Gitea-Runner `heimvio-runner-fast` auf ubuntupve
+(Label `ubuntu-latest`) baut die Site und liefert sie per ssh aus
+(`deploy/upload-to-hetzner.sh`): statische Site nach
+`/var/www/heimvio-content` auf heimvio.de, Caddy liefert sie read-only; die
+Kommentar-API wird dort als Image gebaut und gerollt.
 Serverseitige Secrets: `/etc/heimvio-blog/.env.blog` (Vorlage in `deploy/`).
+CI-Secret: `HETZNER_SSH_KEY` (base64-kodierter privater Key
+`heimvio-blog-deploy`, öffentlicher Teil in `/root/.ssh/authorized_keys`).
+
+Bis 09/2026 lief der Job auf dem Host-Label `hetzner-host`. Nachdem der dortige
+Runner neu registriert wurde, war er nur noch für `heimvio/heimvio` zuständig —
+Läufe dieses Repos blieben ohne Fehlermeldung in der Warteschlange und die Doku
+war von Juli bis September nicht aktuell. Deshalb ssh statt Host-Runner.
 
 Neuer Post: `blog/<slug>.mdx` anlegen → push → live in <2 min.
 Neue Doku-Seite: `doku/<slug>.mdx` mit `section` + `order` → push. Navigation und
