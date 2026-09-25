@@ -1,0 +1,83 @@
+---
+title: Lastschrifteinzug — Mandat, Einzug, SEPA-Datei
+description: Hausgeld und Miete per Lastschrift einziehen statt auf Überweisungen zu warten — Gläubiger-ID, Mandate, Einzug und die ehrlichen Grenzen.
+section: Konzepte
+order: 73
+updated: 2026-09-25
+---
+
+Wer Hausgeld oder Miete nicht mehr hinterherlaufen will, zieht sie per **SEPA-Lastschrift**
+ein: Sie lösen den Einzug aus, heimvio erstellt die Datei, Ihre Bank bucht ab. Diese Seite
+richtet sich an Verwalter und an Eigentümer, die ihre Wohnung selbst vermieten — der
+vermietende Eigentümer kann für sein Mietverhältnis dasselbe tun wie der Verwalter für die
+Gemeinschaft.
+
+## 1. Was Sie vorher brauchen
+
+Drei Dinge liegen bei Ihnen, nicht bei heimvio:
+
+1. **Gläubiger-Identifikationsnummer beantragen.** Die Nummer braucht jeder, der
+   Lastschriften einreicht. Sie ist kostenlos, den Antrag stellen Sie online bei der
+   Deutschen Bundesbank; die Nummer kommt nach wenigen Tagen per Post. In heimvio tragen
+   Sie sie an Ihrem verbundenen Konto ein — in den **Org-Einstellungen** am
+   Konto-Setup, Feld **„SEPA-Gläubiger-ID"**.
+2. **Einreichung bei Ihrer Bank freischalten lassen.** Fragen Sie Ihre Hausbank nach dem
+   Lastschrift-Einreichungsvertrag — beim Geschäftskonto ist er oft schon dabei. Die Bank
+   prüft dabei, wem sie Lastschriften abnimmt; für eine WEG als Gläubiger kann es
+   Rückfragen geben.
+3. **Ein Mandat je Zahler.** Ohne unterschriebenes oder bestätigtes Mandat dürfen Sie
+   nicht abbuchen. Wie Sie Mandate einsammeln, steht im nächsten Abschnitt.
+
+## 2. Mandate einsammeln
+
+Zwei Wege, die Wahl liegt bei Ihnen:
+
+| Weg | Ablauf |
+| --- | --- |
+| **Papier** | Den Vordruck drucken Sie aus heimvio heraus — Mandatstext, Gläubiger-ID und Mandatsreferenz sind vorausgefüllt. Der Zahler unterschreibt, Sie erfassen das Mandat in der Tabelle auf der Seite **Zahlungen**. |
+| **Portal** | Der Zahler erteilt das Mandat selbst in seinem Portal: IBAN und Name eintragen, Mandatstext per Häkchen bestätigen. Dabei erteilt er die Einwilligung, dass heimvio IBAN und Name verschlüsselt speichert. |
+
+Ob das Portal-Mandat angeboten wird, steuern Sie in den **Org-Einstellungen** mit dem
+Schalter **„Lastschriftmandat im Portal anbieten"** — voreingestellt ist er an. Papier-
+Mandate erfassen können Sie immer; der Schalter regelt nur das Angebot im Portal und ändert
+nichts an bestehenden Mandaten.
+
+Alle Mandate stehen in einer Tabelle auf der Seite **Zahlungen**: Mandatsreferenz, Datum,
+Herkunft (Papier oder Portal), Status. **Widerrufen** geht von beiden Seiten — der Zahler in
+seinem Portal, Sie in der Tabelle. Ein widerrufenes Mandat wird nicht gelöscht, sondern nur
+als widerrufen markiert: Der Nachweis bleibt, eingezogen wird nichts mehr. Von der IBAN
+sehen Sie nur die letzten vier Stellen; der Rest liegt verschlüsselt in der Datenbank.
+
+## 3. Einzug anfordern
+
+1. **Auswählen.** Auf der Seite **Zahlungen** stehen die fälligen Parteien mit aktivem
+   Mandat in einer Liste. Sie setzen Häkchen, die Beträge schlägt heimvio aus der
+   Soll-Rechnung vor — Monatsrate oder Rückstand.
+2. **Bestätigen.** Mit **„Einzug anfordern"** sehen Sie Anzahl, Summe und Fälligkeitstag
+   noch einmal im Ganzen, bevor etwas passiert.
+3. **Einreichen.** Danach laden Sie die **SEPA-Datei** herunter und reichen sie im
+   Online-Banking Ihrer Bank ein — dort, wo die Bank Lastschriften als Datei-Upload
+   annimmt.
+4. **Zurückkommen lassen.** Die Abbuchungen erscheinen über den normalen Kontoabruf auf
+   Ihrem Konto und werden zugeordnet wie jede andere Zahlung. Im Soll/Ist sind die Monate
+   damit beglichen.
+
+## 4. Ehrliche Grenzen
+
+- **Kein Automatismus.** heimvio zieht nie von selbst ein. Jeder Einzug wird von Ihnen
+  angestoßen, und die Bank bucht erst, wenn Sie die Datei eingereicht haben.
+- **Widerspruchsrecht.** Der Zahler kann jede Belastung **acht Wochen** lang ohne Angabe
+  von Gründen bei seiner Bank zurückgeben lassen. Ein Mandat ersetzt also kein
+  vertrauensvolles Verhältnis — es erleichtert nur den Alltag.
+- **Rücklastschrift.** Ist das Konto des Zahlers nicht gedeckt, kommt der Betrag zurück.
+  Die Rückbuchung landet als zu klärender Fall in der Inbox; die Gebühr Ihrer Bank bleibt
+  bei Ihnen bzw. ist mit dem Zahler zu klären. Die Lastschrift ändert nichts am Rückstand —
+  der Monat bleibt offen, das Mahnwesen läuft wie bisher.
+- **Die Datei liegt bei Ihnen.** Nach dem Herunterladen ist die SEPA-Datei in Ihrer Hand:
+  heimvio sieht nicht, ob und wann Sie sie einreichen. Erst die Buchung auf dem Konto
+  schließt den Kreis.
+
+## Und dann?
+
+Fällige Beträge einziehen ist das eine — beschließen, wofür das Geld ausgegeben wird, das
+andere: [Die Eigentümerversammlung](/doku/eigentuemerversammlung).
