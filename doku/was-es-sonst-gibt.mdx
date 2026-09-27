@@ -1,9 +1,9 @@
 ---
 title: Was es sonst noch gibt
-description: Zahlungen, Rollen, Import/Export und Datenhoheit — kurz angerissen, damit Sie wissen, dass es sie gibt.
+description: Zahlungen, Rollen, Import, Datenauskunft und Datenhoheit — kurz angerissen, damit Sie wissen, dass es sie gibt.
 section: Weitere Themen
 order: 90
-updated: 2026-09-26
+updated: 2026-09-27
 ---
 
 Die Themen, die man nicht am ersten Tag braucht, aber irgendwann sucht. Jeweils ein Absatz —
@@ -27,12 +27,14 @@ Sechs Rollen, klar getrennt:
 | **Konto-Inhaber** | hat das Konto angelegt. Für die laufende Arbeit braucht er zusätzlich die Verwalter-Rolle. |
 | **Ableser** | nur Zählerstände erfassen. Sieht keine Kosten, keine Mieter, keine Abrechnungen. |
 | **Eigentümer** | in der WEG: die eigene Wohnung, das eigene Hausgeld mit Einzelwirtschaftsplan und Sonderumlagen, der Vermögensbericht, Tagesordnungen und Protokolle, Abstimmungen und die Dokumente, die Sie für alle Eigentümer freigeben. Vermietet er, verwaltet er sein Mietverhältnis und dessen Zahlungen selbst. |
-| **Beirat** | wie ein Eigentümer, dazu lesend Wirtschaftsplan, Jahresabrechnung, Belege und Vermögensbericht (Prüfungsrecht nach § 29 WEG) |
+| **Beirat** | wie ein Eigentümer, dazu eine eigene Prüfsicht: Wirtschaftsplan, Vermögensbericht und die Belege der **abgerechneten** Jahre, nur lesend (Prüfungsrecht nach § 29 WEG) |
 | **Mieter** | nur die eigene Abrechnung, nur lesend |
 
 Die Ableser-Rolle ist für den Hausmeister oder den Nachbarn, der die Kellerzähler abliest.
 Sie geben ihm damit keinen Einblick in Ihre Finanzen. Beirat ist keine eigene Person, sondern
-eine Rolle, die ein Eigentümer zusätzlich bekommt, wenn die Versammlung ihn wählt.
+eine Rolle, die ein Eigentümer zusätzlich bekommt, wenn die Versammlung ihn wählt; dahinter
+liegt die Kachel **Prüfung** in seinem Portal —
+[Prüfung durch den Verwaltungsbeirat](/doku/verwaltungsbeirat).
 
 Eingeladen und ausgeladen wird im Benutzermenü unter **Mitglieder**. Dort stehen die
 Mitglieder mit Namen, nicht nur mit E-Mail-Adresse: Wen Sie einladen, tragen Sie mit Vor-
@@ -49,7 +51,7 @@ eingerichtet hat. Die Zugänge für Maschinen, etwa den Feeder, der Zählerstän
 einspeist, liegen unter **Org-Einstellungen**; dort finden Sie auch Plan und Konto (mehr
 dazu: [Abo und Organisationen](/doku/abo-und-organisationen)).
 
-## Import und Export
+## Stammdaten als Tabelle
 
 Ihre Stammdaten gehören Ihnen, und zwar in einem Format, das Sie auch woanders lesen können.
 Unter **Export/Import** holen Sie Liegenschaft, Wohnungen und Mietverhältnisse als Tabelle
@@ -58,6 +60,48 @@ und Zähler ebenfalls.
 
 Umgekehrt können Sie beim Anlegen einer Liegenschaft eine solche Tabelle importieren, statt
 alles abzutippen.
+
+Das sind **Stammdaten, nicht Ihr Bestand**: Abrechnungen, Belege, Zahlungen und Dokumente
+stehen in diesen Tabellen nicht. Wer alles will, nimmt die Datenauskunft.
+
+## Datenauskunft: alles herausholen
+
+Unter **Org-Einstellungen → Datenauskunft** laden Sie als Verwalter **alle** Daten der
+Organisation als ein Archiv herunter — der Organisation, in der Sie gerade arbeiten:
+Stammdaten, Zähler und Zählerstände, Wirtschaftspläne und Abrechnungen, Zahlungen,
+Versammlungen und Beschlüsse, dazu die hinterlegten Dokumente als echte Dateien. Das Recht
+dazu haben Sie ohnehin (Datenübertragbarkeit, Art. 20 DSGVO); hier ist der Knopf dafür.
+
+Bevor der Download startet, bestätigen Sie einen Hinweis. Er ist keine Formsache, sondern der
+Kern der Sache:
+
+1. **Die Datei enthält personenbezogene Daten** — Namen, Anschriften, Kontaktdaten,
+   Mietverhältnisse, Zählerstände, Zahlungen, Belege.
+2. **heimvio speichert die Datei nicht.** Sie entsteht in dem Moment, in dem Sie klicken, und
+   liegt danach nur bei Ihnen. Es gibt keine Kopie auf dem Server, die wir Ihnen später noch
+   einmal geben könnten. Verlieren Sie sie, laden Sie sie neu herunter — solange die
+   Organisation noch existiert.
+3. **Ab dem Download sind Sie allein verantwortlich** für Transport, Speicherung und Löschung.
+   Legen Sie die Datei nur auf Geräte, die Sie kontrollieren, und löschen Sie sie, wenn Sie sie
+   nicht mehr brauchen.
+
+Was **nicht** dabei ist, und warum:
+
+| Was fehlt | Warum |
+| --- | --- |
+| **Zugangsdaten** | der Zugang zum Bankkonto, zum Mail-Postfach, die Zugänge für Maschinen, die Schlüssel der Funkzähler — nach einem Umzug ohnehin wertlos, und in einer Datei, die herumgeht, wären sie ein Risiko |
+| **Hinterlegte IBANs** | die verschlüsselt gespeicherten Bankverbindungen, etwa aus einem Lastschriftmandat — ein Mandat erfassen Sie woanders neu |
+| **Tonaufnahmen und Rohtranskripte der Versammlung** | Arbeitsmittel mit Löschfrist. Was gilt, steht in der Niederschrift und in der Beschluss-Sammlung — und die sind dabei |
+
+Eine ehrliche Grenze zum Schluss: Das Archiv ist dokumentiert und sein Aufbau ändert sich
+nicht willkürlich — eine Inhaltsübersicht, die Daten als Textdateien, die Dokumente in
+Ordnern. Aber heimvio kann Ihnen **nicht zusagen, dass eine andere Verwaltungssoftware es
+einlesen kann**. Ob und wie ein fremdes Programm Ihre Daten übernimmt, entscheidet dieses
+Programm. Wenn Sie umziehen wollen, klären Sie das mit dem neuen Anbieter, bevor Sie hier
+kündigen.
+
+Wer eine Organisation löschen will, sollte vorher beides tun — Tabellen und Datenauskunft:
+[Abo und Organisationen](/doku/abo-und-organisationen).
 
 ## Datenhoheit
 
