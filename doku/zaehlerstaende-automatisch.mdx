@@ -3,7 +3,7 @@ title: Zählerstände automatisch einspeisen
 description: Einen Feeder anschließen, damit niemand mehr von Hand abliest — Token, Push-URL und die Zuordnung.
 section: Weitere Themen
 order: 80
-updated: 2026-07-14
+updated: 2026-09-28
 ---
 
 Zählerstände von Hand abzulesen ist die lästigste wiederkehrende Aufgabe an der ganzen
@@ -72,6 +72,32 @@ nicht nur den Statuscode.** Ein Fehler sieht so aus:
 
 Da steht wörtlich, welches Feld in welchem Element fehlt. Ein Feeder, der nur „HTTP 400"
 protokolliert, verschenkt genau die Information, die das Problem löst.
+
+### Die Liste, die Ihnen die Arbeit abnimmt
+
+Sie müssen aber nicht im Feeder-Protokoll suchen. Unter **Org-Einstellungen →
+Feeder-Probleme** steht, was heimvio von Ihren Pushes gesehen hat — mit „Seit" und
+„Zuletzt", damit Sie einen einmaligen Aussetzer von einem Dauerproblem unterscheiden
+können:
+
+| Was dort steht | Was zu tun ist |
+| --- | --- |
+| **Wartet auf Zuordnung** | Die Seriennummer kennt heimvio noch nicht. Ein Klick auf „Zähler zuordnen" führt Sie hin — das ist der häufigste Fall bei einem neuen Zähler. |
+| **Falsche Adresse** | Der Push ging an eine URL ohne `/heimvio/`. Die Antwort nennt die richtige. |
+| **Ungültige Daten** | Ein Feld fehlt oder passt nicht. Die Antwort nennt es. |
+| **Token abgelehnt** | Das Token ist unbekannt, abgelaufen oder widerrufen. Bei „widerrufen" steht das Datum dabei. |
+
+Eine Zeile verschwindet von selbst, sobald der nächste Push durchläuft. Sie müssen
+nichts abhaken.
+
+### Die Seriennummer hat einen Zusatz — das ist Absicht
+
+Sie schicken einen Stand für `METER-1`, und in der Antwort und in der Liste steht
+`METER-1-c0`. Das ist kein Tippfehler: heimvio hängt den **Kanal** an, den es aus der
+OBIS-Kennzahl abliest. Ein Zähler mit einem Messwert — der Normalfall — ist immer
+`-c0`. Geräte, die zwei Dinge messen (etwa Wärmemenge und Wassermenge), erscheinen als
+`-c0` und `-c1` und sind für heimvio zwei Messstellen. Beim Zuordnen sehen Sie genau
+das, und es ist richtig so: die beiden Werte gehen in verschiedene Abrechnungen ein.
 
 ## Der vollständige Vertrag
 
