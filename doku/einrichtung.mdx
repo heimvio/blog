@@ -3,7 +3,7 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
 Nach der Registrierung wählen Sie zuerst einen **Tarif** und geben Ihrer Verwaltung einen
@@ -143,6 +143,20 @@ Bearbeiten oder Löschen.
 Ändern Sie später eine Vorlage, fragt heimvio gezielt nach, welche Wohnungen die Änderung
 übernehmen sollen. Eine Wohnung, die bewusst abweicht, bleibt abweichend.
 
+### Die Nummer aus dem Aufteilungsplan
+
+In der WEG hat jede Wohnung eine Nummer — die aus der Teilungserklärung, mit der Eigentümer,
+Beirat und Notar sie benennen. heimvio schlägt sie über dem Raster vor: Sie wählen, ob die
+Etagen von unten nach oben oder von oben nach unten gezählt werden und mit welcher Nummer es
+losgeht; die Reihenfolge der Vorlagen innerhalb einer Etage ordnen Sie mit den Pfeilen an den
+Vorlagen. „Vorschlag übernehmen" schreibt die Nummern in einem Zug, auch für Wohnungen, die
+schon da sind. Passt eine einzelne Nummer nicht, ändern Sie sie in der Spalte „Nr." der
+Wohnung.
+
+Die Nummer steht danach auf der Abrechnung, im Protokoll und in der Einladung zur
+Versammlung. Sobald eine Wohnung einmal abgerechnet ist, steht ihre Nummer deshalb fest —
+eine Wohnung, die bis dahin keine hatte, kann aber jederzeit noch eine bekommen.
+
 ## Die eine Regel, die Sie verstanden haben müssen
 
 Sie gilt im **Mietobjekt**. Bei jeder Wohnung fragt der Assistent nach der
@@ -160,14 +174,43 @@ erfassen Sie danach beim Mietverhältnis.
 
 **In der WEG gilt diese Regel nicht.** Dort ist die Personenzahl schlicht der
 Verteilschlüssel für personenbezogene Kosten, und Mietverhältnisse legt der Verwalter gar
-nicht an — das tut der Eigentümer der Wohnung selbst. Stattdessen tragen Sie je Wohnung
-den Eigentümer mit Vor- und Nachnamen und den Miteigentumsanteil ein — und einen
-Stimmrechtsanteil nur dann, wenn die Gemeinschaftsordnung das Stimmrecht anders verteilt als
-die Anteile. Der Eigentümer wird dabei als Person der Organisation angelegt, mit oder ohne
-Zugang; einladen können Sie ihn später aus der [Eigentümer-Liste](/doku/eigentuemer).
-Gehört dieselbe Person mehreren Wohnungen, wählen Sie sie bei der zweiten Wohnung aus der
-Liste vorhandener Personen, statt sie neu anzulegen — sonst steht sie doppelt da, und
-Abrechnung und Versammlungs-Einladung kommen getrennt statt gebündelt an.
+nicht an — das tut der Eigentümer der Wohnung selbst. Einen Stimmrechtsanteil tragen Sie an
+der Wohnung nur dann ein, wenn die Gemeinschaftsordnung das Stimmrecht anders verteilt als
+die Anteile. Die Eigentümer selbst kommen in einem eigenen Schritt.
+
+## Eigentümer: eine Zeile je Wohnung
+
+Nach den Wohnungen zeigt der Assistent in der WEG den Schritt **Eigentümer**: eine Tabelle
+mit Nummer, Wohnung, Eigentümer und Miteigentumsanteil, oben der Stand („9 von 12 Wohnungen
+haben einen Eigentümer"). Sie klicken eine Zeile an und wählen die Person — eine vorhandene
+aus der Organisation oder eine neue mit Name und Anschrift. Auch eine **Firma** kann
+Eigentümerin sein; dann bleibt der Vorname leer. Mit E-Mail-Adresse lädt heimvio die Person
+gleich zum Eigentümer-Zugang ein, ohne geht es auch — der Zugang lässt sich später aus der
+[Eigentümer-Liste](/doku/eigentuemer) nachholen. Gehört dieselbe Person mehreren Wohnungen,
+wählen Sie sie bei der zweiten Wohnung aus der Liste, statt sie neu anzulegen — sonst steht
+sie doppelt da, und Abrechnung und Versammlungs-Einladung kommen getrennt statt gebündelt
+an. Eine Person mit eigenem Zugang pflegt Name und Anschrift selbst; heimvio überschreibt
+sie nicht.
+
+Der Miteigentumsanteil gehört zur Wohnung, nicht zur Person. Ergibt die Summe aller Anteile
+nicht 1, sagt der Schritt es Ihnen — das ist erlaubt (Keller- und Garagenanteile), aber ein
+Blick in die Teilungserklärung lohnt. Nach der ersten Abrechnung steht der Anteil fest.
+
+**Die Liste aus einer Datei.** Bei zwölf und mehr Wohnungen ist Tippen der falsche Weg. Mit
+„Aus Datei (CSV)" laden Sie zuerst eine Vorlage herunter, in der die Wohnungsnummern und
+Bezeichnungen **schon drinstehen**; Sie tragen nur noch Vorname, Nachname oder Firma,
+Anschrift, E-Mail und Anteil daneben ein — mit dem Tabellenprogramm Ihrer Wahl — und laden
+die Datei wieder hoch. heimvio zeigt eine Vorschau, in der jede Zeile geprüft ist: eine
+Wohnungsnummer, die es nicht gibt, oder eine Zeile ohne Namen wird rot, und die Datei lässt
+sich erst einspielen, wenn alle Zeilen stimmen. Danach berichtet heimvio, wie viele
+Eigentümer angelegt, korrigiert oder unverändert geblieben sind und wie viele Einladungen
+verschickt wurden. Dieselbe Datei ein zweites Mal hochzuladen ändert nichts — Sie können
+also eine Liste in Ruhe ergänzen und erneut einspielen. Das Feld „Eigentümer seit" gilt nur
+für neu eingetragene Eigentümer; ein Wechsel (Verkauf) gehört nicht in diese Datei, dafür
+gibt es den [Assistenten in der Eigentümer-Liste](/doku/eigentuemer).
+
+Der Schritt ist überspringbar. Ohne Eigentümer gibt es aber keine Einladung zur Versammlung
+und keine Abrechnung an die richtige Person — irgendwann müssen die Namen also hinein.
 
 ## Belege: die drei, die sich lohnen
 
