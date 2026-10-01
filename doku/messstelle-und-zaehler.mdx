@@ -86,3 +86,21 @@ in die Abrechnung. Den Stand sehen und ändern Sie auf der Seite „Messdaten": 
 Die Felder „Aktiv ab" und „Aktiv bis" im selben Dialog können Sie nur anlegen, solange
 die Messstelle geplant ist; danach geht die Änderung bewusst nur über diese Knöpfe, damit
 fertige Abrechnungen reproduzierbar bleiben.
+
+## Messstelle „ändern" mit Duplizieren & ersetzen
+
+Aktive Messstellen sind gegen Bearbeiten gesperrt, damit fertige Abrechnungen
+reproduzierbar bleiben. Trotzdem kommt es vor, dass sich etwas ändern muss — ein neuer
+Tarif, eine andere Aufteilung der Heizkosten. Dafür gibt es in der Leiste oben im Dialog
+den Knopf **Duplizieren & ersetzen…**:
+
+1. Der Dialog öffnet mit allen Werten der bisherigen Messstelle vorbefüllt — alles
+   änderbar, denn die Kopie ist noch geplant.
+2. Sie tragen das **Wechseldatum** ein und ändern, was sich ändern soll (z. B. den Tarif).
+3. Beim Speichern wird die Kopie ab dem Wechseldatum aktiv und die bisherige Messstelle
+   endet am Tag davor. **Zähler und Summenzähler-Komponenten hängt heimvio automatisch
+   um** — die Messreihe läuft ohne Lücke weiter.
+
+Die bisherige Messstelle bleibt als inaktive Karte mit ihrer ganzen Geschichte sichtbar.
+Einzige Ausnahme: Schätzwerte werden nicht übernommen — bei einer geschätzten Messstelle
+tragen Sie den Wert an der Kopie neu ein.
