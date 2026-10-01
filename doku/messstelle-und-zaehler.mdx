@@ -3,7 +3,7 @@ title: Messstelle und Zähler
 description: Der Unterschied, an dem jeder einmal stolpert — und ohne den der Rest nicht klickt.
 section: Konzepte
 order: 50
-updated: 2026-07-14
+updated: 2026-10-01
 ---
 
 heimvio kennt zwei Dinge, die im Alltag beide „Zähler" heißen, aber grundverschieden sind.
@@ -69,3 +69,20 @@ mitschickt, und legt daraus **mehrere Zähler** an: einen je Kanal.
 In der Zählerliste sehen Sie dann Einträge wie `HP1-c1` und `HP1-c3`, obwohl auf dem Gerät
 nur `HP1` steht. Jeder davon wird einer eigenen Messstelle zugeordnet — genau richtig, denn
 Heizung und Warmwasser werden unterschiedlich abgerechnet.
+
+## Messstellen haben einen Lebenszyklus
+
+Eine Messstelle ist **geplant**, **aktiv** oder **inaktiv**. Nur aktive Messstellen zählen
+in die Abrechnung. Den Stand sehen und ändern Sie auf der Seite „Messdaten": Messstelle
+öffnen (✎) — oben im Dialog steht eine Leiste mit dem Stand und den passenden Knöpfen:
+
+- **Geplant** → *Aktivieren…*: Sie wählen das Datum, ab dem die Messstelle zählt.
+- **Aktiv** → *Deaktivieren…*: Sie wählen den letzten aktiven Tag, etwa den Ausbau des
+  Zählers. Die Messstelle bleibt mit ihrer ganzen Geschichte erhalten, sie wird nur
+  nicht mehr abgerechnet.
+- **Inaktiv** → *Reaktivieren*: hebt das Enddatum wieder auf — solange in dem Zeitraum
+  noch keine Abrechnung endgültig erstellt wurde.
+
+Die Felder „Aktiv ab" und „Aktiv bis" im selben Dialog können Sie nur anlegen, solange
+die Messstelle geplant ist; danach geht die Änderung bewusst nur über diese Knöpfe, damit
+fertige Abrechnungen reproduzierbar bleiben.
