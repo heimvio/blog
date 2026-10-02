@@ -3,7 +3,7 @@ title: Der Wirtschaftsplan — Vorlage, Beschluss, Hausgeld
 description: Warum der Wirtschaftsplan erst mit dem Beschluss gilt, was die Versammlung ändern darf und was heimvio rechnet. Dazu Sonderumlage, Rücklage und Vermögensbericht.
 section: Konzepte
 order: 71
-updated: 2026-09-29
+updated: 2026-10-02
 ---
 
 In der WEG zahlt jeder Eigentümer monatlich einen Vorschuss an die Gemeinschaft, das
@@ -37,12 +37,12 @@ Auf der Seite **Wirtschaftsplan** wählen Sie das Jahr und tragen ein, was die V
 später beschließen soll:
 
 1. **Planpositionen.** Die geschätzten Kosten des Jahres je Kostenart, mit Verteilerschlüssel
-   — von Hand, aus Schätzwerten (für Liegenschaften ohne Vorjahresdaten) oder aus einer
-   CSV-Datei. Der Schätz-Assistent belegt Wohnfläche und Bewohnerzahl aus Ihren
-   Wohnungsdaten vor („aus 12 Wohnungen") — Sie prüfen die Zahlen, statt sie abzuschreiben,
-   und die Annahmen stehen später im Dokument. Fehlt bei Wohnungen der Miteigentumsanteil,
-   sagt die Seite es Ihnen, bevor Sie rechnen: ohne ihn bleibt das Hausgeld dieser Wohnungen
-   leer.
+   — von Hand, aus Schätzwerten (für Liegenschaften ohne Vorjahresdaten), aus dem Vorjahr
+   oder aus einer CSV-Datei. Der Schätz-Assistent belegt Wohnfläche und Bewohnerzahl aus
+   Ihren Wohnungsdaten vor („aus 12 Wohnungen") — Sie prüfen die Zahlen, statt sie
+   abzuschreiben, und die Annahmen stehen später im Dokument. Fehlt bei Wohnungen der
+   Miteigentumsanteil, sagt die Seite es Ihnen, bevor Sie rechnen: ohne ihn bleibt das
+   Hausgeld dieser Wohnungen leer.
 2. **Rücklage.** Die Zuführung zur Erhaltungsrücklage im Jahr, verteilt nach
    Miteigentumsanteilen.
 3. **Fälligkeitstag.** Der Tag im Monat, zu dem das Hausgeld fällig ist, 1 bis 28. Ohne
@@ -52,6 +52,34 @@ Daraus entsteht sofort der **Einzelwirtschaftsplan** je Wohnung: Kosten, Rückla
 monatliche Vorschuss. Das ist die Anlage, die die Versammlung später beschließt. Unter den
 Wohnungen steht die **Summe der Vorschüsse** — die Zahl, an der heimvio später erkennt, ob
 sich nach dem Beschluss noch etwas verschoben hat.
+
+### Woher eine Planposition kommt
+
+Planpositionen stehen **nur hier**, auf der Seite Wirtschaftsplan. Unter **Kosten** sehen Sie
+ausschließlich echte Belege und Rechnungen — eine Schätzung für das kommende Jahr ist kein
+Beleg und mischt sich dort nicht mehr dazwischen.
+
+Jede Planposition trägt eine **Herkunft**, und die steht später im Einzelwirtschaftsplan, den
+die Eigentümer lesen:
+
+| Herkunft | was Sie angeben |
+| --- | --- |
+| **Schätzung** | eine **Quellenangabe ist Pflicht** — „Versicherungsangebot vom 15.08.", „Abfallgebührenbescheid 2026" |
+| **Beleg / Rechnung / Angebot** | die Quellenangabe auf Wunsch |
+| **Anliegen (Vorgang)** | Sie wählen den Vorgang, etwa die Reparatur am Dach; die Kostenart steht dann auf Erhaltung/Instandhaltung (nicht umlagefähig) — ändern können Sie sie |
+| **aus Jahresabrechnung Vorjahr** | nichts — diese Herkunft setzt heimvio selbst bei der Übernahme |
+
+Mit **„Regelmäßige Positionen aus Vorjahr übernehmen"** holen Sie die wiederkehrenden
+Positionen aus der Jahresabrechnung des Vorjahres in den Plan. Vorher fragt heimvio nach
+einer **Inflationsrate** in Prozent; 0 übernimmt die Beträge unverändert. Nicht übernommen
+werden Erhaltungsaufwand und Positionen aus Anliegen — eine Reparatur wiederholt sich nicht
+von selbst. Das ist der schnellste Weg zum zweiten Wirtschaftsplan: Die regelmäßigen Kosten
+stehen da, Sie ergänzen, was neu ist.
+
+Ein Hinweis, der beim Ausprobieren auffällt: Damit nicht jedes Hausgeld als offen und
+„Mahnung fällig" dasteht, gehören die Zahlungen ins System. Der Link **„Zahlungen per CSV
+importieren"** führt auf die Seite Zahlungen, wo Sie einen Kontoauszug hochladen
+([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)).
 
 Im Kopf der Seite lesen Sie jederzeit den Stand:
 
@@ -141,10 +169,17 @@ Sie legen sie auf der Seite **Wirtschaftsplan** im Abschnitt **Sonderumlagen** a
 | Angabe | bedeutet |
 | --- | --- |
 | **Zweck** | wofür, zum Beispiel „Dachsanierung" |
-| **Gesamtbetrag** | was die Gemeinschaft insgesamt braucht |
-| **Verteilung** | nach Miteigentumsanteilen, nach Wohnfläche oder gleich je Wohnung |
+| **Maßnahmenkosten** | was die Maßnahme insgesamt kostet |
+| **Aus Erhaltungsrücklage** | was davon aus der Rücklage bezahlt wird; leer oder 0, wenn nichts |
+| **Umlagebetrag** | wird angezeigt, nicht eingegeben: Maßnahmenkosten minus Rücklagenanteil — das ist, was die Eigentümer aufbringen |
+| **Verteilt nach** | Miteigentumsanteilen, Wohnfläche oder je Wohnung gleich |
 | **Erste Fälligkeit** und **Raten** | zu welchem Tag die Umlage fällig ist; bei mehreren Raten in welchem Abstand |
-| **Anteil aus der Rücklage** | was aus der Rücklage entnommen wird — er mindert den Betrag, der auf die Wohnungen umgelegt wird |
+| **Anliegen** (optional) | der Vorgang, um den es geht — etwa der Mangel am Dach mit seinen Angeboten |
+
+Der Anteil aus der Rücklage muss kleiner sein als die Maßnahmenkosten; sonst gäbe es nichts
+umzulegen, und es bräuchte keine Sonderumlage. Kommt die Umlage aus einem Beschluss über einen
+Tagesordnungspunkt, der zu einem Anliegen gehört, verknüpft heimvio sie beim Eintragen von
+selbst mit diesem Anliegen.
 
 Die **Anteile je Wohnung** rechnet heimvio; eine Vorschau steht gleich unter dem Formular,
 und jeder Eigentümer sieht seinen Anteil mit der Fälligkeit im Einzelwirtschaftsplan.
