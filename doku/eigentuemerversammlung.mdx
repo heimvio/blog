@@ -3,7 +3,7 @@ title: Die Eigentümerversammlung — neun Stationen bis zur Unterschrift
 description: Ansetzen, Tagesordnung, Einladen, Raum, Vollmachten, Drucken, Durchführen, Niederschrift, Abschluss — warum die Einladung zur Versammlung passen muss und warum ab der Unterschrift nichts mehr beweglich ist.
 section: Konzepte
 order: 75
-updated: 2026-10-03
+updated: 2026-10-04
 ---
 
 Eine Eigentümerversammlung ist kein Termin im Kalender, sondern ein Ablauf aus **neun
@@ -196,8 +196,14 @@ Ortsmitteilung. heimvio sagt es Ihnen an der Stelle, an der Sie ändern.
    Einladung, und wie viele davon einen Brief statt einer Mail? Gibt es Wohnungen ohne
    hinterlegten Eigentümer, oder Eigentümer ohne Mailadresse und ohne Anschrift? Wo sich
    etwas sofort beheben lässt — Termin oder Ort fehlen, die Begründung einer kurzen Frist —,
-   springt ein Knopf direkt an das Feld. Blockierend sind nur zwei Dinge: kein Termin und
-   keine Tagesordnung. Alles andere ist ein Hinweis, über den Sie selbst entscheiden.
+   springt ein Knopf direkt an das Feld. Die Prüfung rechnet mit dem, was gerade in den
+   Kopfdaten steht — ändern Sie den Termin, sehen Sie sofort, ob die Frist noch reicht.
+   Sie warnt auch, wenn Tagesordnungspunkte noch den Vorschlag von heimvio tragen und wenn
+   dem Absender die Anschrift fehlt — im Briefkopf der Firma bzw. bei einer selbst verwalteten
+   Gemeinschaft ohne Firma in deren Anschrift (dann haben Briefe keinen vollständigen
+   Absender). Blockierend sind nur drei Dinge: kein Termin, keine Tagesordnung und
+   geänderte Kopfdaten, die noch nicht gespeichert sind — eingeladen wird immer mit dem
+   gespeicherten Stand. Alles andere ist ein Hinweis, über den Sie selbst entscheiden.
 2. **Anschreiben.** Das Anschreiben müssen Sie nicht schreiben: **heimvio erzeugt es
    vollständig aus Termin, Ort, Tagesordnung und Ihren Einstellungen.** Termin, Ort,
    Tagesordnung, Fassung, Fristhinweis und die Antwort-Knöpfe sind fest und lassen sich nicht
@@ -227,7 +233,8 @@ wird er dann nur für diese Versammlung. Eine Vorlage ist die **Standardvorlage*
 den Begleittext jeder neuen Einladung vor. Die erste Vorlage, die Sie anlegen, wird es von
 selbst; mit **„Als Standard"** machen Sie eine andere dazu, und **„Vorlage löschen"** räumt
 auf. Begleittexte, die schon in Einladungen stehen, ändert das Löschen nicht. Gibt es keine
-Vorlage, gilt der Standardtext aus den Organisations-Einstellungen.
+Vorlage, gilt der Begleittext aus dem Briefkopf Ihrer Firma
+([Hausverwaltung als Firma](/doku/hausverwaltung)).
 
 ### Wenn eine Einladung nicht ankommt
 
@@ -256,9 +263,12 @@ mit dem Vollmachtsformular zum Ankreuzen auf der folgenden Seite; die Antwort tr
 nach. Der Brief ist ein Geschäftsbrief nach DIN 5008: Die Anschrift sitzt im Fenster
 üblicher Umschläge (DL oder C6/5), darüber steht Ihre Absenderzeile, rechts daneben Datum
 und Ansprechpartner, am Rand Falz- und Lochmarken. Absenderzeile und Fußzeile kommen aus
-Ihrem **Briefkopf** in den Org-Einstellungen — tragen Sie dort Name und Anschrift der
-Verwaltung ein. Der Ansprechpartner ist die Person, die Sie in den Org-Einstellungen als
-Ansprechpartner benannt haben. Haben Sie keinen Begleittext geschrieben, enthält der Brief
+dem **Briefkopf der Verwaltung**: Verwaltet eine Firma die Gemeinschaft, ist es der Briefkopf
+der Firma mit dem Zusatz „Verwalterin der …" — gepflegt unter **Meine Firma → Briefkopf &
+CI** ([Hausverwaltung als Firma](/doku/hausverwaltung)). Ohne Firma gilt ein
+Standardbriefkopf aus Name und Anschrift der Gemeinschaft; die Anschrift tragen Sie unter
+**Org-Einstellungen → Verwaltung** ein. Der Ansprechpartner ist die Person, die Sie in den
+Org-Einstellungen als Ansprechpartner benannt haben. Haben Sie keinen Begleittext geschrieben, enthält der Brief
 einen Standardtext: Einladung, Bitte um Rückmeldung bis zur Antwortfrist und der Hinweis auf
 die beigelegte Vollmacht. Die versandte Fassung wird abgelegt, damit Sie später nachweisen können, wer wann was
 bekommen hat.
@@ -465,6 +475,15 @@ schließen** werden die Stimmen angelegt: „wie die Mehrheit" zuletzt, nach dem
 der bis dahin abgegebenen Stimmen; bei Gleichstand als Enthaltung. Die Stimmen stehen als
 Stimmen des Bevollmächtigten in der Niederschrift, die Weisungen selbst als Anlage. Jeder
 verkündete Beschluss landet automatisch in der **Beschluss-Sammlung** (§ 24 Abs. 7 WEG).
+
+Ergebnis, Stimmen und den Knopf zum Verkünden zeigt ein Punkt erst, wenn die Versammlung
+begonnen hat — vorher steht dort nur, dass in der Versammlung abgestimmt wird. Beim
+Umlaufbeschluss gilt das nicht; dort ersetzt die Frist den Termin.
+
+Kostet ein Beschluss Geld — eine Reparatur, ein Auftrag —, schalten Sie beim Verkünden
+**„Kostenrahmen festlegen"** ein und tragen die Obergrenze ein; sie steht dann mit dem
+Beschluss in der Sammlung. Bei den Standard-Punkten wie der Entlastung ist der Schalter aus,
+bei allen anderen an.
 
 Beim **Wirtschaftsplan** und bei der **Sonderumlage** verkünden Sie Zahlen mit. Das
 Formular zeigt den Vorschlag; die Versammlung darf Rücklage und Fälligkeitstag ändern, die
