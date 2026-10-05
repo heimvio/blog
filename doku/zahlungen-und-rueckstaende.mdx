@@ -3,7 +3,7 @@ title: Zahlungen und Rückstände — Soll gegen Ist
 description: Was heimvio jeden Monat erwartet, was auf dem Konto eingeht, und was Sie mit dem Rest tun. Für Verwalter und für Eigentümer.
 section: Konzepte
 order: 72
-updated: 2026-10-04
+updated: 2026-10-05
 ---
 
 heimvio weiß, was jeden Monat eingehen soll: das Hausgeld aus dem Wirtschaftsplan, die
@@ -221,6 +221,18 @@ Abschlag an die Stadtwerke. heimvio holt diese Abbuchungen mit und zeigt sie als
 Einen Abgleich mit Belegen, die Sie schon von Hand erfasst haben, macht heimvio nicht:
 Steht die Rechnung bereits unter **Kosten**, legen Sie aus der Abbuchung keinen zweiten
 Beleg an.
+
+Umgekehrt geht es: Ein Kontoauszug kennt keine Umsatzsteuer, der Beleg aus einer Abbuchung
+steht deshalb zunächst auf „0 % angenommen — wird mit dem Beleg übernommen". Laden Sie die
+Rechnung danach hoch und lassen sie von der KI lesen, sucht heimvio eine Abbuchung ohne
+Beleg mit **genau demselben Betrag**, abgebucht ab zwei Wochen vor bis etwa vier Monate nach
+dem Rechnungsdatum. Gibt es genau eine, hängt die Rechnung an dieser Zeile, und ihr
+Steuersatz gilt — eine zweite Zeile entsteht nicht. Trägt die Rechnung zwei Steuersätze,
+teilt heimvio die Abbuchung in eine Zeile je Satz; zusammen ergeben sie genau den
+abgebuchten Betrag. Bleibt die Rechnung aus, zeigt die
+Abrechnung für diese Position 0,00 € **„davon USt"** und zählt sie unter der Summe mit:
+„1 Position ohne Beleg-Angabe, als 0 angenommen"
+([Netto, Steuersatz, Brutto](/doku/belege-zur-abrechnung#netto-steuersatz-brutto)).
 
 Der vermietende Eigentümer sieht in seinem Portal die Abbuchungen seines eigenen Kontos und
 legt dort private Belege für seine Wohnung an.

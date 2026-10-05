@@ -1,9 +1,9 @@
 ---
 title: Von Belegen zur Nebenkostenabrechnung
-description: Wie aus einer Rechnung eine Position auf der Abrechnung wird — Kostenart, Verteilerschlüssel und die drei fachlichen Sonderfälle.
+description: Wie aus einer Rechnung eine Position auf der Abrechnung wird — Kostenart, Umsatzsteuer, Verteilerschlüssel und die drei fachlichen Sonderfälle.
 section: Konzepte
 order: 60
-updated: 2026-09-29
+updated: 2026-10-05
 ---
 
 Zwischen der Rechnung des Heizöllieferanten und der Zeile auf der Abrechnung Ihres Mieters
@@ -25,6 +25,7 @@ hochgeladen, macht ein Klick aus einer Abbuchung einen Beleg mit Betrag, Datum u
 Empfänger; die Kostenart wählen Sie danach wie sonst auch
 ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)).
 
+
 ## Die Kostenart entscheidet fast alles
 
 Wenn Sie einen Beleg erfassen, wählen Sie eine Kostenart: Abfall, Wasser, Grundsteuer,
@@ -43,6 +44,43 @@ Diese eine Auswahl setzt im Hintergrund gleich mehrere Dinge:
 Sie können den vorgeschlagenen Schlüssel jederzeit überstimmen. Aber der Vorschlag ist in
 neun von zehn Fällen richtig — und er ist der Grund, warum Sie sich das Umlagerecht nicht
 selbst aneignen müssen.
+
+## Netto, Steuersatz, Brutto
+
+Jeder Beleg trägt neben dem Betrag die **Umsatzsteuer**, die darin steckt. Im Beleg stehen
+dafür drei Felder nebeneinander: **Netto €**, **Steuersatz %** und **Brutto €**. Sie
+brauchen nur eines davon:
+
+1. **Ein Feld genügt.** Tragen Sie den Betrag ein, der auf der Rechnung steht — brutto oder
+   netto. Den Rest rechnet heimvio, ebenso die Zeile **„davon USt"** darunter. Ändern Sie
+   den Steuersatz, bleibt der Bruttobetrag stehen; Netto und Steuer rechnen neu.
+2. **Der Satz ist vorbelegt.** Mit der Kostenart setzt heimvio den üblichen Satz — 19 % für
+   Handwerker, Reinigung oder Brennstoff, 7 % für Wasser, 0 % für Grundsteuer, Abfall und
+   Versicherung. Daneben steht dann „Üblicher Satz der Kostenart — bitte mit dem Beleg
+   vergleichen". Lesen Sie den Beleg per KI ein, kommt der Satz von der Rechnung
+   („Steuersatz vom Beleg"); nennt eine Rechnung zwei Sätze, etwa 19 % und 7 %, entsteht je
+   Satz eine eigene Zeile.
+3. **Abbuchungen bekommen die Steuer mit dem Beleg.** Ein Kontoauszug kennt keine
+   Umsatzsteuer. Ein Beleg, den Sie aus einer Abbuchung machen, steht deshalb zunächst auf
+   „0 % angenommen — wird mit dem Beleg übernommen". Laden Sie die Rechnung danach hoch und
+   lassen sie von der KI lesen, erkennt heimvio die Abbuchung am gleichen Betrag, hängt die
+   Rechnung an diese Zeile und übernimmt ihren Steuersatz — eine zweite Zeile entsteht nicht
+   ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)). Sie können den Satz auch
+   selbst eintragen.
+
+Für die Abrechnung bleibt der **Bruttobetrag** maßgeblich; er wird umgelegt wie bisher. Die
+Steuer steht daneben, damit Mieter und Eigentümer sehen, wie viel davon Umsatzsteuer ist.
+Dieselben Felder haben private Belege, die ein Eigentümer in seinem Portal anlegt. Bei der
+Kostenart „Tarif / Preisänderung" fehlen sie: Die Steuer eines Tarifs steht auf der Seite
+**Tarife & Konditionen** ([Einrichtung](/doku/einrichtung#steuer-in-preisen-und-tarifen)).
+
+Ehrlich gesagt:
+
+- Belege, die vor Oktober 2026 erfasst wurden, stehen auf „0 % angenommen". In einem
+  offenen Jahr können Sie den Satz nachtragen; ein abgeschlossenes Jahr bleibt, wie es ist.
+- heimvio **weist die Umsatzsteuer aus; ein Vorsteuerabzug für Vermieter, die zur
+  Umsatzsteuer optiert haben, ist nicht enthalten.** In den Org-Einstellungen steht deshalb
+  unter **Besteuerung** „nicht optiert".
 
 ## Die Verteilerschlüssel
 

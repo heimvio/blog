@@ -3,7 +3,7 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-10-04
+updated: 2026-10-05
 ---
 
 ## Wer richtet ein?
@@ -296,6 +296,30 @@ Zwei Dinge, die dabei oft für Rückfragen sorgen:
 
 Erst danach kommen die Zähler: **Kaltwasser** je Wohnung (oder pauschal nach Wohnfläche)
 und **Warmwasser**.
+
+## Steuer in Preisen und Tarifen
+
+Ein Versorger nennt seine Preise mal mit, mal ohne Umsatzsteuer. Damit die Abrechnung
+richtig ausweist, wie viel Steuer in Heizung, Strom und Wasser steckt, trägt jeder Tarif
+zwei Angaben. Sie stehen auf der Seite **Tarife & Konditionen** (Kachel auf der Startseite
+der Verwaltung) am Tarif:
+
+| Feld | bedeutet |
+| --- | --- |
+| **Preise sind** | **brutto (inkl. USt)** — die Vorgabe — oder **netto (zzgl. USt)**, so wie es auf dem Preisblatt steht |
+| **Steuersatz %** | leer heißt: der übliche Satz der Art — Strom, Gas und Wärme 19 %, Wasser 7 %, Abwasser 0 % |
+
+Jede neue **Kondition** (ein neuer Preis ab einem Datum) übernimmt beides als Vorschlag, Sie
+können es dort je Kondition ändern. Die Karte des Tarifs zeigt den Stand kurz an, etwa
+„inkl. 19 % USt" oder „zzgl. 19 % USt". Netto-Preise rechnet heimvio vor dem Umlegen mit dem
+Satz auf brutto hoch — Sie müssen nichts umrechnen. Bei einem dynamischen Stromtarif kommen
+die Preise vom Anbieter brutto, den Satz übernimmt heimvio beim Abruf; für einen eigenen
+Feeder geben Sie in seiner Karte an, ob die eingespielten Preise brutto oder netto sind.
+
+Im Assistenten geben Sie Preise **inklusive Umsatzsteuer** ein, so wie sie auf dem
+Preisblatt stehen; den üblichen Satz belegt heimvio vor — Wasser 7 %, Abwasser 0 %, Strom,
+Gas und Wärme 19 %. Weicht Ihr Versorger ab, ändern Sie Preisbasis und Satz danach unter
+**Tarife & Konditionen**.
 
 ## Sie können jederzeit aufhören
 
