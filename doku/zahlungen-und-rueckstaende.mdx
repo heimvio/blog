@@ -3,7 +3,7 @@ title: Zahlungen und Rückstände — Soll gegen Ist
 description: Was heimvio jeden Monat erwartet, was auf dem Konto eingeht, und was Sie mit dem Rest tun. Für Verwalter und für Eigentümer.
 section: Konzepte
 order: 72
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 heimvio weiß, was jeden Monat eingehen soll: das Hausgeld aus dem Wirtschaftsplan, die
@@ -54,8 +54,11 @@ Kontoinformationsdienst, und Ihre Zugangsdaten geben Sie dort ein, nicht bei hei
 Für den Abruf fragt heimvio einmal Ihre Einwilligung ab.
 
 **Kontoauszug hochladen.** Wer sein Konto nicht verbinden will, lädt den Kontoauszug als
-CSV-Datei hoch. Eine KI liest die Buchungen heraus, auch hier Eingänge wie Abbuchungen. Dafür brauchen Sie die Einwilligung zu
-KI-gestützten Auswertungen.
+CSV-Datei hoch. heimvio liest die Buchungen selbst heraus, auch hier Eingänge wie
+Abbuchungen. Ein Format, das heimvio nicht kennt, liest eine KI; dafür
+brauchen Sie die Einwilligung zu KI-gestützten Auswertungen. Enthält Ihr Export eine
+**Saldo-Spalte**, übernimmt heimvio daraus den Kontostand je Tag — für den
+Vermögensbericht und den Jahresbericht der WEG.
 
 Welches Konto Sie verbinden, hängt davon ab, wer Sie sind:
 
@@ -165,7 +168,9 @@ Nachzahlung können Sie verzichten; heimvio hält den Verzicht fest.
 Jede Zahlung eines Eigentümers trägt eine **Art**: Hausgeld, Nachzahlung oder Sonderumlage.
 Nur eine Zahlung der Art „Sonderumlage" tilgt die Umlage. Die Art setzt heimvio selbst: Wird
 die Rate eingezogen, ist sie ohnehin zugeordnet; überweist der Eigentümer selbst, erkennt
-heimvio sie am Betrag, wenn er zu einer fälligen offenen Rate passt. Passt er zugleich zum
+heimvio sie am Betrag, wenn er zu einer fälligen offenen Rate passt. Das gilt für den Kontoabruf wie
+für den hochgeladenen Kontoauszug; dort ordnet heimvio die Zahlung am Namen oder an der
+Wohnungsnummer im Verwendungszweck dem Eigentümer zu. Passt er zugleich zum
 Hausgeld, bleibt es beim Hausgeld — die häufigere Zahlung gewinnt, damit keine Miete oder
 kein Hausgeld still als Tilgung verschwindet. Liegt heimvio damit im Einzelfall falsch,
 widmen Sie die Zahlung in der Zahlungsliste um.

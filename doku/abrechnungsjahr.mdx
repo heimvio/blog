@@ -3,7 +3,7 @@ title: Das Abrechnungsjahr
 description: Vorbereiten, berichten, ausstellen, abschließen — eine Einbahnstraße, und warum das gut so ist.
 section: Konzepte
 order: 70
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 Die Jahresabrechnung ist kein Knopf, den man drückt. Sie ist ein Ablauf mit vier Stationen,
@@ -102,9 +102,55 @@ nur eine Information: Wer nicht zur Umsatzsteuer optiert hat — der Normalfall 
 Vermieter —, setzt die Bruttobeträge als Werbungskosten an. heimvio weist die Umsatzsteuer
 aus; ein Vorsteuerabzug für optierende Vermieter ist nicht enthalten.
 
-Wenn alle Wohnungen abgerechnet und die Anlage V fertig ist, wird **„Jahr abschließen"**
-aktiv. Der Abschluss sperrt **alle Quelldaten des Jahres** in der Datenbank: Belege,
-Zählerstände, Mietverhältnisse. Nichts davon lässt sich danach noch ändern.
+### Der Jahresbericht (WEG)
+
+In der WEG steht im Jahresabschluss als **letzte Position** der **„Jahresbericht"** des
+Jahres: der Bericht der Verwaltung für die Versammlung, zusammengestellt aus dem, was
+heimvio ohnehin weiß. Er enthält
+
+- das **Vermögen**: Rücklage und Kontostand am 1. Januar und am 31. Dezember;
+- die **Zugänge und Abgänge** der Rücklage;
+- die **größeren Ausgaben** des Jahres, je mit ihrer Finanzierung — laufend aus dem Hausgeld,
+  über eine Sonderumlage oder aus der Rücklage;
+- die **Sonderumlagen** mit dem, was eingezahlt und was noch offen ist;
+- die **Beschlüsse** des Jahres und die erledigten und offenen **Vorgänge**;
+- die **Abrechnung**: wie viele Wohnungen nachzahlen und wie viele ein Guthaben haben.
+
+So gehen Sie vor:
+
+1. **Schwelle festlegen.** Unter „Größere Ausgaben im Bericht" stellen Sie ein, ab welchem
+   Betrag oder ab welchem Anteil an den Kosten des Jahres eine Ausgabe genannt wird und
+   wie viele höchstens — vorgegeben sind 2500 €, 5 % und fünf Ausgaben, die größten zuerst.
+2. **Erzeugen.** **„Aus den Daten erzeugen"** schreibt einen Text aus den Zahlen.
+   **„… und ausformulieren (KI)"** macht daraus eine kurze Fassung zum Vorlesen, höchstens
+   etwa 120 Wörter. Die KI formuliert nur: Jede Zahl in ihrem Text wird gegen die Daten
+   geprüft, und was sich nicht prüfen lässt, nennt heimvio — dann gilt der Text aus den
+   Daten. Für die KI brauchen Sie die Einwilligung „KI-Entwürfe für die Versammlung".
+3. **Text anpassen.** Der Text gehört Ihnen; ändern Sie, was Sie anders sagen wollen, und
+   sichern Sie ihn mit **„Entwurf speichern"**.
+4. **Ausstellen.** **„Ausstellen"** legt den Bericht als PDF in die Ablage, Ordner „Bank &
+   Finanzen", sichtbar für alle Eigentümer. Bis zum Abschluss des Jahres können Sie ihn
+   ändern und erneut ausstellen; das PDF wird dann ersetzt.
+
+Belege, die über eine **Sonderumlage** oder aus der **Rücklage** bezahlt wurden, stehen
+nicht in der Einzelabrechnung der Eigentümer — die Umlage ist schon bezahlt, die Rücklage
+schon angespart. Sie erscheinen stattdessen im Jahresbericht und im
+[Vermögensbericht](/doku/wirtschaftsplan). Das stellen Sie am Beleg im Feld **Bezahlt aus**
+ein: laufender Haushalt, eine beschlossene Sonderumlage oder die Erhaltungsrücklage.
+
+Wie der Bericht in die Einladung und auf den Beamer kommt, steht unter
+[Die Eigentümerversammlung](/doku/eigentuemerversammlung).
+
+### Das Jahr abschließen
+
+Sind alle Wohnungen abgerechnet, die Anlage V fertig und in der WEG der Jahresbericht
+ausgestellt, steht am Jahr **„Jahr abschließen"**. Ist noch etwas offen, heißt der Knopf
+**„Jahr abschließen (stellt alle aus)"** und erledigt alles in einem Schritt: Er stellt aus,
+was noch fehlt — den Jahresbericht, falls Sie keinen vorbereitet haben, mit den Vorgaben,
+nach den Abrechnungen und direkt vor dem Sperren — und schließt dann ab.
+
+Der Abschluss sperrt **alle Quelldaten des Jahres** in der Datenbank: Belege,
+Zählerstände, Mietverhältnisse. Auch der Jahresbericht ist danach eingefroren. Nichts davon lässt sich danach noch ändern.
 
 Wiederöffnen geht — aber nur mit einer Begründung, die protokolliert wird.
 
