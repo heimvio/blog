@@ -231,19 +231,37 @@ Zahlen, keine Rechtsberatung.
 ## 6. Was sonst noch auf dem Konto passiert
 
 Vom Konto gehen auch Beträge ab: die Rechnung des Schornsteinfegers, die Versicherung, der
-Abschlag an die Stadtwerke. heimvio holt diese Abbuchungen mit und zeigt sie als
-**„Ausgaben ohne Beleg"**, auf der Seite **Zahlungen** und im Dokumenten-Eingang.
+Abschlag an die Stadtwerke. heimvio holt diese Abbuchungen mit und sucht zu jeder den Beleg,
+den Sie unter **Kosten** schon erfasst haben — nach festen Regeln, ohne KI, und gleich, ob die
+Rechnung vor oder nach dem Kontoauszug kam:
+
+| Was heimvio findet | Was passiert |
+|---|---|
+| Die Rechnungsnummer eines Belegs steht im Verwendungszweck, der Betrag stimmt | Abbuchung und Beleg werden **von selbst** verbunden |
+| Keine Rechnungsnummer, aber genau ein Beleg dieses Lieferanten mit diesem Betrag, abgebucht bis 90 Tage nach dem Rechnungsdatum | ebenfalls **von selbst** |
+| Mehrere Belege mit diesem Betrag, oder der Name passt nicht | ein **Vorschlag** an der Abbuchung: „Zuordnen" verbindet beide, „… mögliche Belege" zeigt alle zur Auswahl |
+| Kein Beleg mit diesem Betrag | die Abbuchung bleibt unter **„Ausgaben ohne Beleg"** |
+
+Eine Rechnung mit zwei Steuersätzen steht unter **Kosten** als zwei Zeilen; ergeben beide
+zusammen den abgebuchten Betrag, wird sie als Ganzes zugeordnet. Ein zugeordneter Beleg trägt
+dort das Kennzeichen **„bezahlt am …"**. War eine Zuordnung falsch, öffnen Sie den Beleg und
+wählen **Zuordnung aufheben** — die Abbuchung steht dann wieder unter „Ausgaben ohne Beleg".
+In einem abgeschlossenen Jahr ändert sich nichts mehr.
+
+Was übrig bleibt — die Kontoführungsgebühr, ein Abschlag ohne Rechnung —, steht auf der Seite
+**Zahlungen** und im Dokumenten-Eingang unter **„Ausgaben ohne Beleg"**:
 
 1. **Beleg anlegen.** Ein Klick macht aus der Abbuchung einen Beleg für die Abrechnung.
-   Betrag, Datum und Empfänger übernimmt heimvio aus der Buchung.
+   Betrag, Datum und Empfänger übernimmt heimvio aus der Buchung, die Steuerkategorie wählen
+   Sie. heimvio merkt sich Empfänger, Kontonummer und Kategorie und schlägt die Kategorie
+   beim nächsten Mal vor.
 2. **Ergänzen.** Kostenart und Umlage tragen Sie danach unter **Kosten** nach, wie bei
    jedem anderen Beleg.
 
-Einen Abgleich mit Belegen, die Sie schon von Hand erfasst haben, macht heimvio nicht:
-Steht die Rechnung bereits unter **Kosten**, legen Sie aus der Abbuchung keinen zweiten
-Beleg an.
+heimvio legt **nie selbst einen Beleg an** — es ordnet nur zu oder schlägt vor. Ein Beleg
+ohne Rechnung wäre eine Buchung, die niemand geprüft hat.
 
-Umgekehrt geht es: Ein Kontoauszug kennt keine Umsatzsteuer, der Beleg aus einer Abbuchung
+Ein Kontoauszug kennt keine Umsatzsteuer: Ein Beleg, den Sie aus einer Abbuchung angelegt haben,
 steht deshalb zunächst auf „0 % angenommen — wird mit dem Beleg übernommen". Laden Sie die
 Rechnung danach hoch und lassen sie von der KI lesen, sucht heimvio eine Abbuchung ohne
 Beleg mit **genau demselben Betrag**, abgebucht ab zwei Wochen vor bis etwa vier Monate nach
@@ -256,7 +274,8 @@ Abrechnung für diese Position 0,00 € **„davon USt"** und zählt sie unter d
 ([Netto, Steuersatz, Brutto](/doku/belege-zur-abrechnung#netto-steuersatz-brutto)).
 
 Der vermietende Eigentümer sieht in seinem Portal die Abbuchungen seines eigenen Kontos und
-legt dort private Belege für seine Wohnung an.
+legt dort private Belege für seine Wohnung an; die Zuordnung zu seinen eigenen Belegen läuft
+dort genauso. Seine Abbuchungen und Belege bleiben der Verwaltung verborgen und umgekehrt.
 
 Den **Kontostand** zeigt die Bank-Karte, und zwar so, wie er beim letzten Abruf war.
 
