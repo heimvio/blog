@@ -764,17 +764,26 @@ geschieht einmal je Versammlung und Person, nicht in der Probe und nicht bei jed
 **Die Liste am Steuerpult** hat eine Zeile je Wohnung. Daneben steht, wer für sie abstimmt —
 der Eigentümer oder sein Bevollmächtigter — mit der **E-Mail-Adresse als Link**: Hängt jemand
 an der Anmeldung, schreiben Sie ihm direkt aus der Liste, etwa mit dem Link auf die
-Anleitung. Dazu vier Spalten, jede als Abzeichen mit Zeichen und Wort, nicht nur als Farbe:
+Anleitung. Dazu fünf Spalten, jede als Abzeichen mit Zeichen und Wort, nicht nur als Farbe:
 
 | Spalte | heißt |
 | --- | --- |
 | **Im Saal** | die Wohnung ist laut Anwesenheit selbst oder vertreten da |
-| **Verbunden** | das Handy der Person hat die laufende Versammlung offen — es meldet sich alle paar Sekunden; bleibt es eine halbe Minute still, steht dort ✗ |
+| **Verbunden** | das Handy der Person hatte die laufende Versammlung schon einmal offen; der Zusatz „jetzt offen" zeigt, dass es gerade geöffnet ist |
 | **Unterschrift** | die Erklärung ist unterschrieben |
 | **Abgestimmt** | in der Probe wurde getippt, mit der Wahl |
+| **Verpasst** | wie viele Abstimmungen diese Wohnung am Handy nicht mitgemacht hat, seit die Person unterschrieben hat |
+
+**Warum „verbunden" nicht live ist:** Ein Handy in der Tasche oder ein anderer Tab im Vordergrund
+meldet sich nicht — der Browser hält die Seite dann an. Das ist kein Fehler, und sobald die
+Person die Versammlung wieder öffnet, ist sie sofort wieder da. Auffällig ist etwas anderes:
+wer am Handy abstimmen soll und dabei **Abstimmungen verpasst**. Dafür steht die Spalte
+„Verpasst" da.
 
 **Kartenkandidaten** ergeben sich daraus: im Saal ✓, aber nach dem Ende der Probe-Runde nicht
-abgestimmt — diese Wohnungen stehen oben, und die Liste lässt sich auf sie filtern. Wer nicht
+abgestimmt — oder später **zweimal verpasst**. Diese Wohnungen stehen oben, und die Liste lässt
+sich auf sie filtern. Die Liste bleibt auch nach der Probe da: Mit **„Liste zeigen"** öffnen
+Sie sie während jeder Abstimmung. Wer nicht
 im Saal ist und nicht abgestimmt hat, ist kein Kartenkandidat; er hat heute keinen Weg zu
 stimmen. **heimvio setzt niemanden von selbst auf Karte.** Sie sehen die Kandidaten, fragen
 nach und setzen die Wohnung mit **„Auf Karte umstellen"** von Hand um — oder zurück auf das
@@ -835,7 +844,8 @@ Dann **„Abstimmung schließen"**.
 
 **Auf das Handy wartet niemand.** Haben Wohnungen am Handy noch nicht abgestimmt, sagt das
 Steuerpult, wie viele es sind — Sie schließen trotzdem, wann Sie wollen, und wer dann fehlt,
-zählen Sie im Saal mit. Antwortet der Server einmal nicht, bricht der Schritt nach kurzer Zeit
+zählen Sie im Saal mit. Nach dem Schließen steht dort, welche es waren, etwa „Am Handy, aber
+nicht abgestimmt: Whg. 3, Whg. 7" — Wohnungen, keine Namen; das darf auch der Saal sehen. Antwortet der Server einmal nicht, bricht der Schritt nach kurzer Zeit
 mit einem Hinweis ab, statt das Steuerpult festzuhalten.
 
 Je Wohnung zählt die **letzte** Stimme, egal ob vom Handy oder aus dem Saal. Die Auszählung
@@ -844,8 +854,11 @@ zeigt beides getrennt an: so viele per Handy, so viele im Saal.
 Beide Mengen müssen Sie nach der Probe aber nicht mehr im Kopf haben. Über der
 Ergebnis-Eingabe steht, wie viele Wohnungen am eigenen Gerät abgestimmt haben — ihre Stimmen
 liegen schon vor —, und die drei Zahlen, die Sie eintragen, gelten **nur** für die Wohnungen
-mit Karte. Beim Anteilsprinzip sind die Handy-Wohnungen in der Durchklick-Liste schon gesetzt
-und gesperrt. Sie zählen also die Karten, sonst nichts.
+im Saal: die mit Karte, und nach dem Schließen auch die Handy-Wohnungen, die nicht gestimmt
+haben. Eine Handy-Stimme kann eine eingetragene Summe nie überschreiben. Tragen Sie die Zahlen
+ein zweites Mal ein, ersetzen sie die ersten vollständig. Beim Anteilsprinzip sind die
+Handy-Wohnungen in der Durchklick-Liste schon gesetzt und gesperrt. Sie zählen also die Karten,
+sonst nichts.
 
 **Sind Sie selbst Eigentümer?** Dann stimmen Sie mit — aber am **Steuerpult**, nicht am
 Handy. Öffnen Sie die Abstimmung, erscheint dort Ihr eigener Stimmzettel für Ihre Wohnungen;
@@ -976,7 +989,12 @@ Führen Sie die Versammlung zu zweit — Leitung und Protokollführung als versc
 Personen —, bekommt die zweite Person eine eigene, schlanke Ansicht auf einem **iPad** (mit
 eigenem Konto, große Knöpfe, Hochformat). Sie sieht den aktuellen Stand der Präsentation,
 den offenen Punkt und wartende Anträge, bestätigt oder ändert Anträge, schlägt
-Beschlusstexte vor und trägt Ergebnisse ein. Hat die Leitung einen Beschluss vorgelegt,
+Beschlusstexte vor und trägt Ergebnisse ein.
+
+**Die Protokollführung zählt die Karten.** In ihrer Ansicht steht beim offenen Punkt, wie viele
+Karten zu zählen sind, und daneben die Stimmen vom Handy als fertiger Block — etwa „Am Handy:
+4 Ja, 1 Nein · 1 noch offen". Eingetragen werden nur die Karten; das Gesamtergebnis aus beidem
+entsteht beim Speichern. Hat die Leitung einen Beschluss vorgelegt,
 bestätigt die zweite Person ihn — verkündet wird im Vier-Augen-Prinzip, nicht von einer
 Person allein.
 
