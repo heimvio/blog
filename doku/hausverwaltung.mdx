@@ -1,21 +1,23 @@
 ---
 title: Hausverwaltung als Firma — Briefkopf, Team, Mandate
-description: Eine Firma trägt Briefkopf und Logo für alle Gemeinschaften, die sie verwaltet, und teilt ihren Mitarbeitern die WEGs zu. Wie Sie eine Firma anlegen, ein Mandat annehmen und Ihr Team einteilen.
+description: Jede Gemeinschaft hat eine Verwaltung, und die ist in heimvio eine Firma — auch wenn Sie selbst verwalten. Sie trägt Briefkopf und Logo, teilt ihren Mitarbeitern die WEGs zu und macht sie damit zu Verwaltern.
 section: Konzepte
 order: 77
-updated: 2026-10-05
+updated: 2026-10-07
 ---
 
-Verwalten Sie mehr als eine Gemeinschaft, oder arbeiten mehrere Personen an derselben, gibt
-es dafür in heimvio die **Firma**. **Eine Firma ist Ihr Briefkopf und Ihr Team — die Daten
-bleiben bei der jeweiligen Gemeinschaft.** Liegenschaft, Abrechnung, Belege und Beschlüsse
-gehören weiter der WEG; die Firma bringt nur mit, wer dort arbeitet und auf wessen Papier die
-Briefe stehen.
+**Jede Gemeinschaft und jedes Mietshaus hat eine Verwaltung — bei Selbstverwaltung sind Sie
+das selbst.** In heimvio ist diese Verwaltung immer eine **Firma**. Richten Sie eine
+Gemeinschaft ein und gehören noch keiner Firma an, legt heimvio dabei still eine für Sie an —
+„Verwaltung" und Ihr Name bzw. die Firma aus Ihrem Profil — mit Ihnen als Koordinator. Sie
+müssen dafür nichts ausfüllen; die Bestätigungsseite nennt sie, und unter **Meine Firma**
+geben Sie ihr später Logo und Briefkopf.
 
-Auch wer seine eigene Gemeinschaft selbst verwaltet, braucht eine Firma, sobald er einen
-eigenen Briefkopf mit Logo will — etwa „Verwaltung WEG Musterstraße 5" oder sein
-Einzelunternehmen. Ohne Firma tragen Briefe einen Standardbriefkopf aus Name und Anschrift der
-Gemeinschaft.
+**Eine Firma ist Ihr Briefkopf und Ihr Team — die Daten bleiben bei der jeweiligen
+Gemeinschaft.** Liegenschaft, Abrechnung, Belege und Beschlüsse gehören der WEG; die Firma
+bringt nur mit, wer dort arbeitet und auf wessen Papier die Briefe stehen. Verwalten Sie
+mehrere Gemeinschaften oder arbeiten mehrere Personen an derselben, ist es dieselbe Firma mit
+mehr Zeilen.
 
 Sie finden alles unter **Benutzereinstellungen → Meine Firma**. Die Seite hängt nicht an der
 gerade aktiven Gemeinschaft: Eine Firma ist kein Teil einer WEG, sondern steht daneben.
@@ -36,6 +38,9 @@ kann.
 | Neue WEG einrichten | ja | nein | nein |
 | Mitarbeiter den WEGs zuteilen | ja | nein | nein |
 | In einer WEG verwalten | nur, wenn zugeteilt | nur, wenn zugeteilt | nein, er prüft |
+| Verwaltervertrag vorschlagen, Rechnungen stellen | ja | nein | nein |
+| Verwaltervertrag annehmen | — | — | ja (wie der Verwalter) |
+| Sonderleistung erfassen | wenn zugeteilt | wenn zugeteilt | nein |
 | Firma verlassen | ja | ja | — |
 | Mandat beenden | ja | nein | ja |
 | Hausverwaltung einladen | — | — | ja |
@@ -72,7 +77,9 @@ Arbeit braucht.
    eine **Mandatsanfrage** mit dem Beginn. **„Annehmen"** macht Ihre Firma ab diesem Tag zur
    Verwaltung: Sie selbst sind der WEG damit zugeteilt und übernehmen die Zahlung ihres Abos.
    Ging die Einladung an Ihre Adresse, Sie haben aber noch keine Firma, heißt der Knopf
-   **„Firma anlegen und annehmen"**. Richten Sie eine Gemeinschaft dagegen selbst ein — in der
+   **„Firma anlegen und annehmen"**. Wird die Gemeinschaft bis dahin von jemand anderem
+   verwaltet — auch von ihr selbst —, endet diese Verwaltung am Tag vor Ihrem Beginn
+   ([Verwalterwechsel](/doku/verwalterwechsel)). Richten Sie eine Gemeinschaft dagegen selbst ein — in der
    Kachel **„Verwaltete WEGs"** über **„Neue WEG einrichten"** —, gilt das Mandat sofort, ohne
    Anfrage.
 5. **WEGs zuteilen.** Unter **„Verwaltete WEGs"** steht eine Tabelle: Gemeinschaften in den
@@ -93,12 +100,16 @@ darf ein Mitarbeiter trotzdem sein — beide Rollen stehen dann nebeneinander.
 
 ## Was die Zuteilung bewirkt
 
-Die Zuteilung ist der einzige Weg, auf dem ein Firmenmitarbeiter Verwalter einer
-Gemeinschaft wird. Daraus folgt:
+**Die Zuteilung ist der einzige Weg, auf dem jemand Verwalter einer Gemeinschaft wird** —
+für Firmenmitarbeiter wie für Sie als Selbstverwalter. In der **Mitgliederliste** gibt es
+deshalb kein Häkchen „Verwalter" und keine Einladung als Verwalter mehr; dort steht nur
+„Verwalter teilt die Hausverwaltung zu" mit dem Sprung zu **Meine Firma**. Ableser und
+Personen ohne Login legen Sie dort weiter an, und die Beirat-Rolle vergeben Sie dort weiter
+per Häkchen; Eigentümer kommen wie bisher über ihre Wohnung. Daraus folgt:
 
-- In der **Mitgliederliste** der Gemeinschaft steht er mit dem Zusatz „über" und dem Namen der Firma. Dort
-  lässt er sich weder ausladen noch in der Rolle ändern — das geht nur über die Zuteilung in
-  der Firma.
+- In der **Mitgliederliste** der Gemeinschaft steht ein Verwalter mit dem Zusatz „über die
+  Firma". Dort lässt er sich weder ausladen noch in der Rolle ändern — das geht nur über die
+  Zuteilung in der Firma.
 - Endet eine Zuteilung, ein Mandat oder die Anstellung, verliert er den Verwalterzugang zu
   dieser Gemeinschaft von selbst. Sein Login bleibt bestehen.
 - Zahlt er das Abo einer Gemeinschaft und scheidet aus, geht die Zahlerrolle an einen
@@ -114,8 +125,9 @@ Zahlung —, steht im **Firmen-Protokoll**.
 Eigentümer und Mieter sehen im Portal **„Verwaltet von"** und den Namen der Firma, mit Anschrift und
 Ansprechpartner — die Liste Ihrer Mitarbeiter sehen sie nicht. Einladungen zur Versammlung,
 Hausgeld-Mahnungen und Jahresabrechnungen tragen Ihren Briefkopf, darunter den Zusatz
-„Verwalterin der …" mit dem Namen der Gemeinschaft. Endet das Mandat, gilt dort wieder der
-Standardbriefkopf.
+„Verwalterin der …" mit dem Namen der Gemeinschaft. Endet ein Mandat, ohne dass eine andere
+Verwaltung folgt, gilt dort bis zur nächsten ein Standardbriefkopf aus Name und Anschrift der
+Gemeinschaft.
 
 Eine Mahnung, die ein Eigentümer an seinen eigenen Mieter schreibt, trägt **keinen**
 Firmenkopf: Absender ist dort der Eigentümer, nicht die Verwaltung.
@@ -129,6 +141,9 @@ nur über die E-Mail-Adresse, die Sie ihr selbst gegeben haben. Und eine Firma w
 gelöscht, sondern **aufgelöst** — erst, wenn sie keine Gemeinschaft mehr verwaltet; was sie
 getan hat, bleibt nachvollziehbar.
 
-Wie eine Gemeinschaft eine Hausverwaltung einlädt und wieder abberuft, steht unter
-[Prüfung durch den Verwaltungsbeirat](/doku/verwaltungsbeirat); wie eine neue Gemeinschaft
+Was die Verwaltung für ihre Arbeit bekommt — Vertrag, Vergütung, Rechnung —, steht unter
+[Verwaltervertrag und Rechnung](/doku/verwaltervertrag). Wie eine Gemeinschaft eine
+Hausverwaltung einlädt und wieder abberuft, steht unter
+[Prüfung durch den Verwaltungsbeirat](/doku/verwaltungsbeirat), wie sie die Verwaltung
+wechselt, unter [Verwalterwechsel](/doku/verwalterwechsel); wie eine neue Gemeinschaft
 eingerichtet wird, unter [Einrichtung mit dem Assistenten](/doku/einrichtung).
