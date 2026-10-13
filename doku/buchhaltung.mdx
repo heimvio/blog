@@ -1,6 +1,6 @@
 ---
 title: Rechnungen an die Buchhaltung — DATEV oder sevdesk
-description: Die Rechnungen Ihrer Hausverwaltung gehen von selbst in die Buchhaltung — zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk. Sie wählen eines von beiden, richten es einmal ein und übertragen einmal von Hand; danach läuft es ohne Sie.
+description: Die Rechnungen Ihrer Hausverwaltung gehen von selbst in die Buchhaltung — zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk. Auf Wunsch erfasst heimvio auch die eigenen Belege Ihrer Firma, rechnet die Kennziffern der Umsatzsteuer-Voranmeldung und liefert zum Jahresende den Export für die Kanzlei.
 section: Weitere Themen
 order: 95.5
 updated: 2026-10-13
@@ -8,9 +8,11 @@ updated: 2026-10-13
 
 **Die Rechnungen, die Ihre Firma aus heimvio heraus stellt, gehen auf Wunsch von selbst in die
 Buchhaltung — entweder zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk.**
-Gemeint sind die Rechnungen an die verwalteten Gemeinschaften
-([Verwaltervertrag und Rechnung](/doku/verwaltervertrag)). Sie finden alles unter
-**Meine Firma → Buchhaltung**; einrichten kann es nur der Koordinator der Firma
+Das sind zunächst die Rechnungen an die verwalteten Gemeinschaften
+([Verwaltervertrag und Rechnung](/doku/verwaltervertrag)); schalten Sie die Belegerfassung
+ein, kommen die Eingangsrechnungen Ihrer Firma dazu ([Auch Ihre eigenen
+Belege](#auch-ihre-eigenen-belege)). Sie finden die Anbindung unter
+**Meine Firma → Buchhaltung**; einrichten kann sie nur der Koordinator der Firma
 ([Hausverwaltung als Firma](/doku/hausverwaltung)).
 
 ## Wer bucht?
@@ -54,8 +56,9 @@ dort noch nicht gibt; vorhanden ist er, wenn Kundennummer oder Name passen.
 4. **Konten zuordnen.** Unter **„Konten"** steht je Richtung — **Einnahmen** und
    **Ausgaben** — eine Auswahl für 19 %, 7 % und 0 %. heimvio bietet nur Konten an, die in
    sevdesk zu Richtung und Steuersatz passen. Für die Rechnungen Ihrer Firma an die
-   Gemeinschaften zählen die **Einnahmen**; wählen Sie dort ein Konto für jeden Steuersatz, der
-   in Ihren Rechnungen vorkommt, und lassen Sie die übrigen auf „— kein Konto —". Dann
+   Gemeinschaften zählen die **Einnahmen**, für Ihre eigenen Belege die **Ausgaben**; wählen
+   Sie ein Konto für jeden Steuersatz, der bei Ihnen vorkommt, und lassen Sie die übrigen auf
+   „— kein Konto —". Dann
    **„Speichern"**. Mit **„Verbindung prüfen"** sehen Sie, ob sevdesk erreichbar ist, den
    Token annimmt und alle gewählten Konten kennt.
 5. **Einmal von Hand übertragen.** **„Jetzt übertragen"** schickt alle offenen Rechnungen ab
@@ -86,7 +89,102 @@ heimvio legt dann keine Belege mehr an und vergisst den Token.
   Rechnungen gehen nicht verloren, sie warten. Der nächste Lauf von Hand ist zugleich die neue
   Abnahme; danach schalten Sie die Automatik wieder ein.
 
-## Ehrliche Grenzen
+## Auch Ihre eigenen Belege
+
+**heimvio erfasst auf Wunsch auch die Ausgaben Ihrer Firma** — Papier und Porto, Geräte,
+Software-Abos, Telefon, Gebühren. Zusammen mit Ihren Rechnungen an die Gemeinschaften ergibt
+das die Kennziffern Ihrer Umsatzsteuer-Voranmeldung, die Anlage EÜR und zum Jahresende einen
+Export für Ihre Kanzlei. Die Belegerfassung ist in Ihrem Tarif enthalten; die verwalteten
+Gemeinschaften sehen davon nichts. Sie finden sie unter **Meine Firma → Belege**.
+
+1. **Einschalten.** Der Koordinator wählt **„Belege der Firma erfassen"**. heimvio legt dafür
+   eine eigene Organisation mit dem Namen Ihrer Firma und dem Zusatz „Belege" an — mit
+   Eingang, Postfach und Ablage, getrennt von allen Gemeinschaften. Die Koordinatoren sind
+   ihr gleich zugeteilt; weitere Mitarbeiter teilen Sie ihr unter **„Verwaltete WEGs"** zu wie
+   einer Gemeinschaft. Erfasst wird ab dem Tag des Einschaltens, ältere Belege holt heimvio
+   nicht nach. Dann wählen Sie unter **„Einstellungen"** die **Besteuerungsart** (Soll- oder
+   Ist-Versteuerung, wie beim Finanzamt beantragt und in der Kanzlei hinterlegt) und den
+   **Voranmeldungszeitraum** (vierteljährlich oder monatlich).
+2. **Rechnungen hineingeben.** Die Knöpfe **„Eingang öffnen"**, **„Postfach"** und
+   **„Bankverbindung"** wechseln in die Belege-Organisation; zurück geht es über die Auswahl
+   „Org · Liegenschaft" in der Fußleiste. Im Eingang laden Sie eine Rechnung hoch oder
+   fotografieren sie. Bequemer ist das Postfach: Richten Sie es einmal ein wie bei einer
+   Liegenschaft ([Rechnungen per Mail](/doku/belege-zur-abrechnung)) und leiten Sie
+   Rechnungen dorthin weiter. Enthält eine Mail statt eines Anhangs nur einen Link auf die
+   Rechnung — so verschicken viele Software-Anbieter ihre Abrechnungen über Stripe —, holt
+   heimvio das PDF selbst ab.
+3. **heimvio ordnet zu.** Die Erkennung liest Lieferant, Betrag, Datum und Nummer und schlägt
+   die **Ausgabenart** vor (KI-Funktion mit Einwilligung). Den **Steuerfall** wählt keine KI:
+   heimvio leitet ihn aus Land, USt-IdNr. und Steuersatz her. Im Tab **„Belege"** steht jeder
+   Beleg mit Art, Steuerfall, Zahlung und Stand; was nicht eindeutig ist, steht auf
+   **„Ausnahme"** mit Grund, etwa „Steuerfall unklar — bitte wählen". Art und Steuerfall
+   können Sie an jedem Beleg selbst ändern. Wiederkehrende Lieferanten legen Sie im Tab
+   **„Lieferanten"** einmal an — mit Ausgabenart, Steuerfall und auf Wunsch der
+   Kreditorennummer, die Ihre Kanzlei vergibt.
+4. **Geschäftskonto verbinden.** Unter **„Bankverbindung"** verbinden Sie das Konto der
+   Firma ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)). Ab dann weiß
+   heimvio, was bezahlt ist: Jede Abbuchung wird ihrem Beleg zugeordnet, und **Ihre
+   Rechnungen an die Gemeinschaften stehen von selbst auf „bezahlt"**, sobald das Geld
+   eingeht. Eine Abbuchung ohne Beleg und ein Beleg, zu dem nach 45 Tagen keine Zahlung
+   kam, werden als Ausnahme gemeldet; als privat markierte Umsätze übergeht heimvio still.
+5. **Kennziffern prüfen und selbst eintragen.** Der Tab **„Steuer"** zeigt je Periode die
+   **Umsatzsteuer-Voranmeldung** mit Kennziffer, Bezeichnung und Betrag, unter jeder
+   Kennziffer die Belege, aus denen sie stammt, und die Zahllast bzw. Erstattung. Tragen Sie
+   die Werte in ELSTER ein und wählen Sie danach **„Als übermittelt markieren"** — damit sind
+   die Belege dieser Periode gesperrt.
+6. **Zum Jahresende: Export für die Kanzlei.** Darunter steht die **Anlage EÜR** des Jahres
+   mit Betriebseinnahmen, Betriebsausgaben, Abschreibungen und Gewinn bzw. Verlust.
+   **„Export für die Kanzlei"** lädt eine ZIP-Datei mit allen Belegen des Jahres als PDF, den
+   Zahlungen, dem Anlagenverzeichnis und den Kennziffern als Tabellen — für Ihre Kanzlei oder
+   Ihre eigene Ablage. Ist DATEV oder sevdesk verbunden, gehen Ihre Eingangsbelege außerdem
+   wie Ihre Rechnungen über denselben Anschluss dorthin.
+
+### Was heimvio aus einem Beleg macht
+
+| | Woher | Was Sie tun |
+| --- | --- | --- |
+| **Ausgabenart** — etwa „Software und Abos", „Büro, Porto, Druck", „Geräte und Bauteile" | Vorschlag der Erkennung oder Vorgabe am Lieferanten | prüfen, bei Bedarf ändern |
+| **Steuerfall** — Inland 19 % oder 7 %, Inland ohne Steuer, EU oder Drittland mit Steuerschuld bei Ihnen (§ 13b), Einfuhr | aus Land, USt-IdNr. und Steuersatz hergeleitet | nur wählen, wenn er unklar ist |
+| **Zahlung** — Tag und Konto | aus dem verbundenen Geschäftskonto | nichts; ohne Konto bleibt der Beleg offen |
+| **Anlage** — Geräte zwischen 250 € und 800 € netto als geringwertiges Wirtschaftsgut, voll abgezogen im Jahr der Anschaffung; darüber als Anlage mit Abschreibung über die Nutzungsdauer | geringwertige Geräte von selbst aus Art und Betrag | Teureres am Beleg mit **„Ins Anlagenverzeichnis aufnehmen"** und der Nutzungsdauer erfassen; Verkauf oder Verschrottung im Tab **„Anlagen"** mit **„Abgang erfassen"** |
+
+Für die Voranmeldung zählt das Rechnungsdatum (Soll-Versteuerung) bzw. der Tag der Zahlung
+(Ist-Versteuerung), für die Anlage EÜR immer der Tag der Zahlung. Ein Beleg, der erst nach
+dem Ende seiner Periode eintrifft, zählt in der laufenden Periode — eine Periode, die Sie als
+übermittelt markiert haben, ändert sich nie mehr. Wiederkehrende Zahlungen um den
+Jahreswechsel ordnet heimvio nach der Zehn-Tage-Regel dem Jahr ihrer Leistung zu.
+
+### Wer darf was
+
+| | **Koordinator** | **Mitarbeiter** (zugeteilt) |
+| --- | --- | --- |
+| Belegerfassung einschalten, Besteuerungsart und Voranmeldungszeitraum wählen | ja | nein |
+| Belege ansehen, Art und Steuerfall zuordnen | ja | ja |
+| Anlagen ansehen und erfassen | ja | ja |
+| Lieferanten anlegen und pflegen | ja | nein |
+| Kennziffern und Anlage EÜR, als übermittelt markieren, Export für die Kanzlei | ja | nein |
+
+Mitarbeiter sehen unter **Meine Firma → Belege** deshalb nur die Tabs **„Belege"** und
+**„Anlagen"**. Solange die Belegerfassung nicht eingeschaltet ist, steht dort „Die
+Belegerfassung schaltet ein Koordinator der Firma ein."
+
+### Grenzen der Belegerfassung
+
+- **Ein Beleg in Fremdwährung wartet auf die Kontobuchung.** Rechnet ein Anbieter etwa in
+  US-Dollar ab, gilt der Euro-Betrag, den die Bank belastet hat. Bis die Abbuchung da ist,
+  steht der Beleg auf „Fremdwährung ohne Euro-Betrag — kommt mit der Zahlung" und fehlt in
+  den Kennziffern.
+- **Eine Rechnung ohne Nummer über 250 € bleibt liegen.** Sie steht auf „Rechnungsnummer
+  fehlt", bis Sie sie geklärt haben. Kleinbetragsrechnungen bis 250 € und Rechnungen
+  ausländischer Anbieter, bei denen die Steuer bei Ihnen liegt, gehen auch ohne Nummer durch.
+- **heimvio übermittelt nichts an das Finanzamt.** Die Kennziffern tragen Sie selbst in
+  ELSTER ein.
+- **Die Kennziffern ersetzen keine Beratung.** Sie sind eine Vorbereitung; Ihre Kanzlei bucht
+  weiterhin und erstellt die Abschlüsse. heimvio führt kein Hauptbuch.
+- **Übermittelt ist endgültig.** Eine Periode, die Sie als übermittelt markiert haben, lässt
+  sich nicht mehr ändern. Eine Korrektur ist ein neuer Beleg in der laufenden Periode.
+
+## Ehrliche Grenzen bei sevdesk
 
 - **Kleinunternehmer (§ 19 UStG) unterstützt heimvio noch nicht.** Ist Ihr sevdesk-Konto so
   eingestellt, meldet heimvio das beim Verbinden bzw. am Beleg und überträgt nichts.
@@ -105,8 +203,10 @@ heimvio legt dann keine Belege mehr an und vergisst den Token.
   Rechnung ab, zeigt heimvio einen Hinweis; maßgeblich ist das PDF.
 - **sevdesk braucht die Buchhaltungs-Version 2.0.** Bei einer älteren Version lässt sich nicht
   verbinden; die Umstellung finden Sie in den sevdesk-Einstellungen.
-- **Nichts kommt zurück.** Ob eine Rechnung bezahlt ist, liest heimvio nicht aus sevdesk; Sie
-  setzen „bezahlt" weiterhin in heimvio.
+- **Nichts kommt zurück.** Ob eine Rechnung bezahlt ist, liest heimvio nicht aus sevdesk. Das
+  weiß heimvio aus Ihrem Geschäftskonto, wenn Sie es verbunden haben
+  ([Auch Ihre eigenen Belege](#auch-ihre-eigenen-belege)); sonst setzen Sie „bezahlt" weiterhin
+  in heimvio.
 - **Beim Wechsel von DATEV zu sevdesk** weiß sevdesk nichts davon, was schon beim
   Steuerberater ist. Wählen Sie bei **„Rechnungen ab"** deshalb den Tag nach dem letzten
   Monat, den DATEV übertragen hat — sonst stünden diese Rechnungen in beiden Buchhaltungen.

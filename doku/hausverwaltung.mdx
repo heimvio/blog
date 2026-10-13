@@ -40,6 +40,8 @@ kann.
 | In einer WEG verwalten | nur, wenn zugeteilt | nur, wenn zugeteilt | nein, er prüft |
 | Verwaltervertrag vorschlagen, Rechnungen stellen | ja | nein | nein |
 | Rechnungen an die Buchhaltung übertragen (DATEV, sevdesk oder Webhook einrichten) | ja | nein | nein |
+| Eigene Belege der Firma: einschalten, Lieferanten, Kennziffern, Export | ja | nein | nein |
+| Eigene Belege der Firma ansehen und zuordnen, Anlagen erfassen | ja | wenn zugeteilt | nein |
 | Verwaltervertrag annehmen | — | — | ja (wie der Verwalter) |
 | Sonderleistung erfassen | wenn zugeteilt | wenn zugeteilt | nein |
 | Firma verlassen | ja | ja | — |
@@ -57,8 +59,8 @@ Arbeit braucht.
 
 Betreuen Sie eine Gemeinschaft für Ihre Firma, steht auf deren Startseite zusätzlich die
 Gruppe **„Meine Firma"**. Koordinatoren finden dort die Kacheln **Verträge**,
-**Rechnungen**, **Buchhaltung**, **Mitarbeiter** und **Postfach**; Mitarbeiter ohne Koordinatorrolle nur
-**Mitarbeiter**. Ein Klick öffnet den passenden Abschnitt der Firmenseite direkt — Sie müssen
+**Rechnungen**, **Buchhaltung**, **Belege**, **Mitarbeiter** und **Postfach**; Mitarbeiter ohne
+Koordinatorrolle nur **Belege** und **Mitarbeiter**. Ein Klick öffnet den passenden Abschnitt der Firmenseite direkt — Sie müssen
 nicht erst über die Benutzereinstellungen gehen.
 
 ## Sieben Stationen
@@ -115,7 +117,10 @@ nicht erst über die Benutzereinstellungen gehen.
    einrichten muss, und schreibt ihr auf Wunsch den Auftrag dazu. Bei sevdesk hinterlegen Sie
    einen Token und ordnen die Konten einmal zu, sonst wartet die Rechnung. In beiden Fällen ist
    der erste Lauf die Abnahme von Hand, danach läuft es automatisch. Zusätzlich kann jede
-   Rechnung an ein eigenes Programm gehen, etwa an n8n. Alles dazu steht unter
+   Rechnung an ein eigenes Programm gehen, etwa an n8n. Auf Wunsch erfasst die Firma unter
+   **„Belege"** auch ihre eigenen Ausgaben: heimvio ordnet sie zu, gleicht sie mit dem
+   Geschäftskonto ab und rechnet die Kennziffern der Umsatzsteuer-Voranmeldung
+   ([Auch Ihre eigenen Belege](/doku/buchhaltung#auch-ihre-eigenen-belege)). Alles dazu steht unter
    [DATEV oder sevdesk](/doku/buchhaltung),
    [Rechnungen an die Buchhaltung — DATEV](/doku/datev) und
    [Rechnungen an eigene Systeme senden (Webhook)](/doku/rechnungen-per-webhook).
