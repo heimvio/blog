@@ -1,0 +1,169 @@
+---
+title: Rechnungen an eigene Systeme senden (Webhook)
+description: heimvio schickt jede Rechnung Ihrer Firma als signierte Nachricht mit PDF an eine Adresse Ihrer Wahl — etwa an n8n, Make oder ein eigenes Programm. Was ankommt, wie Sie die Signatur prüfen und warum dieselbe Rechnung mehr als einmal kommen kann.
+section: Weitere Themen
+order: 96.5
+updated: 2026-10-13
+---
+
+**Ein Webhook ist eine Adresse im Internet, an die heimvio jede neue Rechnung schickt — mit
+allen Rechnungsdaten und dem PDF.** Was dort passiert, bestimmen Sie: ablegen, an ein
+anderes Buchhaltungsprogramm weiterreichen, eine Tabelle füllen. Das richtet sich an alle, die
+ein eigenes System betreiben oder ein Werkzeug wie n8n oder Make nutzen; für die Buchhaltung
+selbst brauchen Sie es nicht ([DATEV oder sevdesk](/doku/buchhaltung)).
+
+Gemeint sind dieselben Rechnungen wie bei DATEV und sevdesk: die Rechnungen Ihrer Firma an
+die verwalteten Gemeinschaften. Allgemeine Ereignisse — Einzug, Beschluss, neue Zählerstände —
+schickt der Webhook nicht. Sie finden ihn unter **Meine Firma → Buchhaltung** im Block
+**„Webhook"**; einrichten kann ihn nur der Koordinator der Firma.
+
+**Der Webhook bucht nicht und steht deshalb neben DATEV oder sevdesk.** Bucht Ihr Empfänger
+die Rechnungen selbst — etwa n8n, das sie an ein anderes Buchhaltungsprogramm weitergibt —,
+buchen Sie sie zusammen mit DATEV oder sevdesk doppelt. Darauf achten Sie selbst; heimvio kann
+nicht sehen, was Ihr Empfänger mit der Rechnung tut.
+
+## Einrichten in fünf Schritten
+
+1. **Adresse eintragen.** Unter **„Adresse des Empfängers"** die Adresse, die Ihr Empfänger
+   Ihnen nennt — sie muss mit `https://` beginnen. Bei **„Rechnungen ab"** den ersten Tag,
+   ab dem heimvio schicken soll; vorgeschlagen ist der Erste des laufenden Monats, ältere
+   Rechnungen schickt heimvio nicht. Dann **„Verbinden"**.
+2. **Schlüssel sichern.** heimvio zeigt jetzt einen Schlüssel, der mit `whsec_` beginnt.
+   **Er erscheint nur dieses eine Mal.** Mit **„Kopieren"** übernehmen Sie ihn, hinterlegen
+   ihn bei Ihrem Empfänger und blenden ihn mit **„Gespeichert — ausblenden"** aus.
+3. **Verbindung prüfen.** **„Verbindung prüfen"** schickt eine Testnachricht ohne Rechnung.
+   Antwortet der Empfänger mit Erfolg, ist er erreichbar — ob er Rechnungen auch verarbeitet,
+   zeigt erst der nächste Schritt.
+4. **Einmal von Hand übertragen.** **„Jetzt übertragen"** schickt alle offenen Rechnungen ab
+   dem gewählten Tag. Nimmt der Empfänger mindestens eine an, ist die Einrichtung
+   **abgenommen**. Liegt noch keine Rechnung vor, wiederholen Sie den Schritt nach der
+   nächsten. Sehen Sie bei Ihrem Empfänger nach, ob angekommen ist, was Sie erwarten.
+5. **Automatik einschalten.** Nach der Abnahme lässt sich **„Neue Rechnungen automatisch
+   übertragen"** anhaken. Ab dann schaut heimvio jede Stunde nach neuen Rechnungen.
+
+**„Letzter Lauf"** und **„Offene Belege"** zeigen wie bei sevdesk, was gesendet wurde und was
+mit welchem Grund noch wartet.
+
+## Was ankommt
+
+Je Rechnung ein `POST` mit einem JSON-Rumpf. Die Nachricht trägt diese Kopfzeilen:
+
+| Kopfzeile | Inhalt |
+| --- | --- |
+| `X-Heimvio-Signature` | die Signatur, siehe unten |
+| `Idempotency-Key` | ein Schlüssel, der für dieselbe Rechnung immer gleich bleibt |
+| `X-Heimvio-Event` | `document` für eine Rechnung, `ping` für die Testnachricht |
+| `Content-Type` | `application/json` |
+
+Im Rumpf stehen die Fassung des Formats (`version`, heute `1`), die Art der Nachricht
+(`event`), der Zeitpunkt des Versands (`sentAt`), Angaben zur Verbindung (`connection`), die
+Rechnung (`document`) und das PDF (`pdf`). Bei der Testnachricht sind Rechnung und PDF leer.
+
+Die Rechnung enthält:
+
+| Feld | Bedeutung |
+| --- | --- |
+| `number`, `date` | Rechnungsnummer und Rechnungsdatum (`JJJJ-MM-TT`) |
+| `serviceFrom`, `serviceTo` | Leistungszeitraum, falls angegeben |
+| `kind` | Richtung; die Rechnungen Ihrer Firma sind immer `outgoing` (Einnahme) |
+| `partner` | Rechnungsempfänger: Name, Kundennummer (falls vergeben), Straße, Postleitzahl, Ort, Land, USt-IdNr. |
+| `lines` | Positionen mit Text, Netto, Steuersatz und Steuer |
+| `totalGrossCents` | Bruttosumme |
+| `currency` | immer `EUR` |
+| `cancels` | bei einem Storno der Verweis auf die stornierte Rechnung, sonst leer |
+| `source`, `ref` | Art der Quelle und ihre Kennung — zusammen eindeutig je Rechnung |
+
+**Alle Beträge stehen in Cent**, als ganze Zahlen (`11900` = 119,00 €). Das PDF liegt in
+`pdf` mit Dateiname, Prüfsumme (SHA-256) und dem Inhalt als Base64. Eine Nachricht kann
+deshalb einige Megabyte groß sein — stellen Sie Ihren Empfänger darauf ein.
+
+## Die Signatur prüfen
+
+Jeder kann Daten an Ihre Adresse schicken. Ob eine Nachricht wirklich von heimvio kommt,
+zeigt die Kopfzeile `X-Heimvio-Signature`:
+
+```
+X-Heimvio-Signature: t=1760349600,v1=5f2b…
+```
+
+`t` ist der Zeitpunkt des Versands in Sekunden seit 1970, `v1` ein HMAC-SHA256 über
+**`t`, einen Punkt und den Rumpf**, genau so, wie er angekommen ist. Schlüssel ist der ganze
+Schlüssel einschließlich `whsec_`. Rechnen Sie dasselbe nach und vergleichen Sie; weisen Sie
+außerdem Nachrichten ab, deren `t` mehr als fünf Minuten zurückliegt. Wichtig ist der
+**unveränderte** Rumpf: Wer erst das JSON liest und wieder schreibt, rechnet über andere
+Zeichen und bekommt eine andere Signatur. In Node:
+
+```js
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+// header: Wert von X-Heimvio-Signature, rawBody: der Rumpf als Text, secret: whsec_…
+export function signatureValid(header, rawBody, secret) {
+  const parts = {};
+  for (const p of (header ?? '').split(',')) {
+    const i = p.indexOf('=');
+    if (i > 0) parts[p.slice(0, i).trim()] = p.slice(i + 1).trim();
+  }
+  const t = Number(parts.t);
+  if (!t || !parts.v1) return false;
+  if (Math.abs(Date.now() / 1000 - t) > 300) return false; // älter als fünf Minuten
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest();
+  const received = Buffer.from(parts.v1, 'hex');
+  return received.length === expected.length && timingSafeEqual(received, expected);
+}
+```
+
+**„Neuen Schlüssel erzeugen"** ersetzt den Schlüssel. Der bisherige gilt sofort nicht mehr:
+Bis Sie den neuen beim Empfänger hinterlegt haben, lehnt er die Nachrichten von heimvio ab.
+
+## Dieselbe Rechnung kann mehr als einmal ankommen
+
+heimvio schickt jede Rechnung **mindestens einmal**. Geht die Antwort Ihres Empfängers
+unterwegs verloren, weiß heimvio nicht, dass sie angekommen ist, und schickt sie beim nächsten
+Lauf noch einmal. Der Schlüssel in `Idempotency-Key` ist dann derselbe. **Merken Sie sich
+deshalb die Schlüssel, die Sie schon verarbeitet haben, und antworten Sie auf eine
+Wiederholung einfach wieder mit Erfolg** — ohne sie ein zweites Mal zu verarbeiten.
+
+## Was als angenommen gilt
+
+| Antwort Ihres Empfängers | Was heimvio tut |
+| --- | --- |
+| **2xx** (etwa 200) innerhalb von 10 Sekunden | Die Rechnung gilt als übertragen und geht nie wieder hinaus. |
+| 408, 429, 5xx, keine Antwort in 10 Sekunden, nicht erreichbar | vorübergehender Fehler — die Rechnung bleibt offen und geht beim nächsten Lauf noch einmal |
+| andere 4xx (etwa 400, 401) | Der Empfänger lehnt ab. Die Rechnung bleibt mit Grund offen; beheben Sie die Ursache beim Empfänger, dann geht sie beim nächsten Lauf noch einmal. |
+| 3xx (Weiterleitung) | Weiterleitungen befolgt heimvio nicht — tragen Sie die endgültige Adresse direkt ein. |
+
+Auf Wunsch antwortet Ihr Empfänger mit `{ "remoteId": "…" }`, etwa der Nummer, unter der er
+den Beleg abgelegt hat; heimvio merkt sie sich. Eine längere Antwort schadet nicht: Gelesen
+werden die ersten 64 KB, und eine 2xx-Antwort gilt auch dann als angenommen, wenn sie größer
+ist — nur die `remoteId` geht dabei verloren. Braucht Ihr Empfänger für die Verarbeitung
+länger als 10 Sekunden, sichert er die Nachricht zuerst, antwortet und verarbeitet danach.
+
+Innerhalb eines Laufs wiederholt heimvio nicht; die nächste Gelegenheit ist der nächste Lauf
+— von Hand oder, mit Automatik, in der nächsten Stunde. **Scheitert eine Rechnung im
+Automatiklauf, schaltet heimvio die Automatik aus**, setzt die Abnahme auf „offen —
+Übertragung von Hand nötig" und schreibt den Koordinatoren eine Mail mit dem Grund. Nach
+einem erfolgreichen Lauf von Hand schalten Sie sie wieder ein.
+
+## n8n
+
+In n8n beginnt der Ablauf mit einem Webhook-Knoten, der `POST` annimmt; dessen Adresse tragen
+Sie in heimvio ein. Die Signatur prüfen Sie in einem Code-Knoten mit der Funktion oben —
+dafür muss der Knoten den Rumpf unverändert als Rohdaten weitergeben, nicht nur das gelesene
+JSON. Danach führt der Ablauf, wohin Sie wollen: das PDF in einen Ordner, die Zahlen in eine
+Tabelle, die Rechnung an ein anderes Programm. Prüfen Sie den `Idempotency-Key`, bevor Sie
+etwas anlegen.
+
+## Ehrliche Grenzen
+
+- **Nur `https://`-Adressen**, und keine Adressen in internen Netzen — auch nicht über einen
+  Umweg. Ein Empfänger auf Ihrem Rechner zu Hause muss also über eine öffentliche Adresse
+  erreichbar sein.
+- **Eine andere Adresse heißt: trennen und neu verbinden.** Die Adresse lässt sich nicht
+  bearbeiten. Nach **„Trennen"** und erneutem **„Verbinden"** gibt es einen neuen Schlüssel,
+  und die erste Übertragung von Hand ist wieder die Abnahme. Was schon übertragen ist, bleibt
+  vermerkt und geht **nicht** an die neue Adresse.
+- **Nur Rechnungen mit PDF.** Fehlt zu einer Rechnung das PDF, bleibt sie mit Grund offen.
+- **Nichts kommt zurück.** Was Ihr Empfänger mit der Rechnung macht, sieht heimvio nicht —
+  außer der `remoteId`, wenn er eine schickt.
+
+Weiter geht es mit [Wenn etwas klemmt](/doku/wenn-etwas-klemmt).

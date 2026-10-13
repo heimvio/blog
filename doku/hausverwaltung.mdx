@@ -39,7 +39,7 @@ kann.
 | Mitarbeiter den WEGs zuteilen | ja | nein | nein |
 | In einer WEG verwalten | nur, wenn zugeteilt | nur, wenn zugeteilt | nein, er prüft |
 | Verwaltervertrag vorschlagen, Rechnungen stellen | ja | nein | nein |
-| Rechnungen an DATEV übertragen (Anbindung einrichten) | ja | nein | nein |
+| Rechnungen an die Buchhaltung übertragen (DATEV, sevdesk oder Webhook einrichten) | ja | nein | nein |
 | Verwaltervertrag annehmen | — | — | ja (wie der Verwalter) |
 | Sonderleistung erfassen | wenn zugeteilt | wenn zugeteilt | nein |
 | Firma verlassen | ja | ja | — |
@@ -57,7 +57,7 @@ Arbeit braucht.
 
 Betreuen Sie eine Gemeinschaft für Ihre Firma, steht auf deren Startseite zusätzlich die
 Gruppe **„Meine Firma"**. Koordinatoren finden dort die Kacheln **Verträge**,
-**Rechnungen**, **DATEV**, **Mitarbeiter** und **Postfach**; Mitarbeiter ohne Koordinatorrolle nur
+**Rechnungen**, **Buchhaltung**, **Mitarbeiter** und **Postfach**; Mitarbeiter ohne Koordinatorrolle nur
 **Mitarbeiter**. Ein Klick öffnet den passenden Abschnitt der Firmenseite direkt — Sie müssen
 nicht erst über die Benutzereinstellungen gehen.
 
@@ -100,14 +100,25 @@ nicht erst über die Benutzereinstellungen gehen.
    Koordinatoren bekommen dann eine Mail, denn sie müssen die Gemeinschaften neu verteilen.
    Lädt eine andere Firma ihn ein, wählt er beim Annehmen den Tag des Wechsels; die alte
    Anstellung endet am Vortag.
-7. **Rechnungen an die Buchhaltung: DATEV.** Stellt Ihre Firma ihre Rechnungen aus heimvio
-   heraus, gehen sie auf Wunsch jeden Monat von selbst als Beleg mit Rechnungsdaten in Ihr
-   DATEV Unternehmen online — der Steuerberater bucht. Die Kachel **„DATEV"** führt durch
-   die Einrichtung: Sie verbinden Ihr DATEV-Konto und wählen den Mandanten, heimvio prüft,
-   was Ihre Kanzlei dort noch einrichten muss, und schreibt ihr auf Wunsch den Auftrag dazu.
-   Der erste Lauf ist die Abnahme von Hand, danach läuft der Monatslauf automatisch am 5.
-   Alles dazu — auch, was heute noch Testumgebung ist — steht unter
-   [Rechnungen an die Buchhaltung — DATEV](/doku/datev).
+7. **Rechnungen an die Buchhaltung: DATEV oder sevdesk.** Stellt Ihre Firma ihre Rechnungen
+   aus heimvio heraus, gehen sie auf Wunsch von selbst in die Buchhaltung. Die Kachel
+   **„Buchhaltung"** fragt zuerst **„Wer bucht?"**:
+
+   | | **DATEV** | **sevdesk** |
+   | --- | --- | --- |
+   | Wer bucht | Ihr Steuerberater | Sie selbst |
+   | Was ankommt | Beleg mit Rechnungsdaten als Buchungsvorschlag | fertig gebuchter Beleg auf Ihren Konten |
+   | Wann | am 5. für den Vormonat | laufend |
+
+   Sie wählen eines von beiden — so wird keine Rechnung doppelt gebucht. Bei DATEV verbinden
+   Sie Ihr DATEV-Konto und wählen den Mandanten, heimvio prüft, was Ihre Kanzlei dort noch
+   einrichten muss, und schreibt ihr auf Wunsch den Auftrag dazu. Bei sevdesk hinterlegen Sie
+   einen Token und ordnen die Konten einmal zu, sonst wartet die Rechnung. In beiden Fällen ist
+   der erste Lauf die Abnahme von Hand, danach läuft es automatisch. Zusätzlich kann jede
+   Rechnung an ein eigenes Programm gehen, etwa an n8n. Alles dazu steht unter
+   [DATEV oder sevdesk](/doku/buchhaltung),
+   [Rechnungen an die Buchhaltung — DATEV](/doku/datev) und
+   [Rechnungen an eigene Systeme senden (Webhook)](/doku/rechnungen-per-webhook).
 
 **Ein Mitarbeiter gehört immer genau einer Firma an.** Wechseln geht jederzeit, gleichzeitig
 bei zwei Firmen nicht. Eigentümer in einer Gemeinschaft, die die eigene Firma verwaltet,

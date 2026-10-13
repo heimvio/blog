@@ -1,0 +1,114 @@
+---
+title: Rechnungen an die Buchhaltung — DATEV oder sevdesk
+description: Die Rechnungen Ihrer Hausverwaltung gehen von selbst in die Buchhaltung — zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk. Sie wählen eines von beiden, richten es einmal ein und übertragen einmal von Hand; danach läuft es ohne Sie.
+section: Weitere Themen
+order: 95.5
+updated: 2026-10-13
+---
+
+**Die Rechnungen, die Ihre Firma aus heimvio heraus stellt, gehen auf Wunsch von selbst in die
+Buchhaltung — entweder zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk.**
+Gemeint sind die Rechnungen an die verwalteten Gemeinschaften
+([Verwaltervertrag und Rechnung](/doku/verwaltervertrag)). Sie finden alles unter
+**Meine Firma → Buchhaltung**; einrichten kann es nur der Koordinator der Firma
+([Hausverwaltung als Firma](/doku/hausverwaltung)).
+
+## Wer bucht?
+
+Oben auf der Seite steht die Frage **„Wer bucht?"** mit zwei Antworten.
+
+| | **DATEV** — Ihr Steuerberater bucht | **sevdesk** — Sie buchen selbst |
+| --- | --- | --- |
+| Was ankommt | PDF und Rechnungsdaten als Buchungsvorschlag für die Kanzlei | ein fertiger Beleg mit PDF, gebucht auf Ihre Konten |
+| Anmeldung | mit Ihrem DATEV-Konto; die Kanzlei richtet den Mandanten ein | mit einem API-Token aus Ihrem sevdesk-Konto |
+| Konten | freiwillig — ohne Angabe bucht der Steuerberater | Pflicht, je Steuersatz einmal gewählt |
+| Wann | am 5. jeden Monats die Rechnungen des Vormonats | laufend, spätestens eine Stunde nach der Rechnung |
+| Erster Lauf | von Hand — er ist die Abnahme | von Hand — er ist die Abnahme |
+
+**Sie wählen eines von beiden — so wird keine Rechnung doppelt gebucht.** Ist DATEV
+verbunden, lässt sich sevdesk nicht anwählen, und umgekehrt; die Seite sagt dann „Sie nutzen
+bereits …; trennen Sie zuerst, damit keine Rechnung doppelt gebucht wird." Wechseln heißt
+also: erst **„Trennen"**, dann den anderen Weg einrichten.
+
+Wie DATEV eingerichtet wird — mit Kanzlei, Mandant und Kundennummern —, steht auf einer
+eigenen Seite: [Rechnungen an die Buchhaltung — DATEV](/doku/datev). Hier geht es weiter mit
+sevdesk.
+
+Unabhängig von dieser Wahl können Sie jede Rechnung zusätzlich an ein eigenes Programm
+schicken lassen, etwa an n8n: [Rechnungen an eigene Systeme senden
+(Webhook)](/doku/rechnungen-per-webhook).
+
+## sevdesk in sechs Schritten
+
+heimvio legt jede Rechnung mit PDF als Beleg in Ihrem sevdesk-Konto an — gebucht auf die
+Konten, die Sie in heimvio wählen. Den Kunden legt heimvio in sevdesk mit an, falls es ihn
+dort noch nicht gibt; vorhanden ist er, wenn Kundennummer oder Name passen.
+
+1. **sevdesk wählen.** Unter **„Wer bucht?"** wählen Sie **„sevdesk — Sie buchen selbst"**.
+2. **API-Token holen.** Den Token finden Sie in sevdesk unter **Einstellungen → Benutzer →
+   API-Token**. Kopieren Sie ihn vollständig.
+3. **Verbinden.** Token in das Feld **„API-Token"** einfügen und bei **„Rechnungen ab"** den
+   ersten Tag wählen, ab dem heimvio übertragen soll — vorgeschlagen ist der Erste des
+   laufenden Monats; ältere Rechnungen schickt heimvio nicht. Dann **„Verbinden"**. heimvio
+   speichert den Token verschlüsselt und zeigt ihn nie wieder an.
+4. **Konten zuordnen.** Unter **„Konten"** steht je Richtung — **Einnahmen** und
+   **Ausgaben** — eine Auswahl für 19 %, 7 % und 0 %. heimvio bietet nur Konten an, die in
+   sevdesk zu Richtung und Steuersatz passen. Für die Rechnungen Ihrer Firma an die
+   Gemeinschaften zählen die **Einnahmen**; wählen Sie dort ein Konto für jeden Steuersatz, der
+   in Ihren Rechnungen vorkommt, und lassen Sie die übrigen auf „— kein Konto —". Dann
+   **„Speichern"**. Mit **„Verbindung prüfen"** sehen Sie, ob sevdesk erreichbar ist, den
+   Token annimmt und alle gewählten Konten kennt.
+5. **Einmal von Hand übertragen.** **„Jetzt übertragen"** schickt alle offenen Rechnungen ab
+   dem gewählten Tag. Geht dabei mindestens eine Rechnung ohne Fehler hinüber, ist die
+   Einrichtung **abgenommen**. Liegt noch keine Rechnung vor, meldet heimvio „Es lag kein
+   offener Beleg vor — nichts gesendet." — dann wiederholen Sie den Schritt nach Ihrer
+   nächsten Rechnung. Sehen Sie sich den ersten Beleg in sevdesk an, bevor Sie weitergehen.
+6. **Automatik einschalten.** Erst nach der Abnahme lässt sich **„Neue Rechnungen automatisch
+   übertragen"** anhaken. Ab dann schaut heimvio jede Stunde nach neuen Rechnungen und legt sie
+   in sevdesk an — ohne dass Sie etwas tun.
+
+Unter **„Letzter Lauf"** steht, was zuletzt gesendet, übersprungen oder abgelehnt wurde, unter
+**„Offene Belege"** jede Rechnung, die noch wartet, mit Grund. **„Token ersetzen"** tauscht
+den Token aus, ohne dass die Abnahme verloren geht; **„Trennen"** beendet die Verbindung —
+heimvio legt dann keine Belege mehr an und vergisst den Token.
+
+## Jede Rechnung genau einmal
+
+- **Was übertragen ist, ist vermerkt** und geht nicht noch einmal hinaus — auch nicht nach
+  Trennen und erneutem Verbinden.
+- **Bricht eine Übertragung mittendrin ab**, sucht heimvio beim nächsten Versuch zuerst in
+  sevdesk nach der Rechnungsnummer und legt den Beleg nur an, wenn er dort fehlt. Findet es
+  mehrere Belege mit derselben Nummer, legt es keinen weiteren an und bittet Sie, die
+  überzähligen in sevdesk zu löschen.
+- **Ein Fehler im Automatiklauf stoppt und meldet.** Bleibt eine Rechnung im automatischen
+  Lauf liegen, schaltet heimvio die Automatik **aus**, setzt die Abnahme auf „offen —
+  Übertragung von Hand nötig" und schreibt den Koordinatoren eine Mail mit dem Grund. Die
+  Rechnungen gehen nicht verloren, sie warten. Der nächste Lauf von Hand ist zugleich die neue
+  Abnahme; danach schalten Sie die Automatik wieder ein.
+
+## Ehrliche Grenzen
+
+- **Kleinunternehmer (§ 19 UStG) unterstützt heimvio noch nicht.** Ist Ihr sevdesk-Konto so
+  eingestellt, meldet heimvio das beim Verbinden bzw. am Beleg und überträgt nichts.
+- **Ohne Konto wartet die Rechnung.** sevdesk bucht direkt — fehlt für einen Steuersatz das
+  Konto, geht die Rechnung nicht hinaus, bis Sie es unter **„Konten"** gewählt haben. Im
+  Automatiklauf schaltet das die Automatik ab, wie jeder andere Fehler.
+- **Geänderte Konten heißen: noch einmal von Hand übertragen.** Wer Konten ändert, richtet
+  den Anschluss neu ein. heimvio schaltet die Automatik deshalb aus, und die nächste
+  Übertragung von Hand ist die neue Abnahme.
+- **Ein Storno erscheint in sevdesk als eigener Beleg in Gegenrichtung** — mit positiven
+  Beträgen, nicht als Minusbeleg und nicht als Änderung des ersten. Eine Rechnung wird nie
+  nachträglich geändert, nur storniert und neu gestellt.
+- **Nur 19, 7 und 0 %.** Eine Rechnung mit einem anderen Steuersatz bleibt mit Grund in der
+  Liste stehen.
+- **sevdesk rechnet die Steuer je Position selbst.** Weicht das um Cent-Beträge von der
+  Rechnung ab, zeigt heimvio einen Hinweis; maßgeblich ist das PDF.
+- **sevdesk braucht die Buchhaltungs-Version 2.0.** Bei einer älteren Version lässt sich nicht
+  verbinden; die Umstellung finden Sie in den sevdesk-Einstellungen.
+- **Nichts kommt zurück.** Ob eine Rechnung bezahlt ist, liest heimvio nicht aus sevdesk; Sie
+  setzen „bezahlt" weiterhin in heimvio.
+- **Beim Wechsel von DATEV zu sevdesk** weiß sevdesk nichts davon, was schon beim
+  Steuerberater ist. Wählen Sie bei **„Rechnungen ab"** deshalb den Tag nach dem letzten
+  Monat, den DATEV übertragen hat — sonst stünden diese Rechnungen in beiden Buchhaltungen.
+
+Weiter geht es mit [Rechnungen an die Buchhaltung — DATEV](/doku/datev).
