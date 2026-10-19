@@ -1,0 +1,57 @@
+---
+// Preistabelle der Abos (Plan 82 S9). Quelle ist src/data/preise.json — die
+// Datei schreibt die Stripe-Provisionierung von heimvio beim Live-Lauf
+// (scripts/stripe-provision.mjs --profil=live --apply) aus demselben Katalog,
+// aus dem Stripe und der Checkout der App ihre Preise haben. Fehlt die Datei,
+// zeigt die Komponente nichts: vor dem Live-Gang stehen keine Preise in der Doku.
+interface Staffel {
+  wohneinheiten: number;
+  monatlich: number;
+  messdienst: number;
+  hausverwaltung: number;
+}
+interface Preise {
+  steuer: string;
+  abrechnung: string;
+  staffeln: Staffel[];
+}
+const files = import.meta.glob<{ default: Preise }>('../data/preise.json', { eager: true });
+const preise = Object.values(files)[0]?.default ?? null;
+const eur = (cent: number) =>
+  (cent / 100).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+---
+{preise && (
+  <section>
+    <h2 id="tarife-und-preise">Tarife und Preise</h2>
+    <p>
+      Abgerechnet wird {preise.abrechnung}. Alle Preise {preise.steuer}. Ein Funkempfänger
+      je sechs Wohneinheiten ist enthalten.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tarif</th>
+          <th>Wohneinheiten</th>
+          <th>im Monat</th>
+          <th>davon Messdienst</th>
+          <th>davon Verwaltung</th>
+        </tr>
+      </thead>
+      <tbody>
+        {preise.staffeln.map((s) => (
+          <tr>
+            <td>Pro {s.wohneinheiten}</td>
+            <td>bis {s.wohneinheiten}</td>
+            <td>{eur(s.monatlich)}</td>
+            <td>{eur(s.messdienst)}</td>
+            <td>{eur(s.hausverwaltung)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p>
+      Der Messdienst ist als Heiz- und Wasserkostenerfassung umlagefähig, die Verwaltung nicht.
+      Für größere Gemeinschaften machen wir ein Angebot.
+    </p>
+  </section>
+)}
