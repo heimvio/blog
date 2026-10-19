@@ -1,0 +1,119 @@
+---
+title: Geschäftspartner — Lieferanten und Kunden an einer Stelle
+description: Wer Ihnen Rechnungen stellt, steht einmal in einer Liste — mit Anschrift, USt-IdNr. und den Merkmalen, an denen heimvio ihn am Dokument und am Konto wiedererkennt. Wem ein Partner gehört, wo die Liste liegt, und was die Buchhaltung mit den Nummern macht.
+section: Konzepte
+order: 62
+updated: 2026-10-19
+---
+
+**Eine Rechnung wird einem Geschäftspartner zugeordnet, nicht abgetippt.** Der Hausmeister,
+die Versicherung, die Stadtwerke, der Schornsteinfeger — jeder, der Ihnen Rechnungen stellt,
+steht einmal in einer Liste, mit Name, Anschrift, E-Mail, Telefon und USt-IdNr. Daran erkennt
+heimvio ihn wieder: am Dokument im Eingang und an der Abbuchung auf dem Konto. Und weil die
+Buchhaltung für denselben Partner ein Personenkonto führt, trägt er dort auch seine Nummern.
+
+## Wem ein Partner gehört
+
+Jeder Partner gehört genau einer Stelle. Das klingt nach Verwaltungsfrage, ist aber die
+Antwort auf „wer sieht das?":
+
+| Partner von … | Wer pflegt | Wer sieht |
+| --- | --- | --- |
+| **der Gemeinschaft** (WEG oder Mietshaus) | der Verwalter | der Verwalter; die Namen stehen an den Belegen, die der Beirat prüft |
+| **Ihnen privat** als vermietender Eigentümer | Sie | nur Sie — Ihre Verwaltung sieht die Liste nicht |
+| **Ihrer Firma** als Hausverwaltung | der Koordinator | der Koordinator |
+| **heimvio selbst** | der Betreiber | der Betreiber |
+
+Daraus folgen zwei Dinge, die man einmal gelesen haben sollte:
+
+- **Ein Hausmeister kann zweimal vorkommen** — einmal bei der Gemeinschaft, für die er das
+  Treppenhaus putzt, und einmal bei Ihnen privat, weil er auch Ihre Wohnung betreut. Das ist
+  Absicht: Die private Liste ist privat, und die Gemeinschaft soll nicht sehen, wen Sie für
+  sich beauftragen. Mit dem Partner wandert nichts zwischen den beiden Listen.
+- **Die Partner der Gemeinschaft bleiben beim Verwalterwechsel.** Sie gehören der WEG, nicht
+  der Firma, die sie gerade verwaltet — wie die Belege, zu denen sie gehören. Eine
+  Hausverwaltung führt daneben ihre eigene Liste für ihre eigenen Ausgaben und kann daraus
+  Partner in eine Gemeinschaft **übernehmen** — als Kopie, die ab dann der WEG gehört
+  ([Hausverwaltung als Firma](/doku/hausverwaltung)).
+
+Mieter und Eigentümer sind **keine** Geschäftspartner. Sie sind Personen und Mitglieder der
+Gemeinschaft mit eigenem Zugang ([Eigentümer](/doku/eigentuemer),
+[Mieter einladen](/doku/mieter-einladen)); ihre Zahlungen laufen über Hausgeld und Miete, nicht
+über die Partnerliste.
+
+## Wo die Listen sind
+
+1. **Als Verwalter einer Gemeinschaft:** **Org-Einstellungen → Geschäftspartner**. Jede Zeile
+   trägt Name, Anschrift, E-Mail, Telefon, USt-IdNr., die Rollen Lieferant und Kunde, die
+   **Kostenart-Vorgabe** für neue Belege und die Merkmale, an denen heimvio den Partner am
+   Kontoumsatz erkennt — ein Muster, wie er auf dem Kontoauszug heißt, das übliche Intervall,
+   eine Betragsspanne. Verwaltet eine Firma die Gemeinschaft, steht hier zusätzlich **„Aus meiner
+   Firma übernehmen …"**: eine Auswahl aus den Partnern der Firma, die als Kopie in die WEG
+   kommen; wen es hier schon gibt, legt heimvio nicht doppelt an.
+2. **Als vermietender Eigentümer:** im Portal die Kachel **„Meine Lieferanten"**. Dieselben
+   Felder, dieselbe Zuordnung — für die Belege unter „Meine Belege", und für niemanden sonst
+   sichtbar.
+3. **Als Hausverwaltung mit eigener Belegerfassung:** unter **Meine Firma → Belege** der Tab
+   **„Geschäftspartner"** — früher „Lieferanten". Hier stehen Lieferanten **und** Kunden:
+   Die verwalteten Gemeinschaften legt heimvio als Kunden von selbst an, sobald ein Mandat
+   besteht; Name und Anschrift kommen aus der Gemeinschaft, Sie pflegen sie nicht doppelt.
+   Statt der Kostenart tragen diese Partner **Ausgabenart** und **Steuerfall**
+   ([Auch Ihre eigenen Belege](/doku/buchhaltung#auch-ihre-eigenen-belege)). Mitarbeiter
+   ohne Koordinatorrolle sehen diesen Tab nicht.
+
+## Auswählen statt tippen
+
+Überall, wo ein Beleg einen Lieferanten braucht — Kostenrechnung der Gemeinschaft, privater
+Beleg, Angebot und Auftrag beim Mangel —, steht ein **Auswahlfeld**: Sie tippen die ersten
+Buchstaben, heimvio zeigt die Treffer, ein Klick übernimmt. Gibt es den Partner noch nicht,
+wählen Sie **„Neuer Partner…"** und tragen Name und Anschrift gleich dort ein; die Liste
+wächst beim Arbeiten, nicht in einem eigenen Pflegeschritt.
+
+Im **Eingang** kommt der Vorschlag von selbst. Schon beim Einordnen — bevor heimvio Beträge
+und Positionen liest — sieht es sich die erste und die letzte Seite des Dokuments an, wo
+Briefkopf, Fußzeile und USt-IdNr. stehen, und schlägt den passenden Partner vor. Daneben
+steht, **woran** es ihn erkannt hat:
+
+| Hinweis am Vorschlag | Bedeutung |
+| --- | --- |
+| „erkannt über USt-IdNr." | die sicherste Stufe — die Nummer auf der Rechnung stimmt mit dem Partner überein |
+| „erkannt über Muster" | der Partner trägt ein Muster, das im Dokument vorkommt |
+| „erkannt über Name" | der Name passt, sonst nichts — einmal hinsehen |
+| **Ähnliche Partner** | kein Treffer; bis zu drei Partner mit ähnlichem Namen zur Auswahl |
+| „Das Dokument ist an jemand anderen adressiert" | das Anschriftfeld nennt nicht die Gemeinschaft, etwa einen Eigentümer persönlich — der Beleg liegt vielleicht im falschen Eingang |
+
+Der erkannte Partner **belegt die Kostenart vor**; Sie bestätigen oder ändern, wie bei jedem
+Vorschlag ([Eingang und Ablage](/doku/eingang-und-ablage)). Am Kontoauszug erkennt heimvio den
+Partner an der **Bankverbindung**, die es sich bei der ersten Zuordnung gemerkt hat — so wird
+aus „Abbuchung ohne Beleg" beim nächsten Mal ein Vorschlag mit Partner und Kostenart
+([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)).
+
+## Nummern für die Buchhaltung
+
+Wer seine Belege an DATEV oder sevdesk übergibt, braucht für jeden Partner ein
+Personenkonto: eine **Debitorennummer** für Kunden, eine **Kreditorennummer** für Lieferanten.
+Die Nummer gehört zum Paar aus Partner und Anschluss — bei Ihrem DATEV-Mandanten eine andere
+als in einem sevdesk-Konto. Bei DATEV **vergibt heimvio sie** fortlaufend ab einer
+Startnummer, die Sie mit Ihrer Kanzlei abstimmen; bei sevdesk setzt sevdesk die Kundennummer
+selbst, wenn heimvio den Kontakt anlegt. Nummern, die Kanzlei oder sevdesk-Konto schon
+vergeben haben, laden Sie als Datei über **„Kanzlei-Liste laden …"** in der Partnerliste oder
+tragen sie am Partner von Hand ein; was beim Laden nicht eindeutig passt, bleibt als Ausnahme
+stehen, statt geraten zu werden. Die Einzelheiten — Startnummern,
+Dateiformate, Pflicht und Kür — stehen unter
+[Kreditoren- und Debitorennummern: wer vergibt sie](/doku/buchhaltung#kreditoren--und-debitorennummern-wer-vergibt-sie)
+und im [DATEV-Assistenten](/doku/datev).
+
+## Ehrliche Grenzen
+
+- **Eine Anschrift je Partner.** Eine zweite — Lieferadresse neben Rechnungsadresse — gibt es
+  nicht; sie kommt in keinem Fall dieser Anwendung vor.
+- **Beirat und Mitarbeiter sehen die Liste nicht.** Der Verwaltungsbeirat prüft die Belege,
+  und dort steht der Name des Lieferanten; Mitarbeiter einer Firma ohne Koordinatorrolle
+  sehen die Belege der Firma, nicht ihre Partnerliste.
+- **Kontakte aus DATEV holt heimvio nicht ab.** DATEV gibt die Lieferantenliste über die
+  Schnittstelle nicht heraus — deshalb die Datei.
+- **Erkennen ist ein Vorschlag.** Kommt eine Rechnung über eine Inkassostelle oder „im
+  Auftrag", ist der Absender nicht der Lieferant — dann prüfen Sie den Vorschlag und wählen
+  den richtigen Partner selbst. Bestätigt wird nichts ohne Sie.
+
+Weiter geht es mit [Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende).

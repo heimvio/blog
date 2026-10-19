@@ -3,7 +3,7 @@ title: Rechnungen an die Buchhaltung — DATEV
 description: Die Rechnungen Ihrer Hausverwaltung gehen jeden Monat von selbst als Beleg mit Rechnungsdaten in Ihr DATEV Unternehmen online. Einmal einrichten, einmal von Hand übertragen — danach läuft es ohne Sie, und heimvio meldet sich nur, wenn etwas fehlt.
 section: Weitere Themen
 order: 96
-updated: 2026-10-13
+updated: 2026-10-19
 ---
 
 **Rechnungen gehen von heimvio in Ihr DATEV Unternehmen online. Ob sie dort ankommen,
@@ -31,7 +31,8 @@ statt DATEV sevdesk — beides zugleich geht nicht, damit keine Rechnung doppelt
 | Rechnungsdatenservice 1.0 für den Mandanten bestellen und freigeben | — | ja | — |
 | Ihren DATEV-Benutzer für den Dienst berechtigen | — | ja | — |
 | Rechnungsbuch im Wirtschaftsjahr anlegen (Belege online, Verarbeitungsform „Erweitert") | — | ja | — |
-| Kundennummer je WEG eintragen, Belegtyp und Konten wählen | ja | — | prüft die Form |
+| Startnummern der Personenkonten abstimmen | ja | bestätigt sie | vergibt die Nummern ab der Startnummer |
+| Kundennummer je WEG bestätigen oder vorhandene Nummern als Kanzlei-Liste laden, Belegtyp und Konten wählen | ja | — | prüft die Form |
 | Stammdaten laden, Rechnungen prüfen, Paket bauen, übertragen | — | — | ja |
 | Erstübertragung starten | ja | — | wertet das Protokoll aus |
 | Monatslauf | — | — | automatisch am 5. |
@@ -61,17 +62,27 @@ bleibt erledigt; Sie können jederzeit zurück.
 4. **Stammdaten laden.** heimvio holt vom Mandanten die Belegtypen und — soweit DATEV sie
    herausgibt — die Kundenliste (Debitoren) und den Kontenrahmen. Der Stand steht mit Datum
    dabei; **„Neu laden"** holt ihn frisch, und vor jedem Lauf tut heimvio das von selbst.
-5. **WEGs zuordnen.** Je verwalteter Gemeinschaft eine **Kundennummer** beim Steuerberater.
-   Kennt DATEV die Kundenliste, schlägt heimvio die passende Nummer vor (gleicher Name und
-   Ort) und warnt, wenn zu einer Nummer in DATEV ein anderer Name steht — eine Warnung
-   bestätigen Sie einzeln. Fehlt die Liste, tragen Sie die Nummer von Hand ein, oder heimvio
-   vergibt eine neue freie Nummer; die Form wird in jedem Fall geprüft: mindestens sechs
-   Ziffern, nicht mit 0 beginnend. Eine neue Nummer entsteht in DATEV mit der ersten
-   Übertragung.
+5. **WEGs zuordnen.** Jede verwaltete Gemeinschaft ist ein Kunde in der
+   Geschäftspartner-Liste Ihrer Firma und bekommt für diesen Mandanten eine **Kundennummer**
+   (Debitorennummer). Kennt DATEV die Kundenliste, schlägt heimvio die passende Nummer vor
+   (gleicher Name und Ort) und warnt, wenn zu einer Nummer in DATEV ein anderer Name steht —
+   eine Warnung bestätigen Sie einzeln. Fehlt die Liste, vergibt heimvio die nächste freie
+   Nummer ab der Startnummer (Schritt 6), oder Sie übernehmen die Nummern Ihrer Kanzlei — von
+   Hand oder als Datei über **„Kanzlei-Liste laden …"** im Tab **Geschäftspartner**
+   ([wer die Nummern vergibt](/doku/buchhaltung#kreditoren--und-debitorennummern-wer-vergibt-sie)).
+   Die Form wird in jedem Fall geprüft: nur Ziffern, beginnend mit 1 bis 6, eine Stelle mehr
+   als die Sachkonten Ihres Mandanten — bei vierstelligen Sachkonten also fünf Ziffern. Eine
+   neue Nummer entsteht in DATEV mit der ersten Übertragung.
 6. **Belegtyp und Konten.** Der **Belegtyp für Ausgangsrechnungen** kommt aus der Liste des
    Mandanten. Dazu auf Wunsch je Steuersatz ein **Erlöskonto** aus dem Kontenrahmen — eine
    Auswahl, keine Freitexteingabe. Ohne Angabe bucht der Steuerberater das Konto selbst; das
-   ist der Normalfall und kein Mangel.
+   ist der Normalfall und kein Mangel. Darunter stehen die **Personenkonten**: die
+   **Startnummern** für Debitoren und Kreditoren, die Sie mit Ihrer Kanzlei abstimmen — leer
+   heißt Bereichsanfang nach der Sachkontenlänge, bei vier Stellen 10000 und 70000 —, und der
+   Schalter **„Personenkonten übertragen"**. Ist er an, bekommt jede Eingangsrechnung Ihrer
+   Belegerfassung die Kreditorennummer ihres Lieferanten mit; fehlt sie, geht der Beleg nur mit
+   Sachkonto hinaus, als Warnung, nicht als Fehler. Die Kundennummer an Ausgangsrechnungen
+   bleibt immer Pflicht.
 7. **Probepaket.** Alle Rechnungen eines Monats werden geprüft, wie DATEV sie prüfen würde:
    Pflichtangaben, Summen, Nummern, Namen und Längen, Kundennummer, PDF. Je Rechnung steht
    ✓ oder der Grund. **Hochgeladen wird nichts.**
@@ -136,9 +147,12 @@ grün ist.
 
 ## Ehrliche Grenzen
 
-- **Kundenliste und Kontenrahmen kommen nicht immer aus DATEV.** Gibt DATEV sie für Ihren
-  Mandanten nicht heraus, tragen Sie die Kundennummern selbst ein — heimvio prüft dann nur die
-  Form —, und die Konten bleiben leer. Das ist kein Hindernis: Der Steuerberater bucht sie.
+- **Kundenliste und Kontenrahmen kommen nicht immer aus DATEV, die Lieferantenliste nie.**
+  Gibt DATEV die Kundenliste für Ihren Mandanten nicht heraus, vergibt heimvio die
+  Kundennummern selbst ab der Startnummer, oder Sie laden die Liste Ihrer Kanzlei als Datei;
+  für Kreditoren bietet DATEV über die Schnittstelle gar keine Liste an, dort ist die Datei der
+  einzige Weg. Die Konten bleiben ohne Kontenrahmen leer — kein Hindernis: Der Steuerberater
+  bucht sie.
 - **Es geht nur um die Belege Ihrer Firma** — ihre Rechnungen an die WEGs und, mit der
   Belegerfassung, ihre eigenen Eingangsrechnungen. Eingangsrechnungen der Gemeinschaften —
   Heizöl, Hausmeister, Versicherung — überträgt heimvio nicht; Zahlungseingänge auch nicht.

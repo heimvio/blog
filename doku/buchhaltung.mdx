@@ -3,7 +3,7 @@ title: Rechnungen an die Buchhaltung — DATEV oder sevdesk
 description: Die Rechnungen Ihrer Hausverwaltung gehen von selbst in die Buchhaltung — zu Ihrem Steuerberater über DATEV oder in Ihr eigenes sevdesk. Auf Wunsch erfasst heimvio auch die eigenen Belege Ihrer Firma, rechnet die Kennziffern der Umsatzsteuer-Voranmeldung und liefert zum Jahresende den Export für die Kanzlei.
 section: Weitere Themen
 order: 95.5
-updated: 2026-10-17
+updated: 2026-10-19
 ---
 
 **Die Rechnungen, die Ihre Firma aus heimvio heraus stellt, gehen auf Wunsch von selbst in die
@@ -33,7 +33,9 @@ bereits …; trennen Sie zuerst, damit keine Rechnung doppelt gebucht wird." Wec
 also: erst **„Trennen"**, dann den anderen Weg einrichten.
 
 Wie DATEV eingerichtet wird — mit Kanzlei, Mandant und Kundennummern —, steht auf einer
-eigenen Seite: [Rechnungen an die Buchhaltung — DATEV](/doku/datev). Hier geht es weiter mit
+eigenen Seite: [Rechnungen an die Buchhaltung — DATEV](/doku/datev). Wer die Kunden- und
+Lieferantennummern vergibt, steht weiter unten unter [Kreditoren- und Debitorennummern: wer
+vergibt sie](#kreditoren--und-debitorennummern-wer-vergibt-sie). Hier geht es weiter mit
 sevdesk.
 
 Unabhängig von dieser Wahl können Sie jede Rechnung zusätzlich an ein eigenes Programm
@@ -44,7 +46,12 @@ schicken lassen, etwa an n8n: [Rechnungen an eigene Systeme senden
 
 heimvio legt jede Rechnung mit PDF als Beleg in Ihrem sevdesk-Konto an — gebucht auf die
 Konten, die Sie in heimvio wählen. Den Kunden legt heimvio in sevdesk mit an, falls es ihn
-dort noch nicht gibt; vorhanden ist er, wenn Kundennummer oder Name passen.
+dort noch nicht gibt; vorhanden ist er, wenn die Kundennummer, die in Ihrer Geschäftspartner-Liste
+für diesen Anschluss steht, oder der Name passt. Für sevdesk vergibt heimvio keine Nummern:
+Legt heimvio den Kontakt an, setzt sevdesk die Kundennummer selbst; Nummern, die Ihr
+sevdesk-Konto schon vergeben hat, laden Sie als Kontaktexport über **„Kanzlei-Liste laden …"**
+oder tragen sie am Partner von Hand ein ([Kreditoren- und Debitorennummern: wer
+vergibt sie](#kreditoren--und-debitorennummern-wer-vergibt-sie)).
 
 1. **sevdesk wählen.** Unter **„Wer bucht?"** wählen Sie **„sevdesk — Sie buchen selbst"**.
 2. **API-Token holen.** Den Token finden Sie in sevdesk unter **Einstellungen → Benutzer →
@@ -89,6 +96,37 @@ heimvio legt dann keine Belege mehr an und vergisst den Token.
   Rechnungen gehen nicht verloren, sie warten. Der nächste Lauf von Hand ist zugleich die neue
   Abnahme; danach schalten Sie die Automatik wieder ein.
 
+## Kreditoren- und Debitorennummern: wer vergibt sie
+
+Jede Buchhaltung führt für Kunden (Debitoren) und Lieferanten (Kreditoren) ein eigenes
+Personenkonto mit einer Nummer. Drei Sätze dazu:
+
+1. **heimvio vergibt die Nummern — fortlaufend ab einer Startnummer, die Ihre Kanzlei
+   bestätigt.** Die Nummer gehört zum Paar aus Geschäftspartner und Anschluss: Derselbe
+   Lieferant hat bei Ihrem DATEV-Mandanten eine andere Nummer als in einem sevdesk-Konto, und
+   wer Kunde und Lieferant zugleich ist, hat zwei. Die Startnummern je Rolle tragen Sie im
+   DATEV-Assistenten unter **Belegtyp und Konten → Personenkonten** ein; ohne Eintrag gilt der
+   Anfang des Bereichs, der sich aus der Sachkontenlänge Ihres Mandanten ergibt — bei vier
+   Stellen Debitoren ab 10000 und Kreditoren ab 70000, bei fünf Stellen ab 100000 bzw.
+   700000. Eine spätere Änderung der Startnummer verschiebt keine vergebene Nummer. Das gilt
+   für DATEV; für sevdesk vergibt heimvio keine Nummern — dort setzt sevdesk die Kundennummer
+   selbst, wenn heimvio den Kontakt anlegt.
+2. **Vorhandene Nummern Ihrer Kanzlei laden Sie als Datei.** Im Tab **„Geschäftspartner"**
+   steht **„Kanzlei-Liste laden …"**: der DATEV-Export „Debitoren/Kreditoren" oder der
+   Kontaktexport aus sevdesk. heimvio ordnet jede Zeile einem Partner zu, den es schon gibt —
+   über die USt-IdNr., sonst über Name und Ort — und übernimmt die Nummer, wenn genau einer
+   passt. Partner legt der Import nie an; der Bestand bleibt Ihrer.
+3. **Was nicht eindeutig ist, bleibt als Ausnahme stehen.** Das Ergebnis nennt, was
+   übernommen, was unverändert und was Ausnahme ist — etwa „Nummer 70012 ‚Stadtwerke
+   Musterstadt' passt zu zwei Partnern" —, und Sie entscheiden. Geraten wird nicht.
+
+Für Ihre **Ausgangsrechnungen** an die Gemeinschaften ist die Kundennummer Pflicht. Ob
+**Eingangsrechnungen** die Kreditorennummer des Lieferanten mitbekommen, entscheidet der
+Schalter **„Personenkonten übertragen"** im DATEV-Assistenten: Ist er an und fehlt die Nummer,
+geht der Beleg nur mit Sachkonto hinaus — als Warnung, nicht als Fehler. Ehrlich gesagt: Die
+Kontakte Ihres Mandanten holt heimvio nicht aus DATEV ab — DATEV bietet das über die
+Schnittstelle nicht an; deshalb die Datei.
+
 ## Auch Ihre eigenen Belege
 
 **heimvio erfasst auf Wunsch auch die Ausgaben Ihrer Firma** — Papier und Porto, Geräte,
@@ -115,14 +153,21 @@ Gemeinschaften sehen davon nichts. Sie finden sie unter **Meine Firma → Belege
    und leiten Rechnungen dorthin weiter. Enthält eine Mail statt eines Anhangs nur einen Link auf die
    Rechnung — so verschicken viele Software-Anbieter ihre Abrechnungen über Stripe —, holt
    heimvio das PDF selbst ab.
-3. **heimvio ordnet zu.** Die Erkennung liest Lieferant, Betrag, Datum und Nummer und schlägt
-   die **Ausgabenart** vor. Den **Steuerfall** wählt keine KI:
+3. **heimvio ordnet zu.** Schon beim Einordnen erkennt heimvio den **Absender** — auf der
+   ersten und der letzten Seite, wo Briefkopf, Fußzeile und USt-IdNr. stehen — und schlägt den
+   passenden **Geschäftspartner** vor, mit dem Grund daneben: „erkannt über USt-IdNr.", „über
+   Muster" oder „über Name". Passt keiner, zeigt es bis zu drei ähnliche Partner zur Auswahl.
+   Dann liest die Erkennung Betrag, Datum und Nummer und schlägt die **Ausgabenart** vor —
+   vorbelegt aus dem erkannten Partner. Den **Steuerfall** wählt keine KI:
    heimvio leitet ihn aus Land, USt-IdNr. und Steuersatz her. Im Tab **„Belege"** steht jeder
    Beleg mit Art, Steuerfall, Zahlung und Stand; was nicht eindeutig ist, steht auf
    **„Ausnahme"** mit Grund, etwa „Steuerfall unklar — bitte wählen". Art und Steuerfall
-   können Sie an jedem Beleg selbst ändern. Wiederkehrende Lieferanten legen Sie im Tab
-   **„Lieferanten"** einmal an — mit Ausgabenart, Steuerfall und auf Wunsch der
-   Kreditorennummer, die Ihre Kanzlei vergibt.
+   können Sie an jedem Beleg selbst ändern. Ihre Lieferanten und Kunden stehen im Tab
+   **„Geschäftspartner"** — mit Anschrift, USt-IdNr., Ausgabenart, Steuerfall und den
+   Merkmalen, an denen heimvio sie am Kontoumsatz erkennt; die Kreditorennummer vergibt heimvio
+   ([Kreditoren- und Debitorennummern](#kreditoren--und-debitorennummern-wer-vergibt-sie)).
+   Was ein Geschäftspartner ist und wem er gehört, steht unter
+   [Geschäftspartner](/doku/geschaeftspartner).
 4. **Geschäftskonto verbinden.** Unter **„Bankverbindung"** verbinden Sie das Konto der
    Firma ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)). Ab dann weiß
    heimvio, was bezahlt ist: Jede Abbuchung wird ihrem Beleg zugeordnet, und **Ihre
@@ -145,7 +190,7 @@ Gemeinschaften sehen davon nichts. Sie finden sie unter **Meine Firma → Belege
 
 | | Woher | Was Sie tun |
 | --- | --- | --- |
-| **Ausgabenart** — etwa „Software und Abos", „Büro, Porto, Druck", „Geräte und Bauteile" | Vorschlag der Erkennung oder Vorgabe am Lieferanten | prüfen, bei Bedarf ändern |
+| **Ausgabenart** — etwa „Software und Abos", „Büro, Porto, Druck", „Geräte und Bauteile" | Vorgabe am erkannten Geschäftspartner, sonst Vorschlag der Erkennung | prüfen, bei Bedarf ändern |
 | **Steuerfall** — Inland 19 % oder 7 %, Inland ohne Steuer, EU oder Drittland mit Steuerschuld bei Ihnen (§ 13b), Einfuhr | aus Land, USt-IdNr. und Steuersatz hergeleitet | nur wählen, wenn er unklar ist |
 | **Zahlung** — Tag und Konto | aus dem verbundenen Geschäftskonto | nichts; ohne Konto bleibt der Beleg offen |
 | **Anlage** — Geräte zwischen 250 € und 800 € netto als geringwertiges Wirtschaftsgut, voll abgezogen im Jahr der Anschaffung; darüber als Anlage mit Abschreibung über die Nutzungsdauer | geringwertige Geräte von selbst aus Art und Betrag | Teureres am Beleg mit **„Ins Anlagenverzeichnis aufnehmen"** und der Nutzungsdauer erfassen; Verkauf oder Verschrottung im Tab **„Anlagen"** mit **„Abgang erfassen"** |
@@ -163,7 +208,7 @@ Jahreswechsel ordnet heimvio nach der Zehn-Tage-Regel dem Jahr ihrer Leistung zu
 | Belegerfassung einschalten, Besteuerungsart und Voranmeldungszeitraum wählen | ja | nein |
 | Belege ansehen, Art und Steuerfall zuordnen | ja | ja |
 | Anlagen ansehen und erfassen | ja | ja |
-| Lieferanten anlegen und pflegen | ja | nein |
+| Geschäftspartner anlegen und pflegen, Kanzlei-Liste laden | ja | nein |
 | Kennziffern und Anlage EÜR, als übermittelt markieren, Export für die Kanzlei | ja | nein |
 
 Mitarbeiter sehen unter **Meine Firma → Belege** deshalb nur die Tabs **„Belege"** und
