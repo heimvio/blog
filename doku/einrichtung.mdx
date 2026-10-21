@@ -78,7 +78,7 @@ bleibt eine Abrechnung für dieses Jahr leer.
 | **Allgemeinstrom** | Treppenhaus, Außenbeleuchtung, Pumpen |
 | **wM-Bus** | Funk-Empfänger und die Verteilung der Zähler |
 | **Mitglieder einladen** | Ableser einladen, den Beirat bestimmen |
-| **Mail einrichten** | erst der Postausgang für Ihre Schreiben, dann der Posteingang für Rechnungen |
+| **Mail einrichten** | erst das Mailkonto, dann der Postausgang für Ihre Schreiben, dann der Posteingang für Rechnungen |
 | **Bankverbindung** | das Konto der Gemeinschaft bzw. das Mietkonto, dessen Umsätze heimvio für den Zahlungsabgleich abruft |
 
 Ein Punkt neben jeder Karte zeigt, ob sie offen, angefangen oder fertig ist; Karten, die
@@ -280,27 +280,45 @@ und keine Abrechnung an die richtige Person — irgendwann müssen die Namen als
 
 ## Mail einrichten
 
-Die Karte **Mail einrichten** hat zwei Stationen, in dieser Reihenfolge. Beide sind
+Die Karte **Mail einrichten** hat drei Stationen, in dieser Reihenfolge. Alle sind
 freiwillig; ohne sie verschickt heimvio über den eigenen Server, und Rechnungen laden Sie
-selbst hoch.
+selbst hoch. Der Zugang zu Ihrem Mailanbieter wird **einmal** als **Mailkonto** eingetragen;
+Postausgang und Posteingang wählen danach nur noch ein Konto, statt Server und Passwort
+zweimal zu verlangen.
 
-1. **Postausgang.** Darüber verschickt heimvio Einladungen, Abrechnungen und Schreiben in
+1. **Mailkonto.** Wählen Sie Ihren Anbieter aus der Liste oder tragen Sie die Einstellungen
+   selbst ein: Benutzername, Passwort und die Server für Postausgang und/oder Posteingang.
+   Mit dem Auge-Knopf im Passwortfeld sehen Sie, was Sie gerade tippen. Dann **„Prüfen"**:
+   heimvio schickt eine Test-Mail an Ihre eigene Adresse und meldet sich am Posteingang an.
+   Bei Gmail, iCloud und Yahoo brauchen Sie dafür ein App-Passwort; der Link zum Anbieter
+   steht daneben. Gibt es schon ein Konto, schrumpft die Station auf einen Satz mit
+   **„Mailkonten verwalten"**.
+2. **Postausgang.** Darüber verschickt heimvio Einladungen, Abrechnungen und Schreiben in
    Ihrem Namen. Der Ausgang gehört zur Verwaltung, also zu Ihrer Firma — auch wenn Sie
-   selbst verwalten. Die Karte nennt die Firma und führt mit **„Ausgang der Firma"** dorthin:
-   Server, Port, Benutzer, Passwort und Absenderadresse eintragen, dann **„Test-Mail
-   senden"** — die Mail geht an Ihre eigene Adresse. Ohne eigenen Ausgang verschickt heimvio
+   selbst verwalten. Die Karte nennt die Firma und führt mit **„Ausgang der Firma"** dorthin.
+   Wählen Sie das Konto; die Absenderadresse ist aus dem Konto vorbelegt. **„Test-Mail
+   senden"** schickt die Mail an Ihre eigene Adresse. Ohne eigenen Ausgang verschickt heimvio
    selbst, mit dem Namen der Verwaltung als Absender
    ([Schreiben zustellen](/doku/schreiben-zustellen)).
-2. **Posteingang.** Rechnungen und Bescheide, die an dieses Postfach gehen, landen als
-   Dokument im **Eingang** der Liegenschaft. Sie wählen den Anbieter, tragen Server, Port,
-   Benutzer und Passwort ein und klicken **„Verbindung testen"**. Das Ergebnis nennt, wie
-   viele Ordner heimvio durchsucht und ob der Server **Markierungen** erlaubt (siehe unten).
-   Bei Gmail, iCloud und Yahoo brauchen Sie dafür ein App-Passwort; der Link zum Anbieter
-   steht daneben.
-3. **Empfänger.** Unter dem Zugang steht eine Tabelle mit Adressen: heimvio übernimmt nur
-   Mails, die an eine davon gingen. Vorbelegt ist die Absenderadresse aus dem Postausgang.
-   **Ist die Tabelle leer, übernimmt heimvio alle Mails des Postfachs** — richtig, wenn Sie
-   eine eigene Adresse nur für Rechnungen haben, etwa rechnungen@ihre-domain.de.
+3. **Posteingang.** Rechnungen und Bescheide, die an dieses Postfach gehen, landen als
+   Dokument im **Eingang** der Liegenschaft. Das Konto aus Station ① ist schon vorgewählt;
+   Sie legen fest, welche Empfängeradressen heimvio übernimmt, und klicken
+   **„Verbindung testen"**. Das Ergebnis nennt, wie viele Ordner heimvio durchsucht und ob
+   der Server **Markierungen** erlaubt (siehe unten). Danach speichern Sie.
+
+**Empfänger.** Unter dem Konto steht eine Tabelle mit Adressen: heimvio übernimmt nur
+Mails, die an eine davon gingen. Vorbelegt ist die Absenderadresse aus dem Postausgang.
+**Ist die Tabelle leer, übernimmt heimvio alle Mails des Postfachs** — richtig, wenn Sie
+eine eigene Adresse nur für Rechnungen haben, etwa rechnungen@ihre-domain.de.
+
+**Mailkonten verwalten.** Sie finden die Konten in den **Benutzereinstellungen** unter
+**„Mailkonten"**: eigene Konten und die der Firma, jeweils mit Herkunft. Ändert sich Ihr
+Passwort beim Anbieter, ändern Sie es einmal am Konto — Ausgang und Eingang folgen. Das
+gespeicherte Passwort wird nie wieder angezeigt; das Auge zeigt nur, was Sie gerade tippen.
+Ein Konto, das ein Postausgang oder Postfach benutzt, lässt sich erst löschen, wenn dort
+ein anderes gewählt ist. Wer beim Update schon Zugänge hatte, findet sie dort als Konten
+wieder; gleicher Benutzer beim gleichen Anbieter wurde zu einem Konto zusammengelegt —
+ein Blick hinein und ein **„Prüfen"** lohnt sich einmal.
 
 Jede Liegenschaft hat ihr eigenes Postfach. Den Posteingang finden Sie außerdem als letzten,
 freiwilligen Schritt der Karte **Liegenschaft & Wohnung**.
