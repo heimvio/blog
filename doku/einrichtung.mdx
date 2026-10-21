@@ -3,7 +3,7 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-10-17
+updated: 2026-10-21
 ---
 
 ## Wer richtet ein?
@@ -59,31 +59,42 @@ Fluss. Halten Sie bereit:
 - In einer WEG zusätzlich die **Teilungserklärung**: Sie brauchen je Wohnung den
   Eigentümer und den Miteigentumsanteil.
 
-## Ein Einstieg, sechs Bereiche
+## Ein Einstieg, eine Karte je Bereich
 
-Der Assistent ist keine einzelne lange Kette, sondern eine Übersicht mit Bereichen, die
-Sie einzeln durchlaufen können. Oben stellen Sie das **Abrechnungsjahr** ein — es gilt ab
-dem 1. Januar für alles, was Sie danach anlegen. Bei einer Bestandsliegenschaft wählen Sie
-hier das Jahr, ab dem Sie abrechnen wollen; sonst bleibt eine Abrechnung für dieses Jahr
-leer.
+Der Assistent ist keine einzelne lange Kette, sondern eine Übersicht mit Karten, die Sie
+einzeln durchlaufen können. Sie steht auf der [Startseite](/doku/ueberblick#die-startseite)
+im Tab **Einrichtung** — solange dort noch etwas offen ist, als erster Tab. Oben stellen Sie
+das **Abrechnungsjahr** ein — es gilt ab dem 1. Januar für alles, was Sie danach anlegen.
+Bei einer Bestandsliegenschaft wählen Sie hier das Jahr, ab dem Sie abrechnen wollen; sonst
+bleibt eine Abrechnung für dieses Jahr leer.
 
-| Bereich | Worum es geht |
+| Karte | Worum es geht |
 | --- | --- |
+| **Übernahme per Datei** | Stammdaten aus einer Datei übernehmen statt abtippen — etwa dem Export Ihres bisherigen Messdienstes oder einer Tabelle; Sie sehen vorher, was angelegt würde |
 | **Liegenschaft & Wohnung** | Eigentumsform, Adresse, Wohnungen, Eigentümer bzw. Mieter, zuletzt auf Wunsch das Postfach für Rechnungen |
 | **Belege** | Wasser-, Müll- und Grundsteuerbescheid hochladen |
-| **Heizung** | Wärmeerzeuger, Tarif, Wärmemengenzähler |
-| **Wasser** | Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
+| **Heizung** | wer abrechnet; Wärmeerzeuger, Tarif, Wärmemengenzähler |
+| **Wasser** | wer abrechnet; Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
 | **Allgemeinstrom** | Treppenhaus, Außenbeleuchtung, Pumpen |
-| **wMBus** | Funk-Empfänger und die Verteilung der Zähler |
+| **wM-Bus** | Funk-Empfänger und die Verteilung der Zähler |
+| **Mitglieder einladen** | Ableser einladen, den Beirat bestimmen |
+| **Mail einrichten** | erst der Postausgang für Ihre Schreiben, dann der Posteingang für Rechnungen |
+| **Bankverbindung** | das Konto der Gemeinschaft bzw. das Mietkonto, dessen Umsätze heimvio für den Zahlungsabgleich abruft |
 
-Ein Punkt neben jedem Bereich zeigt, ob er offen, angefangen oder fertig ist. Gehen Sie
-einen Bereich mit „Weiter" zu Ende, führt der Assistent Sie von selbst in den nächsten —
-von der Liegenschaft über die Belege zur Heizung und weiter zum Wasser. Sie können aber
-jederzeit zurück zur Übersicht und einen anderen Bereich vorziehen.
+Ein Punkt neben jeder Karte zeigt, ob sie offen, angefangen oder fertig ist; Karten, die
+nicht jede Liegenschaft braucht, tragen den Zusatz „optional". Gehen Sie einen Bereich mit
+„Weiter" zu Ende, führt der Assistent Sie von selbst in den nächsten — von der Liegenschaft
+über die Belege zur Heizung und weiter zum Wasser. Sie können aber jederzeit zurück zur
+Übersicht und eine andere Karte vorziehen.
 
 Die Reihenfolge ist nicht willkürlich: Der Tarif hängt am Wärmeerzeuger, die Messstellen
 hängen an den Wohnungen. Wasser vor Wohnungen einzurichten geht, bringt Sie aber nicht
 weiter.
+
+Verwalten Sie allein, quittieren Sie die Karte **Mitglieder einladen** mit „Nicht nötig —
+ich verwalte allein". Weitere Verwalter kommen nicht über eine Einladung, sondern über die
+Zuteilung in Ihrer Firma ([Hausverwaltung als Firma](/doku/hausverwaltung)); den Beirat
+setzen Sie per Häkchen bei einem Eigentümer, den Sie vorher eingeladen haben.
 
 ## Die erste Entscheidung: Mietobjekt oder WEG
 
@@ -267,18 +278,61 @@ gibt es den [Assistenten in der Eigentümer-Liste](/doku/eigentuemer).
 Der Schritt ist überspringbar. Ohne Eigentümer gibt es aber keine Einladung zur Versammlung
 und keine Abrechnung an die richtige Person — irgendwann müssen die Namen also hinein.
 
-## Postfach: der letzte Schritt
+## Mail einrichten
 
-Ganz am Ende der Liegenschaft fragt der Assistent nach einem **Postfach** für Rechnungen —
-freiwillig, Sie können ihn überspringen und später wiederkommen. Sie wählen den Anbieter,
-tragen Adresse und Zugang ein und richten das Postfach ein. Danach holt heimvio die Mails
-dieser Adresse selbst ab, jeder Anhang landet als Dokument im **Eingang**; beim ersten Abruf
-die Mails der letzten 14 Tage. Am besten nehmen Sie eine eigene Adresse nur für Rechnungen,
-etwa rechnungen@ihre-domain.de. Jede Liegenschaft hat ihr eigenes Postfach.
+Die Karte **Mail einrichten** hat zwei Stationen, in dieser Reihenfolge. Beide sind
+freiwillig; ohne sie verschickt heimvio über den eigenen Server, und Rechnungen laden Sie
+selbst hoch.
 
-Der Ausgang — Schreiben an Eigentümer und Mieter von Ihrer eigenen Adresse — gehört nicht
-hierher, sondern zur Firma ([Schreiben zustellen](/doku/schreiben-zustellen)). Wie es mit
-den Dokumenten im Eingang weitergeht: [Eingang und Ablage](/doku/eingang-und-ablage).
+1. **Postausgang.** Darüber verschickt heimvio Einladungen, Abrechnungen und Schreiben in
+   Ihrem Namen. Der Ausgang gehört zur Verwaltung, also zu Ihrer Firma — auch wenn Sie
+   selbst verwalten. Die Karte nennt die Firma und führt mit **„Ausgang der Firma"** dorthin:
+   Server, Port, Benutzer, Passwort und Absenderadresse eintragen, dann **„Test-Mail
+   senden"** — die Mail geht an Ihre eigene Adresse. Ohne eigenen Ausgang verschickt heimvio
+   selbst, mit dem Namen der Verwaltung als Absender
+   ([Schreiben zustellen](/doku/schreiben-zustellen)).
+2. **Posteingang.** Rechnungen und Bescheide, die an dieses Postfach gehen, landen als
+   Dokument im **Eingang** der Liegenschaft. Sie wählen den Anbieter, tragen Server, Port,
+   Benutzer und Passwort ein und klicken **„Verbindung testen"**. Das Ergebnis nennt, wie
+   viele Ordner heimvio durchsucht und ob der Server **Markierungen** erlaubt (siehe unten).
+   Bei Gmail, iCloud und Yahoo brauchen Sie dafür ein App-Passwort; der Link zum Anbieter
+   steht daneben.
+3. **Empfänger.** Unter dem Zugang steht eine Tabelle mit Adressen: heimvio übernimmt nur
+   Mails, die an eine davon gingen. Vorbelegt ist die Absenderadresse aus dem Postausgang.
+   **Ist die Tabelle leer, übernimmt heimvio alle Mails des Postfachs** — richtig, wenn Sie
+   eine eigene Adresse nur für Rechnungen haben, etwa rechnungen@ihre-domain.de.
+
+Jede Liegenschaft hat ihr eigenes Postfach. Den Posteingang finden Sie außerdem als letzten,
+freiwilligen Schritt der Karte **Liegenschaft & Wohnung**.
+
+### Was heimvio im Postfach tut
+
+- **Es liest alle Ordner** außer Papierkorb, Spam, Entwürfen und Gesendeten. Sie müssen
+  nichts in einen bestimmten Ordner sortieren.
+- **Der erste Abruf beginnt mit dem laufenden Abrechnungsjahr** der Liegenschaft. Ein Datum
+  stellen Sie nicht ein. Bei einem vollen Postfach dauert der erste Abruf deshalb einige
+  Durchgänge; der Zustand zeigt, wie weit er ist.
+- **Es verschiebt und löscht nichts.** Ihre Ordner bleiben, wie sie sind. Stattdessen
+  markiert heimvio jede übernommene Mail mit einem Schlagwort, das ihren Stand in heimvio
+  spiegelt:
+
+| Schlagwort | bedeutet |
+| --- | --- |
+| **heimvio-eingang** | übernommen, das Dokument liegt im Eingang |
+| **heimvio-zu-bestaetigen** | heimvio hat daraus Belege vorgeschlagen, sie warten auf Ihre Bestätigung |
+| **heimvio-akzeptiert** | Sie haben bestätigt |
+
+Sehen können Sie die Schlagwörter in Mailprogrammen, die sie anzeigen — in Thunderbird etwa
+als Schlagwort, wenn Sie dort einmal Schlagwörter mit genau diesen Namen anlegen. Gmail im
+Browser und Apple Mail zeigen sie nicht an; markiert sind die Mails trotzdem. Maßgeblich ist
+immer der Stand im Eingang von heimvio: Ändern oder entfernen Sie ein Schlagwort von Hand,
+ändert das dort nichts. Erlaubt Ihr Server keine Markierungen, sagt es der Verbindungstest;
+heimvio erkennt bereits übernommene Mails dann trotzdem und übernimmt keine doppelt. Das
+gilt auch, wenn Sie eine Mail in einen anderen Ordner verschieben.
+
+Links in Mails öffnet heimvio nie. Mails unbekannter Absender gehen erst an die KI, wenn Sie
+im Eingang „Auswerten" wählen. Wie es mit den Dokumenten weitergeht:
+[Eingang und Ablage](/doku/eingang-und-ablage).
 
 ## Belege: ein Feld, eine Liste, eine Prüfung
 
@@ -310,6 +364,22 @@ die Einrichtung.
 
 Sie können den Bereich auch ganz auslassen und die Belege später ergänzen.
 
+## Heizung und Wasser: wer rechnet ab?
+
+Die Karten **Heizung** und **Wasser** beginnen mit einer Frage: **„Wer rechnet ab — heimvio
+oder ein Messdienst?"**
+
+| Wahl | was folgt |
+| --- | --- |
+| **heimvio** | die gewohnten Schritte: Wärmeerzeuger, Tarif und Zähler bzw. Wasserpreise und Zähler |
+| **Messdienst** | statt der Zählerschritte der Abschnitt **Verbrauchserfassung**: Messdienst und Kundennummer eintragen, dazu die Nummern, unter denen er Ihre Wohnungen führt |
+
+Rechnet ein Messdienst ab, ist die Karte fertig, sobald der Messdienst und die Nummern der
+Wohnungen stehen — Zähler brauchen Sie dann für Heizung und Wasser nicht. Die Wahl gilt für
+ganze Abrechnungsjahre; umstellen können Sie später jeweils zum Beginn eines neuen. Was ein
+Messdienst liefert und was jedes Jahr zu tun ist:
+[Mit Ihrem Messdienst abrechnen](/doku/messdienst).
+
 ## Wasser: ein Bescheid, zwei Preise
 
 Ihr Wasserbescheid der Stadtwerke nennt zwei Preise nebeneinander — den
@@ -333,8 +403,8 @@ und **Warmwasser**.
 
 Ein Versorger nennt seine Preise mal mit, mal ohne Umsatzsteuer. Damit die Abrechnung
 richtig ausweist, wie viel Steuer in Heizung, Strom und Wasser steckt, trägt jeder Tarif
-zwei Angaben. Sie stehen auf der Seite **Tarife & Konditionen** (Kachel auf der Startseite
-der Verwaltung) am Tarif:
+zwei Angaben. Sie stehen auf der Seite **Tarife & Konditionen** (Startseite, Tab
+**Mehr**) am Tarif:
 
 | Feld | bedeutet |
 | --- | --- |
@@ -358,17 +428,18 @@ Gas und Wärme 19 %. Weicht Ihr Versorger ab, ändern Sie Preisbasis und Satz da
 Der Assistent speichert **nach jedem Schritt**. Es gibt kein „Fertigstellen", das alles auf
 einmal wegschreibt, und keinen Zustand, den Sie verlieren können. Schließen Sie den Browser
 mitten in Schritt 4, sind die Schritte 1 bis 3 gespeichert, und Sie steigen später dort
-wieder ein. Das **✕** oben rechts schließt den Assistenten und führt zurück zu den Kacheln
-der Verwaltung — ohne Rückfrage, denn es geht nichts verloren. **„Abbrechen"** unten im Fuß
+wieder ein. Das **✕** oben rechts schließt den Assistenten und führt zurück zur
+Startseite — ohne Rückfrage, denn es geht nichts verloren. **„Abbrechen"** unten im Fuß
 tut dasselbe in Richtung Übersicht: Was Sie bis dahin mit „Weiter" bestätigt haben,
 bleibt.
 
 ## Danach
 
-Steht die Liegenschaft, landen Sie auf dem Dashboard. Das ist von da an Ihr Ausgangspunkt:
-Es zeigt, was ansteht, und führt zu Belegen, Zählerständen und der Abrechnung. Die
-Liegenschaft mit ihren Wohnungen finden Sie dort jederzeit unter **Liegenschaft** wieder —
-das ist derselbe Assistent im Pflegemodus: Stammdaten und Wohnungen der gerade gewählten
+Steht die Liegenschaft, ist die [Startseite](/doku/ueberblick#die-startseite) Ihr
+Ausgangspunkt: Oben steht, was ansteht, darunter führen die Tabs zu Eingang, Geld, Anliegen,
+Jahreswechsel und Versammlung. Ist die Einrichtung fertig, rückt ihr Tab nach hinten. Die
+Liegenschaft mit ihren Wohnungen pflegen Sie weiter über die Karte **Liegenschaft &
+Wohnung** im Tab Einrichtung — das ist derselbe Assistent im Pflegemodus: Stammdaten und Wohnungen der gerade gewählten
 Liegenschaft, ohne Vorlagen und Etagen-Matrix, die nur zur Ersteinrichtung gehören.
 
 In der WEG ist der nächste sinnvolle Schritt, die
