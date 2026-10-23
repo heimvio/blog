@@ -41,6 +41,18 @@ jobs:
       - name: Astro-Site bauen
         run: npm run build
 
+      # Gegenrichtung zu lint:doc-links im heimvio-Repo: die Info-Knoepfe der SPA
+      # (DOC_TOPICS auf heimvio/heimvio main) muessen nach diesem Deploy noch ein
+      # Ziel haben. Liest dist/doku/anchors.json aus dem Build oben.
+      # GITEAREADTOKEN ist ein Secret der Organisation heimvio (das heimvio-Repo
+      # benutzt es, hat es aber nicht als Repo-Secret) — Lesezugriff auf
+      # heimvio/heimvio genuegt.
+      - name: Doku-Links der heimvio-SPA haben ein Ziel
+        env:
+          CI: 'true'
+          HEIMVIO_REPO_TOKEN: ${{ secrets.GITEAREADTOKEN }}
+        run: node scripts/check-heimvio-doc-topics.mjs
+
       - name: Auf heimvio.de ausliefern
         env:
           HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
@@ -51,4 +63,5 @@ jobs:
           sleep 3
           curl -fsS https://heimvio.de/blog/ >/dev/null && echo "ok /blog/"
           curl -fsS https://heimvio.de/doku/ >/dev/null && echo "ok /doku/"
+          curl -fsS https://heimvio.de/doku/anchors.json >/dev/null && echo "ok /doku/anchors.json"
           curl -fsS https://heimvio.de/api/comments/smoke-test >/dev/null && echo "ok /api/comments"
