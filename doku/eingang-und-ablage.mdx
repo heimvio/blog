@@ -3,7 +3,7 @@ title: Eingang und Ablage — ein Weg für jedes Dokument
 description: Ob Rechnung, Vertrag oder Schreiben vom Amt — jedes Dokument wird gelesen, eingeordnet, von Ihnen bestätigt und abgelegt. Was die KI dabei tut und was nicht.
 section: Konzepte
 order: 58
-updated: 2026-10-21
+updated: 2026-10-22
 ---
 
 Eine Rechnung der Stadtwerke, der neue Hausmeistervertrag, ein Bescheid vom Finanzamt, das
@@ -12,15 +12,18 @@ gelesen, eingeordnet, von Ihnen bestätigt und abgelegt. Auf der Startseite der 
 hat er einen eigenen Tab, **Eingang**. Was dort auf Sie wartet, zeigt die Zahl an der Lasche,
 und über alle Organisationen hinweg der Block **Eingang** im Überblick oben: Dokumente, die
 auf Ihre Bestätigung warten oder nicht gelesen werden konnten, und ein gestörtes Postfach.
+Gezählt wird, was fällig ist — ein Vorschlag mit einer Wiedervorlage in der Zukunft zählt erst
+ab diesem Tag.
 
-## Zwei Reiter und eine eigene Lasche
+## Drei Reiter und eine eigene Lasche
 
-Der Tab Eingang hat zwei Reiter, die Ablage ist seit dem 21.10.2026 eine eigene Lasche der
+Der Tab Eingang hat drei Reiter, die Ablage ist seit dem 21.10.2026 eine eigene Lasche der
 Startseite (direkt hinter Eingang):
 
 | Reiter | was dort steht |
 | --- | --- |
 | **Eingang** | was zu tun ist: neue Dokumente und offene Vorschläge, dazu Hochladen, Kamera und der Stand des Postfachs |
+| **Beschlüsse** | was aus Ihren Versammlungen und Umläufen folgt: je Niederschrift eine Zeile mit ihren Vorschlägen, dazu die laufenden Umläufe (unten) |
 | **Belege** | die Kostenzeilen, die aus bestätigten Rechnungen entstanden sind — die Grundlage der Abrechnung |
 | **Ablage** (eigene Lasche) | alle Dokumente in ihren Ordnern, mit Sichtbarkeit und Suche; neue Ordner legen Sie gleich dort an |
 
@@ -74,12 +77,53 @@ des Einrichtungsassistenten — damit nichts unbemerkt fehlt.
 | --- | --- |
 | **Rechnung** | Kostenzeilen, bei Versorgern dazu Preise und Zählerstände — alles als Vorschlag |
 | **Kontoauszug** | die Zahlungen; heimvio ordnet sie nach festen Regeln zu, ohne dass Sie jede einzeln bestätigen ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)) |
-| **Niederschrift** | die Beschlüsse einer alten Versammlung, zum Prüfen und Übernehmen in die Beschluss-Sammlung |
+| **Niederschrift** | die Beschlüsse einer alten Versammlung, zum Prüfen und Übernehmen in die Beschluss-Sammlung. Die Niederschrift einer Versammlung, die Sie in heimvio geführt haben, wird nicht noch einmal gelesen — sie kommt von selbst in den Reiter **Beschlüsse** |
 | **Vertrag**, **Angebot**, **Auslage** | eingeordnet und abgelegt |
 | **Schreiben** | Post von Ämtern, Banken oder Eigentümern — eingeordnet und abgelegt |
 
 Erkennt heimvio die Art nicht, steht das Dokument als „unbekannt" im Eingang und wartet auf
 Ihre Wahl.
+
+## Beschlüsse: was aus einer Versammlung folgt
+
+Mit der Bestätigung der Unterschriften unter einer Niederschrift
+([Eigentümerversammlung](/doku/eigentuemerversammlung), Station 8) erscheint die Versammlung
+im Reiter **Beschlüsse** als eine Zeile — „Niederschrift · Ordentliche Eigentümerversammlung
+2026", beim Umlauf „Umlaufergebnis · …". Aufgeklappt steht links das Dokument, rechts je
+Beschluss, der etwas auslöst, ein **Vorschlag**: oben der Beschluss mit Nummer, Gegenstand und
+Wortlaut, darunter, was daraus folgt. Prüfen heißt: Wortlaut und Zahlen nebeneinander lesen,
+dann bestätigen. Vor jedem Bestätigen sagt eine Rückfrage, was danach gilt.
+
+| Vorschlag | entsteht, wenn | Bestätigen heißt |
+| --- | --- | --- |
+| **Beschluss eintragen** | ein Wirtschaftsplan oder eine Sonderumlage beschlossen ist | Rücklage und Fälligkeitstag gelten, der Plan ist eingefroren — bzw. die Sonderumlage steht mit ihrem Soll je Wohnung ([Der Wirtschaftsplan](/doku/wirtschaftsplan)) |
+| **Verwaltervertrag bestätigen und aktivieren** | die Versammlung die Hausverwaltung mit ihrem vorgeschlagenen Vertrag bestellt hat | der Vertrag läuft, die Grundvergütung ab Vertragsbeginn ([Verwaltervertrag](/doku/verwaltervertrag)) |
+| **Sondervergütung auslösen** | am Beschluss eine „Sondervergütung laut Vertrag" stand | die Sonderleistung kommt auf die nächste Rechnung der Hausverwaltung; den Leistungstag (vorgeschlagen: der Tag des Beschlusses) können Sie ändern |
+| **Auftrag erteilen** | der Beschluss ein Angebot vergibt oder einen Kostenrahmen nennt und der Punkt aus einem gemeldeten Mangel kommt | der Handwerker ist beauftragt, mit Lieferant und Betrag aus dem Angebot; das Auftragsdatum (vorgeschlagen: heute) können Sie ändern. Abnahme, Rechnung und Zahlung laufen am Vorgang weiter ([Handwerker beauftragen](/doku/beauftragen)) |
+| **Umlauf vorbereiten** | die Versammlung einen Punkt in den Umlauf verwiesen, vertagt oder nicht abgestimmt hat | wird nicht hier bestätigt: **„TOP öffnen"** führt zur Versammlung, dort starten und versenden Sie den Umlauf — damit ist der Vorschlag erledigt |
+| **Ergebnis feststellen und mitteilen** | die Frist eines Umlaufs abgelaufen ist oder alle Wohnungen abgestimmt haben | der Umlaufbeschluss entsteht: Er kommt in die Beschluss-Sammlung, alle Eigentümer bekommen das Ergebnis, das Ergebnis liegt als PDF in der Ablage |
+
+Ein Vorschlag, der nicht passt, lässt sich verwerfen. Was schon auf anderem Weg erledigt ist —
+der Beirat hat den Vertrag unter **Org-Einstellungen → Verwaltung** angenommen, Sie haben den
+Auftrag am Vorgang erteilt oder den Beschluss in der Beschluss-Sammlung eingetragen —, gilt
+als bestätigt; es entsteht nichts doppelt.
+
+- **Offen oder alle.** Voreingestellt zeigt der Reiter **offen**: Eine Zeile verschwindet,
+  sobald kein Vorschlag mehr offen ist. Unter **alle** bleibt sie stehen, mit jedem Vorschlag
+  und wer ihn wann bestätigt hat. **Gelöscht wird nichts**; die Niederschrift liegt ohnehin im
+  Ordner „Beschlüsse & Protokolle".
+- **Fällig ab.** „Umlauf vorbereiten" trägt eine Wiedervorlage — den Tag, den Sie am Punkt in
+  der Versammlung gewählt haben, sonst vier Wochen nach der Versammlung. Bis dahin steht die
+  Zeile grau mit **„fällig ab …"** und zählt weder an der Lasche noch im Überblick. Mit
+  **„verschieben"** wählen Sie einen anderen Tag.
+- **Laufende Umläufe.** Über der Liste stehen die Umläufe, über die gerade abgestimmt wird,
+  etwa „läuft bis 14.11.2026 · 12 von 18 Wohnungen haben abgestimmt". Das ist nur Anzeige;
+  ein Klick öffnet den Umlauf.
+
+Den Reiter sieht die Verwaltung. Der Beirat sieht den Stand in der Beschluss-Sammlung, in der
+Spalte **„Folgen"** („2 von 3"). Ehrlich gesagt: Eine Sonderumlage wird mit dem Eintragen
+fällig, eingezogen ist sie damit noch nicht — den Lastschrifteinzug geben Sie wie jeden anderen
+unter [Lastschrift](/doku/lastschrift) frei.
 
 ## Ehrlich gesagt
 

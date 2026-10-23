@@ -3,7 +3,7 @@ title: Verwaltervertrag und Rechnung — Vergütung, Monatslauf, Storno
 description: Die Hausverwaltung schickt ein Angebot an eine neue Gemeinschaft oder schlägt einer verwalteten den Vertrag vor, die Gemeinschaft nimmt ihn an. Danach entsteht die Vergütung von selbst als Kosten der Gemeinschaft, und die Firma stellt ihre Rechnung aus heimvio heraus.
 section: Konzepte
 order: 79
-updated: 2026-10-21
+updated: 2026-10-22
 ---
 
 Was die Verwaltung bekommt, steht im **Verwaltervertrag**. In heimvio hängt er am Mandat der
@@ -22,8 +22,11 @@ ohne Vergütung, legen Sie keinen an — dann entstehen weder Kosten noch Rechnu
 | --- | --- | --- |
 | Angebot an eine neue Gemeinschaft schreiben und senden | ja, unter **Meine Firma → Angebote** (Mitarbeiter sehen die Liste) | — |
 | Vertrag vorschlagen | ja, unter **Meine Firma → Verträge** | nein |
-| Vertrag annehmen oder ablehnen | nein | ja, unter **Org-Einstellungen → Verwaltung** |
+| Vertrag zur Bestellung auf die Tagesordnung setzen | nein | der Verwalter, am Punkt „Bestellung / Verlängerung des Verwalters" |
+| Vertrag nach dem Beschluss bestätigen und aktivieren | — | der Verwalter, im **Eingang → Beschlüsse** |
+| Vertrag ohne Versammlung annehmen oder ablehnen | nein | ja, unter **Org-Einstellungen → Verwaltung** |
 | Sonderleistung erfassen | jeder zugeteilte Mitarbeiter | nein |
+| Sonderleistung über der Grenze des Vertrags freigeben | nein | der Beirat |
 | Rechnung ausstellen, zustellen, stornieren | ja, unter **Meine Firma → Rechnungen** | nein |
 | Rechnungen der Verwaltung ansehen | ja | ja, lesend |
 
@@ -194,12 +197,28 @@ geschlossen; die Stationen 2 und 3 entfallen dann.
    gültig ab, auf Wunsch gültig bis, Kündigungsfrist in Monaten und die Sondervergütungen,
    je mit Bezeichnung und Nettobetrag. Der Vorschlag geht an die Gemeinschaft; erst mit der
    Annahme entstehen Vergütung und Rechnungen.
-3. **Annehmen.** In der Gemeinschaft erscheint unter **Org-Einstellungen → Verwaltung** der
-   **„Vertragsvorschlag der Hausverwaltung"** mit Vergütung, Laufzeit, Kündigungsfrist und
-   Sondervergütungen. **„Vertrag annehmen …"** fragt auf Wunsch nach dem Beschluss aus der
-   Beschluss-Sammlung; **„Ablehnen"** schickt ihn zurück. Annehmen können Verwalter und
-   Beirat — der Beirat ist der übliche Weg, denn er vertritt die Gemeinschaft gegenüber der
-   Verwaltung. Danach steht dort **„Verwaltervertrag · angenommen am …"**.
+3. **Annehmen — in der Regel per Beschluss.** In der Gemeinschaft erscheint unter
+   **Org-Einstellungen → Verwaltung** der **„Vertragsvorschlag der Hausverwaltung"** mit
+   Vergütung, Laufzeit, Kündigungsfrist und Sondervergütungen, darunter der Hinweis „Zur
+   Annahme per Beschluss: TOP „Bestellung" in der nächsten Versammlung." Der übliche Weg:
+   1. Am Standard-Punkt **„Bestellung / Verlängerung des Verwalters"** wählt der Verwalter im
+      Block „Daten" unter **„Vorgeschlagener Verwaltervertrag"** den Vorschlag. Firma, Vergütung, Laufzeit und
+      Kündigungsfrist stehen damit in Einladung, Tischvorlage und am Beamer, bevor abgestimmt
+      wird ([Eigentümerversammlung](/doku/eigentuemerversammlung), Station 2).
+   2. Die Versammlung beschließt. Mit der Bestätigung der Unterschriften unter der
+      Niederschrift steht im Eingang, Reiter **Beschlüsse**, der Vorschlag **„Verwaltervertrag
+      bestätigen und aktivieren"** mit dem Wortlaut des Beschlusses und den Vertragsdaten.
+   3. **„Bestätigen und aktivieren"**: Die Verwaltung bestätigt damit, dass der Beschluss genau
+      dieses Angebot trifft. Ab dem Vertragsbeginn läuft die Grundvergütung.
+
+   Ohne Versammlung geht es weiter wie bisher: **„Vertrag annehmen …"** fragt auf Wunsch nach
+   dem Beschluss aus der Beschluss-Sammlung; **„Ablehnen"** schickt ihn zurück. Diesen Knopf
+   haben Verwalter und Beirat — der Beirat vertritt die Gemeinschaft gegenüber der Verwaltung.
+   Nimmt er an, nachdem die Versammlung beschlossen hat, ist der Vorschlag im Eingang damit
+   erledigt. Danach steht dort **„Verwaltervertrag · angenommen am …"**, bei einem Beschluss
+   mit dem Zusatz **„mit Beschluss"**. Zur Rechtslage nur so viel: Bestellt wird der
+   Verwalter von der Versammlung (§ 26 WEG); weicht die vorgelegte Fassung von dem ab, was
+   beschlossen wurde, braucht es einen neuen Beschluss.
 4. **Jeden Monat: Vergütung als Kosten.** Am Monatsersten rechnet heimvio für jeden laufenden
    Vertrag die Vergütung: Einheiten der Gemeinschaft an diesem Tag mal Vergütung, bei einer
    Pauschale der vereinbarte Anteil, dazu die Sonderleistungen des Vormonats. Zahlt die
@@ -209,10 +228,10 @@ geschlossen; die Stationen 2 und 3 entfallen dann.
    Verwaltervertrag"**. Ändern lässt sie sich dort nicht — die Quelle ist der Vertrag, nicht
    ein Beleg. Im [Wirtschaftsplan](/doku/wirtschaftsplan) steht die Jahressumme als
    Position **„Verwaltervergütung laut Vertrag"**.
-5. **Sonderleistung erfassen.** Hat die Verwaltung etwas geleistet, das der Vertrag eigens
-   vergütet, wählt ein zugeteilter Mitarbeiter unter **Org-Einstellungen → Verwaltung**
-   **„Sonderleistung erfassen"**: Leistung aus dem Vertrag, Datum, auf Wunsch die Versammlung,
-   zu der sie gehört. Sie erscheint auf der nächsten Monatsrechnung.
+5. **Sonderleistungen.** Hat die Verwaltung etwas geleistet, das der Vertrag eigens
+   vergütet, kommt es auf zwei Wegen auf die Rechnung (siehe unten „Sonderleistungen nach
+   Ziffer 8.2"): **am Beschluss**, wenn die Versammlung über die Sache entschieden hat, oder
+   **von Hand** unter **Org-Einstellungen → Verwaltung** mit **„Sonderleistung erfassen"**.
 6. **Rechnung stellen und zustellen.** Unter **Meine Firma → Rechnungen** liegt je Monat und
    WEG ein **Entwurf**: die Grundvergütung je Liegenschaft und jede Sonderleistung als eigene
    Position. Bis zum Ausstellen ergänzen Sie Positionen — eine Leistung oder eine **Auslage im
@@ -228,6 +247,26 @@ geschlossen; die Stationen 2 und 3 entfallen dann.
 Wer nicht jeden Monat von Hand ausstellen will, setzt am Vertrag **„Rechnungen automatisch
 stellen"**. Voreingestellt ist es aus: Prüfen Sie die erste Rechnung selbst, dann schalten
 Sie es ein.
+
+## Sonderleistungen nach Ziffer 8.2
+
+Der Vertrag regelt in Ziffer 8.2, wann die Verwaltung eine besondere Leistung selbst auslösen
+darf und wann sie eine Freigabe braucht. heimvio hält sich daran:
+
+| Fall | wer entscheidet | wie es in heimvio geht |
+| --- | --- | --- |
+| **bis zur Grenze des Vertrags** — je Vorgang bis zum vereinbarten Betrag, und solange die selbst ausgelösten Leistungen im Jahr unter dem vereinbarten Anteil der Festvergütung bleiben | die Verwaltung selbst | **„Sonderleistung erfassen"**: aus dem Vertrag oder frei mit Anlass und Betrag, Datum, auf Wunsch der Bezug zu einer Versammlung — steht auf der nächsten Rechnung |
+| **mit Beschluss** — die Versammlung hat über die Sache entschieden, und am Punkt stand „Sondervergütung laut Vertrag" | die Versammlung | nach der unterschriebenen Niederschrift der Vorschlag **„Sondervergütung auslösen"** im Eingang, Reiter Beschlüsse; ein Beschluss gilt immer als Freigabe |
+| **über der Grenze, ohne Beschluss** | der Beirat (ohne Beirat: die Versammlung) | vorher ein Angebot mit Festpreis; erfasst wird die Leistung wie oben, sie **wartet auf Freigabe** und steht erst nach **„Freigeben"** durch den Beirat auf der Rechnung |
+| **Gefahr im Verzug** | die Verwaltung, mit Begründung | Häkchen **„Gefahr im Verzug (ohne vorherige Freigabe)"** und eine Begründung |
+
+Ohne Freigabe gibt es keinen Vergütungsanspruch — deshalb kommt eine wartende Leistung auch
+nicht auf die Rechnung. Unter **Org-Einstellungen → Verwaltung** steht im Abschnitt
+**„Sonderleistungen"** jede Leistung mit ihrer **Herkunft**: „vom Verwalter", „per Beschluss
+Nr. 12", „freigegeben vom Beirat am …", „Gefahr im Verzug: …" oder „wartet auf Freigabe durch
+den Beirat". Verwalter und Beirat sehen die Liste; wartet etwas auf ihn, erscheint es beim
+Beirat zusätzlich im Überblick der Startseite. Verträge ohne vereinbarte Grenze kennen keine
+Freigabe — dort löst die Verwaltung wie bisher selbst aus.
 
 ## Was auf der Rechnung steht
 
