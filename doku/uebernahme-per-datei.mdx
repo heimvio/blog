@@ -1,0 +1,113 @@
+---
+title: Übernahme per Datei
+description: Wohnungen, Nutzer und Eigentümer aus den Dateien Ihres bisherigen Messdienstes oder Ihrer Verwaltungssoftware übernehmen — mit Vorschau, bevor etwas gespeichert wird.
+section: Erste Schritte
+order: 35
+updated: 2026-10-23
+---
+
+Wer von einem anderen Abrechner oder einer anderen Verwaltungssoftware kommt, hat die
+Stammdaten schon — nur eben dort. Die Karte **Übernahme per Datei** im Tab **Einrichtung**
+liest diese Dateien und legt daraus Wohnungen und Nutzer an, statt dass Sie alles abtippen.
+Die Daten landen immer
+in der **gerade gewählten Liegenschaft**; anlegen müssen Sie die Liegenschaft also vorher,
+mindestens mit Namen und Eigentumsform ([Einrichtung](/doku/einrichtung#die-erste-entscheidung-mietobjekt-oder-weg)).
+
+## Welche Dateien heimvio liest
+
+| Datei | woher | was darin steht |
+| --- | --- | --- |
+| **bved-Dateien** (Endung `.DAT`, Name beginnt mit `DTM` bzw. `DTK`) | der Datenaustausch Ihres bisherigen Messdienstes nach dem Branchenstandard | Liegenschaft, Wohnungen mit Fläche, Nutzer mit Zeitraum, dazu die Kostenpositionen der letzten Abrechnung |
+| **CSV-Tabellen** (`.csv`) | ein Export aus Ihrer Verwaltungssoftware oder eine eigene Tabelle | Wohnungen, Mieter, Eigentümer — je nach Spalten |
+| **Zip-Archiv** (`.zip`) | beides zusammen gepackt | heimvio packt es aus und behandelt jede Datei einzeln |
+
+Weitere bved-Dateien, die oft im selben Paket liegen, nimmt heimvio an, liest aus ihnen aber
+nichts. Sie können mehrere Dateien auf einmal hineinziehen — etwa die Wohnungsliste und die
+Mieterliste getrennt.
+
+## So läuft eine Übernahme
+
+1. **Dateien hineinziehen.** Ziehen Sie die Dateien in das Feld oder klicken Sie es an und
+   wählen Sie sie aus. heimvio prüft sie sofort und schreibt dabei noch nichts.
+2. **Bei einer CSV-Datei die Quelle prüfen.** Unter jeder Tabelle steht **Quelle** — für
+   Exporte aus immoware24 (Verwaltungseinheiten, Mieter, Eigentümer, Kontakte) erkennt
+   heimvio die Spalten von selbst, für jede andere Tabelle wählen Sie **Allgemein (Spalten
+   selbst zuordnen)**. Darunter steht je Spaltenkopf, in welches Feld er geht, etwa „Wohnung ·
+   Fläche (m²)" oder „Nutzer · Einzug". Hervorgehobene Spalten sind noch keinem Feld
+   zugeordnet; was Sie nicht brauchen, stellen Sie auf „nicht übernehmen".
+3. **Zuordnung merken lassen.** Mit **Zuordnung als Vorlage speichern** schlägt heimvio die
+   nächste Datei derselben Quelle gleich so vor — praktisch, wenn Sie mehrere Liegenschaften
+   nacheinander übernehmen.
+4. **Die Vorschau lesen.** heimvio zeigt die Liegenschaft mit Anschrift und
+   Abrechnungszeitraum, dann je eine Tabelle **Wohnungen**, **Nutzer** und — in einer WEG —
+   **Eigentümer**, jeweils mit der Datei, aus der die Zeile stammt. Darunter stehen die
+   **Befunde**: Fehler, Warnungen und Hinweise, jeweils mit Datei, Zeile und Spalte.
+5. **Übernehmen.** Erst dieser Knopf schreibt. Er bleibt gesperrt, solange ein **Fehler** in
+   der Vorschau steht; Warnungen sperren nicht. Danach nennt heimvio, wie viele Wohnungen,
+   Nutzer, Eigentümer und Kostenpositionen angelegt und wie viele Einträge aktualisiert
+   wurden.
+
+Ändern Sie nach der Vorschau noch eine Zuordnung oder legen Sie eine Datei dazu, rechnet
+heimvio die Vorschau neu, bevor Sie übernehmen können. Was Sie in der Vorschau sehen, ist also
+immer genau das, was gespeichert wird.
+
+## Was entsteht
+
+| Aus der Datei | wird in heimvio |
+| --- | --- |
+| Anschrift der Liegenschaft | die Anschrift Ihrer Liegenschaft — die Datei gewinnt, eine Abweichung steht als Warnung in der Vorschau |
+| Wohnung mit Bezeichnung und Fläche | eine Wohnung; ohne Fläche wird sie mit 0 m² angelegt (Warnung) |
+| Mieter mit Einzug und Auszug | ein Mietverhältnis mit Name, Zeitraum und Anschrift — ohne Zugang, niemand wird eingeladen |
+| Eigentümer in einer WEG | ein Eigentümer der Wohnung mit Name und Anschrift, ebenfalls ohne Zugang |
+| Eigentümer im Mietobjekt | Eigennutzung der Wohnung für diesen Zeitraum |
+| Kostenpositionen des Messdienstes | Kostenzeilen für den Abrechnungszeitraum der Datei |
+
+Die übernommenen Dateien selbst legt heimvio in der Ablage der Liegenschaft ab, sichtbar nur
+für die Verwaltung — es stehen Namen darin.
+
+Hat eine Wohnung einen Eigentümer, der heimvio selbst benutzt, übernimmt heimvio ihre Mieter
+nicht: Die pflegt dieser Eigentümer selbst. Die Vorschau sagt es als Warnung.
+
+## Ein zweites Mal übernehmen
+
+Sie können dieselben oder neuere Dateien jederzeit erneut einspielen. heimvio findet dabei
+wieder, was schon da ist, statt es doppelt anzulegen:
+
+- **Wohnungen** über die Wohnungsnummer des Abrechners, sonst über ihre Kennung aus der Datei,
+  sonst über eine von Hand angelegte Wohnung mit genau derselben Bezeichnung — aber nur, wenn
+  es genau eine solche gibt.
+- **Nutzer und Eigentümer** über ihre Kennung aus der Datei, sonst über Wohnung und
+  Einzugsdatum.
+- Weicht ein Wert ab, gewinnt die Datei; die Vorschau nennt vorher, was sich ändert.
+- **Kosten** desselben Abrechnungszeitraums ersetzen die zuvor übernommenen. Belege, die Sie
+  selbst erfasst haben, bleiben unberührt.
+
+Ist für den Zeitraum der Datei schon eine Abrechnung ausgestellt oder das Jahr abgeschlossen,
+übernimmt heimvio **nichts** und sagt es als Fehler. Eine ausgestellte Abrechnung wird nie
+nachträglich verändert.
+
+## Was nicht übernommen wird
+
+- **Zähler und Messstellen.** Die Datei kennt Wohnungen, aber nicht Ihre Geräte. Die Vorschau
+  nennt als Hinweis jede Wohnung, die noch keine Messstelle hat; eingerichtet werden sie über
+  Vorlagen und die Karten Heizung und Wasser
+  ([Messstelle und Zähler](/doku/messstelle-und-zaehler)).
+- **Leerstand.** Ein Zeitraum ohne Nutzer steht in der Vorschau, wird aber nicht gespeichert
+  — in heimvio ist eine Wohnung ohne Mietverhältnis ohnehin leer.
+- **Personenzahl.** Die Vorschau zeigt sie an, übernommen wird sie nicht. Tragen Sie sie an
+  der Wohnung bzw. am Mietverhältnis nach, wo heimvio sie braucht.
+- **Miete, Vorauszahlungen, Bankdaten und E-Mail-Adressen.** Diese Angaben kommen über die
+  Karten Liegenschaft & Wohnung, Benutzer einladen und Bankverbindung.
+
+## Grenzen
+
+- Übernehmen kann nur die **Verwaltung** der Liegenschaft.
+- Je Übernahme höchstens **30 MB** und **50 Dateien** (nach dem Auspacken). Ein Zip in einem
+  Zip wird nicht weiter ausgepackt.
+- Eine Übernahme füllt genau **eine** Liegenschaft — die gerade gewählte. Für die nächste
+  wechseln Sie die Liegenschaft und übernehmen erneut.
+- Rechnet Ihr bisheriger Messdienst weiter ab, gehört der jährliche Austausch mit ihm nicht
+  hierher, sondern in den Jahresabschluss: [Mit Ihrem Messdienst abrechnen](/doku/messdienst).
+
+Weiter geht es mit der [Einrichtung mit dem Assistenten](/doku/einrichtung) — dort ergänzen
+Sie, was die Datei nicht enthält.

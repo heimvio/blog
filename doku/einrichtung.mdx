@@ -70,32 +70,27 @@ bleibt eine Abrechnung für dieses Jahr leer.
 
 | Karte | Worum es geht |
 | --- | --- |
-| **Übernahme per Datei** | Stammdaten aus einer Datei übernehmen statt abtippen — etwa dem Export Ihres bisherigen Messdienstes oder einer Tabelle; Sie sehen vorher, was angelegt würde |
-| **Liegenschaft & Wohnung** | Eigentumsform, Adresse, Wohnungen, Eigentümer bzw. Mieter (im Mietshaus heißt das Feld **Vermieter (Name)**), zuletzt auf Wunsch das Postfach für Rechnungen |
-| **Belege** | Wasser-, Müll- und Grundsteuerbescheid hochladen |
-| **Heizung** | wer abrechnet; Wärmeerzeuger, Tarif, Wärmemengenzähler |
-| **Wasser** | wer abrechnet; Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
-| **Allgemeinstrom** | Treppenhaus, Außenbeleuchtung, Pumpen |
-| **wM-Bus** | Funk-Empfänger und die Verteilung der Zähler |
-| **Mitglieder einladen** | Ableser einladen, in der WEG den Beirat bestimmen; im Mietshaus gibt es nur Ableser (etwa für den Funkzähler-Empfänger) — Mieter laden Sie am Mietverhältnis ein ([Mieter einladen](/doku/mieter-einladen)) |
-| **Mail einrichten** | erst das Mailkonto, dann der Postausgang für Ihre Schreiben, dann der Posteingang für Rechnungen |
-| **Bankverbindung** | das Konto der Gemeinschaft bzw. das Mietkonto, dessen Umsätze heimvio für den Zahlungsabgleich abruft |
+| [**Übernahme per Datei**](/doku/uebernahme-per-datei) | Stammdaten aus einer Datei übernehmen statt abtippen — etwa dem Export Ihres bisherigen Messdienstes oder einer Tabelle; Sie sehen vorher, was angelegt würde |
+| [**Liegenschaft & Wohnung**](#die-erste-entscheidung-mietobjekt-oder-weg) | Eigentumsform, Adresse, Wohnungen, Eigentümer bzw. Mieter (im Mietshaus heißt das Feld **Vermieter (Name)**) |
+| [**Mail einrichten**](#mail-einrichten) | erst das Mailkonto mit seinen Aliasen, einmal eingetragen und geprüft; dann die Absenderadresse für Ihre Schreiben; dann die Adressen, deren Rechnungen im Eingang landen |
+| [**Belege**](#belege-ein-feld-eine-liste-eine-prüfung) | Wasser-, Müll- und Grundsteuerbescheid hochladen |
+| [**Heizung**](#heizung) | wer abrechnet; Wärmeerzeuger, Tarif, Wärmemengenzähler |
+| [**Wasser**](#wasser-ein-bescheid-zwei-preise) | wer abrechnet; Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
+| [**Allgemeinstrom**](#allgemeinstrom) | Treppenhaus, Außenbeleuchtung, Pumpen — geschätzt oder mit eigenem Zähler |
+| [**wM-Bus**](/doku/zaehlerstaende-automatisch) | Funk-Empfänger und die Verteilung der Zähler; misst heimvio selbst, auch der Feeder-Zugang für Zählerstände aus anderer Software |
+| [**Benutzer einladen**](#benutzer-einladen) | Eigentümer (im Mietshaus: Mieter) mit einem Klick einladen, den Beirat bestimmen, Mitarbeiter Ihrer Firma zuteilen und Ableser einladen |
+| [**Bankverbindung**](#bankverbindung) | das Konto der Gemeinschaft bzw. das Mietkonto, dessen Umsätze heimvio für den Zahlungsabgleich abruft |
 
 Ein Punkt neben jeder Karte zeigt, ob sie offen, angefangen oder fertig ist; Karten, die
 nicht jede Liegenschaft braucht, tragen den Zusatz „optional". Gehen Sie einen Bereich mit
 „Weiter" zu Ende, führt der Assistent Sie von selbst in den nächsten — von der Liegenschaft
-über die Belege zur Heizung und weiter zum Wasser. Sie können aber jederzeit zurück zur
+über Mail einrichten und die Belege zur Heizung und weiter zum Wasser. Sie können aber jederzeit zurück zur
 Übersicht und eine andere Karte vorziehen.
 
 Die Reihenfolge ist nicht willkürlich: Der Tarif hängt am Wärmeerzeuger, die Messstellen
 hängen an den Wohnungen. Die Messstellen entstehen schon mit den Wohnungen aus der Vorlage,
 auch ohne Tarif. Die Karten Heizung und Wasser verbinden sie danach mit ihren Preisen.
 Wasser vor Wohnungen einzurichten geht, bringt Sie aber nicht weiter.
-
-Verwalten Sie allein, quittieren Sie die Karte **Mitglieder einladen** mit „Nicht nötig —
-ich verwalte allein". Weitere Verwalter kommen nicht über eine Einladung, sondern über die
-Zuteilung in Ihrer Firma ([Hausverwaltung als Firma](/doku/hausverwaltung)); den Beirat
-setzen Sie per Häkchen bei einem Eigentümer, den Sie vorher eingeladen haben.
 
 **Im Mietshaus** ist die Startseite schlanker: Es gibt keine Lasche **Versammlung**, unter
 **Mehr** stehen Mietverhältnisse statt Eigentümer, und **Meine Firma** erscheint nur, wenn Sie
@@ -293,36 +288,57 @@ und keine Abrechnung an die richtige Person — irgendwann müssen die Namen als
 
 ## Mail einrichten
 
-Die Karte **Mail einrichten** hat drei Stationen, in dieser Reihenfolge. Alle sind
-freiwillig; ohne sie verschickt heimvio über den eigenen Server, und Rechnungen laden Sie
-selbst hoch. Der Zugang zu Ihrem Mailanbieter wird **einmal** als **Mailkonto** eingetragen;
-Postausgang und Posteingang wählen danach nur noch ein Konto, statt Server und Passwort
-zweimal zu verlangen.
+Nach der Liegenschaft führt der Assistent in die Karte **Mail einrichten** und danach weiter
+zu den Belegen. Sie hat drei Stationen, in dieser Reihenfolge. Alle sind freiwillig; ohne sie
+verschickt heimvio über den eigenen Server, und Rechnungen laden Sie selbst hoch. Der Zugang
+zu Ihrem Mailanbieter wird **einmal** als **Mailkonto** eingetragen und dort geprüft;
+Postausgang und Posteingang wählen danach nur noch unter den geprüften Adressen.
 
-1. **Mailkonto.** Wählen Sie Ihren Anbieter aus der Liste oder tragen Sie die Einstellungen
-   selbst ein: Benutzername, Passwort und die Server für Postausgang und/oder Posteingang.
-   Mit dem Auge-Knopf im Passwortfeld sehen Sie, was Sie gerade tippen. Dann **„Prüfen"**:
-   heimvio schickt eine Test-Mail an Ihre eigene Adresse und meldet sich am Posteingang an.
-   Bei Gmail, iCloud und Yahoo brauchen Sie dafür ein App-Passwort; der Link zum Anbieter
-   steht daneben. Gibt es schon ein Konto, schrumpft die Station auf einen Satz mit
-   **„Mailkonten verwalten"**.
+1. **Mailkonto.** Oben stehen die bekannten Anbieter als Kacheln — etwa IONOS, GMX, WEB.DE,
+   Telekom, STRATO, Posteo, mailbox.org, Gmail oder iCloud —, dazu **Eigene Einstellungen**.
+   Mit der Kachel sind die Server schon eingetragen. Darunter geben Sie **Benutzer** und
+   **Passwort** ein; mit dem Auge-Knopf im Passwortfeld sehen Sie, was Sie gerade tippen. Bei
+   Gmail, iCloud und Yahoo brauchen Sie ein App-Passwort, der Link **App-Passwort anlegen**
+   führt zum Anbieter. Outlook und Microsoft 365 lassen den Posteingang nur mit einer
+   Anmeldeart zu, die heimvio noch nicht unterstützt; die Kachel sagt es Ihnen.
+
+   Die **Servereinstellungen** sind eingeklappt — mit einer Anbieter-Kachel brauchen Sie sie
+   nicht. Aufgeklappt stehen Postausgang (SMTP) und Posteingang (IMAP) nebeneinander, jeder
+   mit eigenem Schalter, Server und Port.
+
+   Unter **Aliase** steht in der ersten Zeile die Anmeldeadresse. Darunter tragen Sie weitere
+   Adressen desselben Postfachs ein, etwa rechnungen@ihre-domain.de: Adresse in die letzte
+   Zeile, **➕** fügt sie hinzu, **✕** entfernt sie wieder.
+
+   Dann **„Prüfen"**. Das speichert das Konto, schickt eine Test-Mail an Ihre eigene
+   Adresse — je Alias eine weitere mit ihm als Absender — und meldet sich am Posteingang an.
+   Das Ergebnis nennt je Teil, ob es klappt, und beim Posteingang, wie viele Ordner heimvio
+   durchsucht und ob der Server **Markierungen** erlaubt (siehe unten). In der Kontenliste
+   steht neben jedem Teil sein Stand; was noch nicht geprüft ist, ist ein Knopf
+   **„ungeprüft · prüfen"**, und ein Klick darauf prüft Postausgang, Posteingang und alle
+   Aliase auf einmal. Gibt es schon ein geprüftes Konto, schrumpft die Station auf einen Satz
+   mit **„Mailkonten verwalten"**.
 2. **Postausgang.** Darüber verschickt heimvio Einladungen, Abrechnungen und Schreiben in
-   Ihrem Namen. Der Ausgang gehört zur Verwaltung, also zu Ihrer Firma — auch wenn Sie
-   selbst verwalten. Die Karte nennt die Firma und führt mit **„Ausgang der Firma"** dorthin.
-   Wählen Sie das Konto; die Absenderadresse ist aus dem Konto vorbelegt. **„Test-Mail
-   senden"** schickt die Mail an Ihre eigene Adresse. Ohne eigenen Ausgang verschickt heimvio
-   selbst, mit dem Namen der Verwaltung als Absender
-   ([Schreiben zustellen](/doku/schreiben-zustellen)).
+   Ihrem Namen. Die Station ist nur noch eine **Auswahl**: die geprüften Absenderadressen
+   Ihrer Mailkonten und **heimvio-Server**. Die gewählte Adresse bestimmt das Konto; die Wahl
+   ist sofort gespeichert, einen Knopf dafür gibt es nicht. **heimvio-Server** heißt: kein
+   eigener Ausgang — heimvio verschickt selbst, mit Ihrem Namen als Absender und Ihrer Adresse
+   als Antwortadresse ([Schreiben zustellen](/doku/schreiben-zustellen)). Fehlt eine Adresse in
+   der Liste, ist sie noch nicht geprüft. Verwaltet eine Hausverwaltung die Gemeinschaft,
+   steht hier stattdessen der Hinweis auf ihren Ausgang mit **„Ausgang der Firma"**.
 3. **Posteingang.** Rechnungen und Bescheide, die an dieses Postfach gehen, landen als
-   Dokument im **Eingang** der Liegenschaft. Das Konto aus Station ① ist schon vorgewählt;
-   Sie legen fest, welche Empfängeradressen heimvio übernimmt, und klicken
-   **„Verbindung testen"**. Das Ergebnis nennt, wie viele Ordner heimvio durchsucht und ob
-   der Server **Markierungen** erlaubt (siehe unten). Danach speichern Sie.
+   Dokument im **Eingang** der Liegenschaft. Unter **Postfach der Liegenschaft** stehen die
+   Adressen mit geprüftem Posteingang zum Ankreuzen; vorbelegt ist die Absenderadresse aus
+   dem Postausgang. Sie können **mehrere** ankreuzen — die Anmeldeadresse und ihre Aliase,
+   denn sie landen im selben Postfach. Adressen eines anderen Kontos sind dann gesperrt: eine
+   Liegenschaft hat genau ein Postfach. Unter **Abruf** wählen Sie, wie oft heimvio nachsieht
+   (alle 5 Minuten bis täglich); daneben steht der letzte Abruf. **OK** speichert,
+   **Abbrechen** verwirft Ihre Änderung, **„Jetzt abrufen"** holt sofort, was neu ist, und
+   nennt die Zahl der übernommenen Dokumente.
 
-**Empfänger.** Unter dem Konto steht eine Tabelle mit Adressen: heimvio übernimmt nur
-Mails, die an eine davon gingen. Vorbelegt ist die Absenderadresse aus dem Postausgang.
-**Ist die Tabelle leer, übernimmt heimvio alle Mails des Postfachs** — richtig, wenn Sie
-eine eigene Adresse nur für Rechnungen haben, etwa rechnungen@ihre-domain.de.
+**Postfach trennen.** Nehmen Sie alle Haken weg und klicken Sie **OK**, fragt heimvio nach und
+trennt das Postfach: Es werden keine Mails mehr abgerufen. Die Mails im Postfach und die schon
+übernommenen Dokumente bleiben erhalten.
 
 **Mailkonten verwalten.** Sie finden die Konten in den **Benutzereinstellungen** unter
 **„Mailkonten"**: eigene Konten und die der Firma, jeweils mit Herkunft. Ändert sich Ihr
@@ -333,8 +349,7 @@ ein anderes gewählt ist. Wer beim Update schon Zugänge hatte, findet sie dort 
 wieder; gleicher Benutzer beim gleichen Anbieter wurde zu einem Konto zusammengelegt —
 ein Blick hinein und ein **„Prüfen"** lohnt sich einmal.
 
-Jede Liegenschaft hat ihr eigenes Postfach. Den Posteingang finden Sie außerdem als letzten,
-freiwilligen Schritt der Karte **Liegenschaft & Wohnung**.
+Jede Liegenschaft hat ihr eigenes Postfach; eingerichtet wird es nur hier.
 
 ### Was heimvio im Postfach tut
 
@@ -357,7 +372,7 @@ Sehen können Sie die Schlagwörter in Mailprogrammen, die sie anzeigen — in T
 als Schlagwort, wenn Sie dort einmal Schlagwörter mit genau diesen Namen anlegen. Gmail im
 Browser und Apple Mail zeigen sie nicht an; markiert sind die Mails trotzdem. Maßgeblich ist
 immer der Stand im Eingang von heimvio: Ändern oder entfernen Sie ein Schlagwort von Hand,
-ändert das dort nichts. Erlaubt Ihr Server keine Markierungen, sagt es der Verbindungstest;
+ändert das dort nichts. Erlaubt Ihr Server keine Markierungen, sagt es die Prüfung am Mailkonto;
 heimvio erkennt bereits übernommene Mails dann trotzdem und übernimmt keine doppelt. Das
 gilt auch, wenn Sie eine Mail in einen anderen Ordner verschieben.
 
@@ -411,6 +426,39 @@ ganze Abrechnungsjahre; umstellen können Sie später jeweils zum Beginn eines n
 Messdienst liefert und was jedes Jahr zu tun ist:
 [Mit Ihrem Messdienst abrechnen](/doku/messdienst).
 
+## Heizung
+
+Rechnet heimvio die Heizung selbst ab, führt die Karte **Heizung** durch fünf Schritte:
+
+1. **Heizung.** Wie wird geheizt — **zentral** (eine Wärmequelle fürs Gebäude),
+   **dezentral** (jede Wohnung hat eine eigene Therme) oder **keine zentrale** (etwa
+   Strom-Direktheizung)? Bei zentraler Heizung wählen Sie den **Wärmeerzeuger**: Wärmepumpe,
+   Gas, Heizöl, Pellets oder Fernwärme. Hat das Haus höchstens zwei Wohnungen und bewohnen Sie
+   eine davon selbst, bietet heimvio an, ohne Zähler pauschal nach Wohnfläche abzurechnen —
+   die Heizkostenverordnung lässt das in diesem Fall zu.
+2. **Tarif.** Der Tarif folgt aus dem Wärmeerzeuger: Gas braucht einen Gastarif, die
+   Wärmepumpe einen Stromtarif, Fernwärme einen Wärmetarif — jeweils mit Grundpreis im Monat
+   und Arbeitspreis. Wählen Sie einen vorhandenen oder legen Sie einen neuen an. Heizöl und
+   Pellets brauchen keinen Tarif; sie werden über Lieferungen und Tankstand abgerechnet, die
+   Sie später erfassen.
+3. **Wärmequelle.** Bezeichnung, der **Verbrauchsanteil** (50 bis 70 %, der Rest wird nach
+   Fläche verteilt) und ob die Anlage auch **Warmwasser** erzeugt. Dann fragt heimvio den
+   Warmwasser-Anteil; leer lassen ist zulässig, die Abrechnung schätzt ihn dann aus der
+   gemessenen Warmwassermenge. Einen guten eigenen Wert bekommen Sie aus dem Verbrauch der
+   Sommermonate, wenn die Anlage nicht heizt.
+4. **Wärmemengen messen.** Sie wählen, womit der Verbrauch je Wohnung gemessen wird: mit
+   einem **Wärmemengenzähler**, der echte Kilowattstunden misst und regelmäßig getauscht
+   werden muss, oder mit **Heizkostenverteilern** an den Heizkörpern, die nur das Verhältnis
+   der Verbräuche erfassen. Stehen die Messstellen schon aus Ihren Vorlagen da, tragen Sie je
+   Messstelle die Seriennummer ein — oder ordnen die Zähler später zu.
+5. **Übersicht.** heimvio zeigt, was noch fehlt; danach geht es zum Wasser.
+
+Ein Heizkostenverteiler lässt sich erst abrechnen, wenn Leistung oder Maße seines Heizkörpers
+eingetragen sind (siehe [Vorlagen](#vorlagen-einmal-beschreiben-zwölfmal-anlegen)). Wie
+Messstelle und Gerät zusammenhängen, erklärt
+[Messstelle und Zähler](/doku/messstelle-und-zaehler); rechnet stattdessen Ihr Messdienst ab,
+lesen Sie [Mit Ihrem Messdienst abrechnen](/doku/messdienst).
+
 ## Wasser: ein Bescheid, zwei Preise
 
 Ihr Wasserbescheid der Stadtwerke nennt zwei Preise nebeneinander — den
@@ -430,6 +478,24 @@ Zwei Dinge, die dabei oft für Rückfragen sorgen:
 Erst danach kommen die Zähler: **Kaltwasser** je Wohnung (oder pauschal nach Wohnfläche)
 und **Warmwasser**. Haben Ihre Vorlagen Wasserzähler, stehen die Messstellen schon da; mit
 dem Frischwasser-Preis bekommen sie ihn, und der Schritt nennt, wie viele es sind.
+
+## Allgemeinstrom
+
+Die Karte **Allgemeinstrom** hat einen Schritt. Gemeint ist der Strom für Treppenhaus,
+Außenbeleuchtung und Pumpen; heimvio legt ihn **nach Wohnfläche** auf alle Wohnungen um.
+
+Zuerst wählen Sie den **Stromtarif**, über den dieser Strom läuft, oder legen ihn mit
+Grundpreis und Arbeitspreis an. Gibt es mehrere Stromtarife, achten Sie auf den richtigen —
+der Strom für eine Wärmepumpe läuft oft über einen eigenen Vertrag. Dann die Frage **„Woher
+kommt die Menge?"**:
+
+| Wahl | wann | was folgt |
+| --- | --- | --- |
+| **Geschätzter Jahresverbrauch** | kleine Mengen, kein eigener Zähler | Sie tragen die Kilowattstunden im Jahr ein; heimvio rechnet sie tagesgenau auf den Abrechnungszeitraum um, und die Abrechnung weist die Position als „(geschätzt)" aus |
+| **Eigener Zähler** | es gibt einen Zähler nur für den Allgemeinstrom | die Messstelle entsteht hier, den Zähler ordnen Sie danach unter **Zähler** zu — ein Funkzähler meldet sich selbst, einen gewöhnlichen legen Sie mit Anfangsstand und Ablesedatum an |
+
+Als Richtwert für ein kleines Haus nennt heimvio 30 kWh im Jahr. Steht der Wert auf Ihrer
+Stromrechnung, nehmen Sie diesen.
 
 ## Steuer in Preisen und Tarifen
 
@@ -455,20 +521,66 @@ Preisblatt stehen; den üblichen Satz belegt heimvio vor — Wasser 7 %, Abwasse
 Gas und Wärme 19 %. Weicht Ihr Versorger ab, ändern Sie Preisbasis und Satz danach unter
 **Tarife & Konditionen**.
 
+## Benutzer einladen
+
+Die Karte **Benutzer einladen** hat drei Listen:
+
+1. **Eigentümer als heimvio-Benutzer einladen** — alle, die heute Eigentum haben, auch noch nicht eingeladene. Fehlt eine
+   E-Mail-Adresse, tragen Sie sie in der Zeile nach. „Alle Eigentümer einladen" nennt vorher
+   die Namen und verschickt dann die Einladungen. Ist ein Eigentümer eingeladen, setzen Sie in
+   seiner Zeile das Häkchen **Beirat** — oder **Ableser**, falls er die Zähler abliest. Im
+   Mietshaus stehen hier die **Mieter** der laufenden Mietverhältnisse, ohne Beirat.
+2. **Mitarbeiter auswählen** — mit einer Hausverwaltung die Mitarbeiter Ihrer Firma: Das Häkchen
+   „Verwaltet diese Gemeinschaft" teilt sie zu ([Hausverwaltung als Firma](/doku/hausverwaltung)),
+   setzen darf es der Koordinator. Ohne Firma heißt die Liste **Verwalter als heimvio-Benutzer
+   einladen**: Sie zeigt die Verwalter, und Sie laden weitere per E-Mail ein.
+3. **Ableser als heimvio-Benutzer einladen** — wer weder Eigentümer noch Mitarbeiter ist und trotzdem abliest, etwa der
+   Hausmeister. Er bekommt eine Einladung per E-Mail.
+
+Wie es für die Eingeladenen weitergeht, steht unter [Eigentümer](/doku/eigentuemer) und
+[Mieter einladen](/doku/mieter-einladen).
+
+## Bankverbindung
+
+Die Karte **Bankverbindung** verbindet das Konto der Gemeinschaft bzw. das Mietkonto mit
+heimvio. heimvio ruft danach die Umsätze regelmäßig ab und ordnet Zahlungen den Eigentümern
+und Mietern zu.
+
+1. **Einwilligen.** Der Kontoabruf ist erst möglich, wenn Sie ihm zustimmen; das Häkchen steht
+   gleich in der Karte und lässt sich unter den Einstellungen zum Datenschutz widerrufen.
+2. **Bank wählen und anmelden.** Sie wählen Ihre Bank — wo nötig über die Suche „Ihre
+   Bank" — und melden sich einmal mit Ihrem Online-Banking-Zugang an. Das geschieht bei Ihrer Bank, nicht in heimvio; danach kehren Sie
+   von selbst zurück.
+3. **Konten wählen.** heimvio zeigt die Konten des Zugangs; Sie kreuzen das an, auf dem die
+   Zahlungen eingehen — auch mehrere — und klicken **„Konten übernehmen"**.
+4. **Abrufen.** Danach stehen Status, letzter Abruf und Kontostand in der Karte, und Sie
+   stellen ein, ob täglich, wöchentlich oder monatlich abgerufen wird. Klicken Sie gleich
+   **„Jetzt abrufen"**: Der erste Abruf lädt die Umsätze seit Jahresbeginn, und viele Banken
+   geben nur kurz nach der Anmeldung mehr als die letzten 90 Tage heraus.
+
+Die Freigabe der Bank gilt nicht unbegrenzt. Läuft sie ab, pausiert der Abruf, und die Karte
+bittet Sie, das Konto erneut zu verbinden. Nutzen Sie für ein verbundenes Konto nicht
+zusätzlich den Import einer Umsatzdatei, sonst erscheinen Buchungen doppelt. Wollen Sie
+fällige Beträge per [Lastschrift](/doku/lastschrift) einziehen, tragen Sie hier außerdem Ihre
+Gläubiger-Identifikationsnummer ein. Steht der Kontoabruf nicht zur Verfügung, sagt die Karte
+das gleich zu Beginn.
+
+Was heimvio mit den Umsätzen macht:
+[Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende).
+
 ## Sie können jederzeit aufhören
 
 Der Assistent speichert **nach jedem Schritt**. Es gibt kein „Fertigstellen", das alles auf
 einmal wegschreibt, und keinen Zustand, den Sie verlieren können. Schließen Sie den Browser
 mitten in Schritt 4, sind die Schritte 1 bis 3 gespeichert, und Sie steigen später dort
-wieder ein. Das **✕** oben rechts schließt den Assistenten und führt zurück zur
-Startseite — ohne Rückfrage, denn es geht nichts verloren. **„Abbrechen"** unten im Fuß
-tut dasselbe in Richtung Übersicht: Was Sie bis dahin mit „Weiter" bestätigt haben,
-bleibt.
+wieder ein. **„Zur Einrichtung"** unten im Fuß und das **✕** oben rechts führen
+zurück zum Tab Einrichtung der Startseite — ohne Rückfrage, denn es geht nichts verloren:
+Was Sie bis dahin mit „Weiter" bestätigt haben, bleibt.
 
 Diese Leiste unten haben alle Karten der Einrichtung. Wo eine Karte mehrere Schritte hat,
-stehen darin „Abbrechen", „Zurück" und „Weiter". Karten mit nur einer Seite, etwa
-Übernahme per Datei, Funk-Empfänger, Bankverbindung, Mitglieder oder Mail, zeigen nur
-„Abbrechen" und führen damit zurück zur Übersicht.
+stehen darin „Zur Einrichtung", „Zurück" und „Weiter". Karten mit nur einer Seite, etwa
+Übernahme per Datei, wM-Bus, Bankverbindung oder Benutzer einladen, zeigen nur
+„Zur Einrichtung"; Mail einrichten hat zusätzlich „Weiter: Belege".
 
 ## Danach
 
