@@ -3,7 +3,7 @@ title: Verwaltervertrag und Rechnung — Vergütung, Monatslauf, Storno
 description: Die Hausverwaltung schickt ein Angebot an eine neue Gemeinschaft oder schlägt einer verwalteten den Vertrag vor, die Gemeinschaft nimmt ihn an. Danach entsteht die Vergütung von selbst als Kosten der Gemeinschaft, und die Firma stellt ihre Rechnung aus heimvio heraus.
 section: Konzepte
 order: 79
-updated: 2026-10-22
+updated: 2026-10-24
 ---
 
 Was die Verwaltung bekommt, steht im **Verwaltervertrag**. In heimvio hängt er am Mandat der
@@ -173,7 +173,7 @@ Gemeinschaft in heimvio verwaltet wird. Wo sie davon abweicht:
 | Daten und Unterlagen | beim Verwalter, Herausgabe beim Wechsel | gehören der Gemeinschaft und liegen in ihrem Konto |
 | Einsicht der Eigentümer | auf Termin, oft gezählt | jederzeit im Portal |
 | Bargeld | Hausmeister- oder Barkasse | keines; Auslagen gegen Beleg per Überweisung |
-| Zusatzaufwand | Stundensätze mit Zeitnachweis | keine Stundensätze |
+| Zusatzaufwand | Stundensätze mit Zeitnachweis | Zeitaufwand nur, wenn als Sondervergütung mit Stundensatz vereinbart, und nur mit nachgewiesenen Stunden |
 | Sonderleistungen | einzeln zu vereinbaren | bis zu einer vereinbarten Schwelle selbst ausgelöst und für den Beirat sichtbar, darüber Angebot mit Festpreis |
 | Nachweis der Arbeit | Bericht des Verwalters | Leistungsnachweis aus heimvio mit der Jahresabrechnung |
 
@@ -195,7 +195,8 @@ geschlossen; die Stationen 2 und 3 entfallen dann.
 2. **Vertrag vorschlagen.** Unter **Meine Firma → Verträge** steht je verwalteter WEG
    **„Vertrag vorschlagen"**: Vergütung je Einheit und Monat (netto), Umsatzsteuersatz,
    gültig ab, auf Wunsch gültig bis, Kündigungsfrist in Monaten und die Sondervergütungen,
-   je mit Bezeichnung und Nettobetrag. Der Vorschlag geht an die Gemeinschaft; erst mit der
+   je mit Bezeichnung und einer von drei Formen — Festbetrag, Prozent der Auftragssumme oder
+   Zeitaufwand mit Stundensatz (siehe unten). Der Vorschlag geht an die Gemeinschaft; erst mit der
    Annahme entstehen Vergütung und Rechnungen.
 3. **Annehmen — in der Regel per Beschluss.** In der Gemeinschaft erscheint unter
    **Org-Einstellungen → Verwaltung** der **„Vertragsvorschlag der Hausverwaltung"** mit
@@ -256,7 +257,7 @@ darf und wann sie eine Freigabe braucht. heimvio hält sich daran:
 | Fall | wer entscheidet | wie es in heimvio geht |
 | --- | --- | --- |
 | **bis zur Grenze des Vertrags** — je Vorgang bis zum vereinbarten Betrag, und solange die selbst ausgelösten Leistungen im Jahr unter dem vereinbarten Anteil der Festvergütung bleiben | die Verwaltung selbst | **„Sonderleistung erfassen"**: aus dem Vertrag oder frei mit Anlass und Betrag, Datum, auf Wunsch der Bezug zu einer Versammlung — steht auf der nächsten Rechnung |
-| **mit Beschluss** — die Versammlung hat über die Sache entschieden, und am Punkt stand „Sondervergütung laut Vertrag" | die Versammlung | nach der unterschriebenen Niederschrift der Vorschlag **„Sondervergütung auslösen"** im Eingang, Reiter Beschlüsse; ein Beschluss gilt immer als Freigabe |
+| **mit Beschluss** — die Versammlung hat über die Sache entschieden, und am Punkt stand „Sondervergütung laut Vertrag" | die Versammlung | nach der unterschriebenen Niederschrift der Vorschlag **„Sondervergütung auslösen"** im Eingang, Reiter Beschlüsse; ein Beschluss gilt immer als Freigabe. Vergibt der Beschluss einen Handwerkerauftrag, wird die Vergütung am Auftrag angekündigt und mit dessen Rechnung abgerechnet (unten) |
 | **über der Grenze, ohne Beschluss** | der Beirat (ohne Beirat: die Versammlung) | vorher ein Angebot mit Festpreis; erfasst wird die Leistung wie oben, sie **wartet auf Freigabe** und steht erst nach **„Freigeben"** durch den Beirat auf der Rechnung |
 | **Gefahr im Verzug** | die Verwaltung, mit Begründung | Häkchen **„Gefahr im Verzug (ohne vorherige Freigabe)"** und eine Begründung |
 
@@ -267,6 +268,30 @@ Nr. 12", „freigegeben vom Beirat am …", „Gefahr im Verzug: …" oder „wa
 den Beirat". Verwalter und Beirat sehen die Liste; wartet etwas auf ihn, erscheint es beim
 Beirat zusätzlich im Überblick der Startseite. Verträge ohne vereinbarte Grenze kennen keine
 Freigabe — dort löst die Verwaltung wie bisher selbst aus.
+
+## Drei Formen der Sondervergütung
+
+Jede Position der Sondervergütungen trägt eine Bezeichnung und **genau eine** Form:
+
+| Form | Beispiel | wann der Betrag entsteht |
+| --- | --- | --- |
+| **Festbetrag** | „Außerordentliche Versammlung: 350 € netto" | mit **„Sonderleistung erfassen“** oder nach dem Beschluss als Vorschlag im Eingang; an einem Handwerkerauftrag einmal je Auftrag mit dessen Rechnung |
+| **Prozent der Auftragssumme** | „Begleitung größerer Instandsetzungen: 1,5 %" | mit der Rechnung des Handwerkers: der Prozentsatz von ihrem **Nettobetrag** — aus der Rechnung gelesen oder eingetragen; ohne Netto fragt heimvio nach und nimmt keinen Steuersatz an |
+| **Zeitaufwand mit Stundensatz** | „Baubegleitung: 85 € je Stunde" | mit den Stunden, die die Verwaltung am Auftrag mit **„Stunden erfassen"** nachweist |
+
+Den Prozentsatz und den Stundensatz legen Sie beim Vorschlagen des Vertrags fest; die Vorgabe
+für die Begleitung größerer Instandsetzungen ist 1,5 %. Am Tagesordnungspunkt steht die
+Position mit ihrer Form, etwa „1,5 % der Auftragssumme laut Vertrag", und im Wortlaut des
+Beschlusses ein Satz dazu. Alle Beträge sind netto: Ist Ihre Firma umsatzsteuerpflichtig,
+kommt die Umsatzsteuer erst auf Ihrer Rechnung an die Gemeinschaft dazu.
+
+**Warum erst mit der Rechnung?** Vor der Rechnung kennt niemand den Betrag — bei einem Auftrag
+auf Stundenbasis schon gar nicht. Deshalb kündigt der Beschluss die Vergütung nur an; sie
+steht am Auftrag als „Sondervergütung angekündigt" und entsteht, wenn die Rechnung des
+Handwerkers erfasst ist ([Handwerker beauftragen](/doku/beauftragen)). Die **Grenze** des
+Vertrags gilt dann wie oben, gemessen an der **Summe aller Aufträge des Mangels** — eine
+Sanierung, die in Gewerke geteilt ist, bleibt damit nicht unter jeder Grenze. Liegt sie
+darüber, wartet die Vergütung auf die Freigabe durch den Beirat.
 
 ## Was auf der Rechnung steht
 

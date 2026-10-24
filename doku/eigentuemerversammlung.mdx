@@ -3,7 +3,7 @@ title: Die Eigentümerversammlung — acht Stationen bis zur Unterschrift
 description: Ansetzen, Tagesordnung, Einladen, Raum, Vollmachten, Drucken, Durchführen, Niederschrift — warum die Einladung zur Versammlung passen muss, warum der Druck der Niederschrift sie einfriert und was nach der Unterschrift folgt.
 section: Konzepte
 order: 75
-updated: 2026-10-23
+updated: 2026-10-24
 ---
 
 Eine Eigentümerversammlung ist kein Termin im Kalender, sondern ein Ablauf aus **acht
@@ -155,12 +155,17 @@ ein Text von heimvio steht und nicht Ihrer. Öffnen, lesen, anpassen, speichern:
 Marke weg. Ein Punkt, der aus einem Anliegen kommt (etwa eine Reparatur mit Angeboten), hat
 in der Zeile einen Knopf **⚖** zum Angebotsvergleich des Vorgangs.
 
-Für einen solchen Punkt schlägt heimvio den Wortlaut **aus den Angeboten** vor: Sie wählen die
-Form des Beschlusses — **Vergabe an ein Angebot**, **Ermächtigung mit Kostenrahmen** oder
-**Weiteres Vorgehen** — und gegebenenfalls das Angebot und den Betrag. Beim Anlegen des Punkts
-steht der Vorschlag gleich im Textfeld. An einem Punkt, der schon besteht — etwa weil die
-Angebote erst später kamen —, finden Sie dieselbe Auswahl beim Bearbeiten mit **„Vorlage aus
-den Angeboten übernehmen"**. Steht dort schon ein anderer Text, fragt heimvio vorher nach.
+Für einen solchen Punkt schlägt heimvio unter **„TOP hinzufügen" → „Aus einem Vorgang"** die
+**Beschlussvorlage** vor: Sie wählen die Form des Beschlusses — **Vergabe an ein Angebot**,
+**Ermächtigung mit Kostenrahmen** oder **Weiteres Vorgehen** —, das Angebot (bei mehreren
+Gewerken je Gewerk eines), die **Finanzierung** (Erhaltungsrücklage oder Sonderumlage),
+**„Fertigstellung bis"** und eine Sondervergütung. Daraus entsteht der Wortlaut, ohne KI. Die
+Angaben bleiben am Punkt stehen und gelten beim Verkünden; nach dem Beschluss führen sie zum
+Auftrag. Mit dem Hinzufügen steht der Mangel „auf der Tagesordnung", **„TOP entfernen"** nimmt
+ihn zurück. An einem Punkt, der schon besteht — etwa weil die Angebote erst später kamen —,
+finden Sie dieselbe Auswahl beim Bearbeiten mit **„Vorlage aus den Angeboten übernehmen"**.
+Steht dort schon ein anderer Text, fragt heimvio vorher nach. Wie die Angebote überhaupt
+zusammenkommen: [Angebote einholen und vergeben](/doku/vergabe).
 
 Beim Beschlussvorschlag hilft Ihnen eine **Formulierungshilfe**. Sie schreibt keinen
 Beschluss für Sie. Sie sagt Ihnen, was an Ihrem noch fehlt, zum Beispiel ein Betrag, eine
@@ -188,8 +193,11 @@ das Feld **„Sondervergütung laut Vertrag"** — neben dem Block „Daten", ni
 Verwaltung für die Umsetzung eines Beschlusses eine Sonderleistung ab, etwa die Baubegleitung
 einer Dachsanierung, wählen Sie sie dort aus. Sie steht dann vor der Abstimmung in Einladung
 und Tischvorlage, und mit dem Beschluss wird sie ausgelöst — nach der Unterschrift als
-Vorschlag im Eingang. Ändern Sie das Feld nach dem Einladen, passt die Einladung nicht mehr zur
-Tagesordnung (Station 3).
+Vorschlag im Eingang. Vergibt der Beschluss einen Auftrag, wird sie dagegen nur **angekündigt**:
+Sie steht am Auftrag und wird mit der Rechnung des Handwerkers abgerechnet, bei einem
+Prozentsatz aus deren Betrag ([Verwaltervertrag](/doku/verwaltervertrag#drei-formen-der-sondervergütung)).
+Ändern Sie das Feld nach dem Einladen, passt die Einladung nicht mehr zur Tagesordnung
+(Station 3).
 
 Am Abend selbst kommt an manchen Punkten ein weiteres Feld dazu: **„Wiedervorlage für den
 Umlauf"** — sobald die Versammlung einen Punkt in den Umlauf verweist, ihn vertagt oder nicht
@@ -624,7 +632,11 @@ Umlaufbeschluss gilt das nicht; dort ersetzt die Frist den Termin.
 Kostet ein Beschluss Geld — eine Reparatur, ein Auftrag —, schalten Sie beim Verkünden
 **„Kostenrahmen festlegen"** ein und tragen die Obergrenze ein; sie steht dann mit dem
 Beschluss in der Sammlung. Bei den Standard-Punkten wie der Entlastung ist der Schalter aus,
-bei allen anderen an.
+bei allen anderen an. Trägt der Punkt eine Beschlussvorlage aus den Angeboten, übernimmt das
+Verkünden Angebot, Kostenrahmen, Finanzierung, Frist und Sondervergütung von dort. Einigt sich
+die Versammlung auf eine andere Firma oder streicht sie die Vergütung, ändern Sie das im
+Dialog des Punkts oder am Steuerpult unter **„Vergabe an diesem TOP"**; der Wortlaut folgt,
+solange Sie ihn nicht von Hand geändert haben, und verkündet wird der Stand von jetzt.
 
 Beim **Wirtschaftsplan** und bei der **Sonderumlage** verkünden Sie Zahlen mit. Das
 Formular zeigt den Vorschlag; die Versammlung darf Rücklage und Fälligkeitstag ändern, die
@@ -1427,7 +1439,12 @@ Station kennt drei Zustände, und jeder zeigt nur, was in ihm zu tun ist:
    „Entwurf – nicht unterschreiben" auf jeder Seite. Sie friert nichts ein — legen Sie sie
    niemandem zum Unterschreiben hin.
 5. **Drucken friert ein.** **„Niederschrift drucken"** fragt noch einmal nach (**„Drucken und
-   einfrieren"**). Danach ändert sich nichts mehr an Kopfangaben, Tagesordnung, Anwesenheit,
+   einfrieren"**). Sind noch Punkte weder entschieden noch als Information erledigt — die
+   Versammlung wurde abgebrochen oder muss vertagt werden —, nennt die Rückfrage sie („Noch
+   nicht behandelt: TOP 7 …") und bietet **„Vertagen und drucken"** an. Diese Punkte stehen
+   in der Niederschrift als „nicht behandelt — vertagt", und ihre Vorgänge lassen sich in
+   der nächsten Versammlung wieder mit „TOP hinzufügen" wählen. Danach ändert sich nichts
+   mehr an Kopfangaben, Tagesordnung, Anwesenheit,
    Stimmen und Beschlüssen, und heimvio legt **genau die gedruckte Fassung** im Ordner
    „Beschlüsse & Protokolle" ab. Es gibt eine Druckfassung: A4, in Schwarz, ohne Flächen.
    Drucken Sie **zwei oder drei Ausfertigungen** — **„Weitere Ausfertigung drucken"** öffnet
