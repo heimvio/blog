@@ -3,7 +3,7 @@ title: Angebote einholen und vergeben — vom Mangel zum Auftrag
 description: Wie heimvio Angebotsanfragen verschickt, Angebote aus dem Eingang dem Mangel zuordnet, den Punkt für die Versammlung vorbereitet und nach dem Beschluss den Auftrag samt Auftragsschreiben auf den Weg bringt.
 section: Weitere Themen
 order: 91.5
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 Die Haustür klemmt, das Dach ist undicht, ein Rohr tropft im Keller. Zwischen der Meldung und
@@ -29,19 +29,46 @@ regelt der Eigentümer selbst ([Was heimvio Ihnen schickt](/doku/benachrichtigun
 | **Angebote angefragt** | die erste Anfrage ist verschickt | heimvio, von selbst |
 | **Angebote liegen vor** | das erste Angebot ist bestätigt | heimvio, von selbst |
 | **bereit für ETV** | jedes Gewerk hat seine Mindestzahl vollständiger Angebote | heimvio, von selbst |
-| **auf der Tagesordnung** | Sie haben den Punkt in eine Versammlung aufgenommen | Sie |
+| **auf der Tagesordnung** | Sie haben den Mangel in einer Versammlung als Punkt hinzugefügt | Sie |
 | **beschlossen** | der Beschluss ist verkündet | Sie, in der Versammlung |
 | **beauftragt** | Sie haben den Auftrag im Eingang bestätigt | Sie |
 
-Von Hand bleibt nur, einen Vorgang abzubrechen. Fällt ein Angebot weg — zurückgezogen oder
+Von Hand bleibt nur, einen Mangel abzubrechen. Fällt ein Angebot weg — zurückgezogen oder
 abgelaufen — und reicht die Zahl nicht mehr, geht der Mangel von selbst zurück auf **„Angebote
 liegen vor"**. Das gilt, solange der Punkt in keiner verschickten Einladung steht; danach
 bleibt der Stand, und am Tagesordnungspunkt erscheint ein Hinweis.
 
+## Die Mangel-Seite
+
+Oben am Mangel steht eine **Stationsleiste**, die den Weg zeigt: **① Erfasst**, dann **je
+Gewerk eine Kachel**, **Beschluss** und **Auftrag & Rechnung**; am Ende steht **„+ Gewerk"**.
+Gibt es nur ein Gewerk, heißt seine Kachel schlicht **„Angebote"**. Jede Kachel nennt ihren
+Stand in einer Zeile, etwa „gesendet · 1 von 2 Angeboten" oder „Entwurf · nicht gesendet". Ein
+Klick auf die Kachel öffnet das Gewerk darunter.
+
+Ein Gewerk hat fünf Reiter:
+
+| Reiter | Inhalt |
+| --- | --- |
+| **Leistung** | Beschreibung und Anhänge |
+| **Bedingungen** | Angebotsform, Ausführung bis, Zugang / Ansprechpartner vor Ort, Angebot bitte bis, Mindestzahl der Angebote |
+| **Firmen** | eine Tabelle: Firma, Stand, gesendet, Antwort |
+| **Text** | die Vorlage für die Anfrage und die Vorschau „So liest es der Anbieter" |
+| **Angebote** | der Vergleich der eingegangenen Angebote |
+
+Vor dem Senden sind die ersten Reiter Eingaben mit **„Zurück"** und **„Weiter"**; im Reiter
+Text steht **„Anfragen senden"**. Danach zeigen dieselben Reiter die Angaben zum Nachlesen, und
+**„Ändern – Nachtrag an alle Firmen"** schickt eine Änderung an alle Angefragten.
+
+Im Menü **„Aktionen"** liegen Maßnahme, Priorität, **„In eine Anfrage umwandeln"** und
+**„Mangel stornieren …"**. Beim Stornieren werden offene Anfragen abgesagt. Steht der Mangel
+auf einer Tagesordnung, deren Einladung noch nicht verschickt ist, nimmt heimvio den Punkt
+heraus; nach der Einladung bleibt er stehen und wird in der Versammlung vertagt.
+
 ## 1. Anfragen senden
 
-Im Mangel steht der Abschnitt **„Angebote anfragen"**. Dort stellen Sie zusammen, was an
-die Handwerker geht, und heimvio verschickt es — **je Anbieter eine eigene Mail**.
+Im Gewerk stellen Sie zusammen, was an die Handwerker geht, und heimvio verschickt es — **je
+Anbieter eine eigene Mail**. Die folgenden Stationen entsprechen den Reitern.
 
 1. **Leistungsbeschreibung.** Beschreiben Sie, was zu tun ist — **als Text** oder als
    **Datei** (vom Mangel oder neu hochgeladen). Aus dem Text setzt heimvio ein PDF mit Ihrem
@@ -49,10 +76,12 @@ die Handwerker geht, und heimvio verschickt es — **je Anbieter eine eigene Mai
    jeden Anbieter dieselbe Fassung, und jede Fassung, die hinausgeht, liegt in der Ablage am
    Mangel. Ändern Sie sie nach dem Versand, entsteht eine neue Fassung; bereits gesendete
    Anfragen zeigen dann „auf Fassung 1 angefragt" und lassen sich **neu senden**.
-2. **Angaben.** **Angebotsform** (Festpreis, Stundensatz mit Budget oder beides),
+2. **Bedingungen.** **Angebotsform** (Festpreis, Stundensatz mit Budget oder beides),
    **Ausführung bis**, **Angebot bitte bis** (die Antwortfrist), auf Wunsch **Zugang /
    Ansprechpartner vor Ort**, dazu **weitere Anhänge** — die Fotos aus der Meldung sind
-   vorgeschlagen, Pläne kommen vom Mangel dazu.
+   vorgeschlagen, Pläne kommen vom Mangel dazu. Die **Mindestzahl der Angebote** ist aus den
+   Org-Einstellungen vorgegeben; unter der Grenze für Kleinaufträge genügt eines, weniger nur
+   mit Begründung (siehe Abschnitt 3).
 3. **Anbieter.** Wählen Sie die Handwerker aus Ihren
    [Geschäftspartnern](/doku/geschaeftspartner). heimvio schlägt zuerst die vor, die schon
    einmal für diese Art Arbeit eine Rechnung gestellt haben; **„➕ anderer Geschäftspartner …"**
@@ -146,11 +175,23 @@ schlägt sie aus der Vergabehistorie vor („Auf 5 Anfragen: 2 Angebote, 2 Absag
 Antwort.") und übernimmt sie auf Knopfdruck. Die Begründung steht in der Vergabehistorie, in
 der Einladung beim Tagesordnungspunkt und auf der Tischvorlage. Erhöhen geht ohne.
 
-## 4. Der Tagesordnungspunkt mit Beschlussvorlage
+## 4. Auf die Tagesordnung
 
-Sobald ein Angebot vorliegt, gibt es am Mangel **„Auf die Tagesordnung"**. In der Versammlung
-wählen Sie dann unter **„TOP hinzufügen"** den Vorgang aus, und heimvio schlägt die
-**Beschlussvorlage** vor:
+Unter Anliegen gibt es **keinen eigenen Tagesordnungspunkt** zum Mangel: Bis zur Versammlung
+existiert nur der Mangel. Sind für jedes Gewerk genug Angebote da, erscheint unter dem Gewerk
+ein grüner Kasten **„Für jedes Gewerk liegen genug Angebote vor."** mit dem Knopf **„Auf die
+Tagesordnung …"**.
+
+1. **Versammlung wählen.** Der Knopf fragt, in welche Versammlung der Mangel soll.
+2. **Dialog „TOP hinzufügen".** In der Versammlung öffnet sich der Dialog mit diesem Mangel
+   schon gewählt. Er führt in drei Schritten — Weg, Auswahl, Details — und ist derselbe, den
+   Sie in der Versammlung selbst benutzen
+   ([Eigentümerversammlung](/doku/eigentuemerversammlung), Station 2).
+3. **Details prüfen.** Der Titel steht als Überschrift, die Beschlussvorlage ist schon
+   ausgefüllt. Eine **Erklärung für die Eigentümer** ist freiwillig; sie steht in Einladung,
+   Tischvorlage und Niederschrift unter „Erläuterung".
+
+Der Punkt verweist auf den Mangel. Die Beschlussvorlage umfasst:
 
 | Angabe | was Sie wählen |
 | --- | --- |
@@ -163,7 +204,7 @@ wählen Sie dann unter **„TOP hinzufügen"** den Vorgang aus, und heimvio schl
 
 Aus diesen Angaben entsteht der **Wortlaut**, ohne KI und jedes Mal gleich. Mit
 **„Hinzufügen"** steht der Mangel **„auf der Tagesordnung"**, mit Versammlung und Termin;
-**„TOP entfernen"** nimmt ihn zurück auf „bereit für ETV".
+**„TOP entfernen"** nimmt ihn zurück auf „bereit für ETV", solange keine Einladung verschickt ist.
 
 Die Angaben bleiben **am Tagesordnungspunkt** stehen, nicht nur im Text: Einladung,
 Tischvorlage und Beamer zeigen sie, und nach dem Beschluss weiß heimvio, wen es zu beauftragen
@@ -181,10 +222,20 @@ jetzt**, nicht der aus der Einladung. Mit dem Verkünden steht das gewählte Ang
 Kommt die Versammlung nicht durch die Tagesordnung, können Sie die Niederschrift trotzdem
 drucken. heimvio nennt dann die offenen Punkte („Noch nicht behandelt: TOP 7 …") und bietet
 **„Vertagen und drucken"** an. Diese Punkte stehen in der Niederschrift als „nicht behandelt —
-vertagt", ihre Mängel gehen zurück auf „bereit für ETV" und lassen sich in die nächste
-Versammlung aufnehmen ([Eigentümerversammlung](/doku/eigentuemerversammlung), Station 8).
+vertagt", ihre Mängel gehen zurück auf „bereit für ETV" und lassen sich in der nächsten
+Versammlung wieder über „TOP hinzufügen" wählen ([Eigentümerversammlung](/doku/eigentuemerversammlung), Station 8).
 Soll ein Punkt stattdessen im Umlauf entschieden werden, geht das mit denselben Daten — das
-Feststellen des Umlaufs führt ebenso zum Auftrag.
+Feststellen des Umlaufs führt ebenso zum Auftrag. Das Ergebnis erscheint in der Station
+**„Beschluss"** der Mangel-Seite, je Gewerk:
+
+| Stand | was die Zeile anbietet |
+| --- | --- |
+| angenommen | **„Auftrag erteilen"** |
+| nicht abgestimmt, die Versammlung hat den Umlauf zugelassen | **„Im Umlauf beschließen"** |
+| nicht abgestimmt, ohne Zulassung | der Hinweis „Ein Umlauf braucht die Zulassung durch eine Versammlung." |
+
+Der Hintergrund in einem Satz: Mit Mehrheit im Umlauf beschließen darf die Gemeinschaft nur,
+wenn eine Versammlung das für diesen Punkt zugelassen hat (§ 23 Abs. 3 WEG).
 
 ## 6. Der Auftrag kommt in den Eingang
 
@@ -239,15 +290,15 @@ für sich. Dann sehen Sie von Gewerken nichts — der Vergleich heißt „Angebo
 hat einen Satz, der Auftrag eine Nummer.
 
 Braucht ein Mangel mehrere Handwerker — erst der Sanitärbetrieb, dann der Maler —, legen Sie
-im Abschnitt „Angebote anfragen" mit **„Gewerk anlegen"** ein zweites an. Dabei fragt heimvio,
+in der Stationsleiste mit **„+ Gewerk"** ein zweites an. Dabei fragt heimvio,
 wie das bisherige Gewerk heißen soll; Ihre bisherigen Anfragen und Angebote gehören dann zu
 diesem Gewerk. Ab dann gilt **je Gewerk**: eigene Leistungsbeschreibung, eigene Anfragen,
 eigener Vergleich, eigene Mindestzahl. Der Mangel ist bereit für ETV, wenn **jedes** Gewerk
 seine Zahl erreicht hat. Ein Gewerk ohne Anfragen und Angebote können Sie wieder löschen; das
 gilt auch für das erste, solange ein anderes daneben steht.
 
-Auf der Tagesordnung entsteht **je Gewerk ein Unterpunkt** (3a, 3b) mit eigener Abstimmung —
-so kann die Versammlung den Sanitärbetrieb beauftragen und beim Maler einen anderen Anbieter
+Auf der Tagesordnung entsteht als Vorgabe **je Gewerk ein Unterpunkt** (3a, 3b) mit eigener
+Abstimmung — so kann die Versammlung den Sanitärbetrieb beauftragen und beim Maler einen anderen Anbieter
 wollen. Sollen die Gewerke nur zusammen beschlossen werden, weil das eine ohne das andere
 keinen Sinn ergibt, wählen Sie **„Gemeinsam abstimmen"**; dann entscheiden Sie im Punkt für
 jedes Gewerk ein Angebot oder „nicht in diesem Beschluss". Erst wenn jedes Gewerk auf der
