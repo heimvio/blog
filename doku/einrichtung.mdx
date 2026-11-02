@@ -3,7 +3,7 @@ title: Einrichtung mit dem Assistenten
 description: Der geführte Weg von der leeren App zur abrechnungsbereiten Liegenschaft — und was Sie vorher bereitlegen sollten.
 section: Erste Schritte
 order: 30
-updated: 2026-10-27
+updated: 2026-11-02
 ---
 
 ## Wer richtet ein?
@@ -30,6 +30,10 @@ Nach der Registrierung wählen Sie zuerst einen **Tarif** und geben Ihrer Verwal
 Namen. Das ist kein Beiwerk: Solange kein Tarif gewählt ist, ist die Verwaltung
 schreibgeschützt — Sie können sie ansehen, aber nichts anlegen. Der Standard-Tarif kostet
 nichts, gilt zwei Jahre und reicht für eine Wohneinheit; wechseln können Sie jederzeit.
+
+Bei einem bezahlten Tarif wählen Sie im Abschnitt **Leistungen** außerdem, was Sie buchen:
+**Messdienst**, **Hausverwaltung** oder beides. Den anderen Dienst können Sie später unter
+„Abos" dazubuchen ([Abo und Organisationen](/doku/abo-und-organisationen#messdienst-hausverwaltung-oder-beides)).
 
 Haben Sie den Tarif schon auf der Preisseite ausgewählt, ist er nach der Registrierung
 bereits vorausgewählt — Sie ergänzen nur noch den Namen und bestätigen. Auch wenn die
@@ -78,8 +82,16 @@ bleibt eine Abrechnung für dieses Jahr leer.
 | [**Wasser**](#wasser-ein-bescheid-zwei-preise) | wer abrechnet; Wasserpreise (Frisch- und Abwasser), Kalt- und Warmwasser |
 | [**Allgemeinstrom**](#allgemeinstrom) | Treppenhaus, Außenbeleuchtung, Pumpen — geschätzt oder mit eigenem Zähler |
 | [**wM-Bus**](/doku/zaehlerstaende-automatisch) | Funk-Empfänger und die Verteilung der Zähler; misst heimvio selbst, auch der Feeder-Zugang für Zählerstände aus anderer Software |
-| [**Benutzer einladen**](#benutzer-einladen) | Eigentümer (im Mietshaus: Mieter) mit einem Klick einladen, den Beirat bestimmen, Mitarbeiter Ihrer Firma zuteilen und Ableser einladen |
+| [**Benutzer einladen**](#benutzer-einladen) | Eigentümer (im Mietshaus: Mieter) mit einem Klick einladen, den Beirat bestimmen, Mitarbeiter Ihrer Firma zuteilen, den Messdienst und Ableser einladen |
 | [**Bankverbindung**](#bankverbindung) | das Konto der Gemeinschaft bzw. das Mietkonto, dessen Umsätze heimvio für den Zahlungsabgleich abruft |
+
+Welche Karten erscheinen, folgt aus Ihrem Abo und Ihrer Rolle:
+
+| Wer richtet ein | Karten |
+| --- | --- |
+| **Verwaltung und Messdienst** | alle |
+| **nur Messdienst** ([heimvio als Messdienst](/doku/heimvio-als-messdienst)) | Übernahme per Datei, Liegenschaft & Wohnung, Heizung, Wasser, wM-Bus, Benutzer einladen (dort: Ableser und Techniker) |
+| **nur Hausverwaltung** | alle außer wM-Bus; Heizung und Wasser führen nur zur Frage nach dem fremden Messdienst, der Allgemeinstrom ist eine Pauschale je Jahr |
 
 Ein Punkt neben jeder Karte zeigt, ob sie offen, angefangen oder fertig ist; Karten, die
 nicht jede Liegenschaft braucht, tragen den Zusatz „optional". Gehen Sie einen Bereich mit
@@ -485,6 +497,10 @@ dem Frischwasser-Preis bekommen sie ihn, und der Schritt nennt, wie viele es sin
 
 Die Karte **Allgemeinstrom** hat einen Schritt. Gemeint ist der Strom für Treppenhaus,
 Außenbeleuchtung und Pumpen; heimvio legt ihn **nach Wohnfläche** auf alle Wohnungen um.
+Ohne Messdienst im Abo gibt es keinen Zähler und keinen Tarif dafür: Sie tragen einen
+**Jahresbetrag brutto** als Pauschale ein, heimvio legt ihn als Kostenposition des
+Abrechnungsjahres an und schreibt ihn jedes Jahr fort; ändern können Sie ihn bei den Kosten.
+Den Heizungsstrom enthält dann die Heizkostenabrechnung des Messdienstes. Mit Messdienst gilt:
 
 Zuerst wählen Sie den **Stromtarif**, über den dieser Strom läuft, oder legen ihn mit
 Grundpreis und Arbeitspreis an. Gibt es mehrere Stromtarife, achten Sie auf den richtigen —
@@ -535,9 +551,11 @@ Die Karte **Benutzer einladen** hat drei Listen:
 2. **Mitarbeiter auswählen** — mit einer Hausverwaltung die Mitarbeiter Ihrer Firma: Das Häkchen
    „Verwaltet diese Gemeinschaft" teilt sie zu ([Hausverwaltung als Firma](/doku/hausverwaltung)),
    setzen darf es der Koordinator. Ohne Firma heißt die Liste **Verwalter als heimvio-Benutzer
-   einladen**: Sie zeigt die Verwalter, und Sie laden weitere per E-Mail ein.
+   einladen**: Sie zeigt Verwalter und Messdienst mit je einem Häkchen, und Sie laden weitere
+   per E-Mail ein — mit **„Verwalter einladen"** oder **„Messdienst einladen"**.
 3. **Ableser als heimvio-Benutzer einladen** — wer weder Eigentümer noch Mitarbeiter ist und trotzdem abliest, etwa der
-   Hausmeister. Er bekommt eine Einladung per E-Mail.
+   Hausmeister oder der Techniker einer Fachfirma, die Zähler tauscht. Er bekommt eine
+   Einladung per E-Mail. Einladen darf ihn die Verwaltung und der Messdienst.
 
 Wie es für die Eingeladenen weitergeht, steht unter [Eigentümer](/doku/eigentuemer) und
 [Mieter einladen](/doku/mieter-einladen).

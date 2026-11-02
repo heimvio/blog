@@ -24,17 +24,17 @@ const eur = (cent: number) =>
   <section>
     <h2 id="tarife-und-preise">Tarife und Preise</h2>
     <p>
-      Abgerechnet wird {preise.abrechnung}. Alle Preise {preise.steuer}. Ein Funkempfänger
-      je sechs Wohneinheiten ist enthalten.
+      Messdienst und Hausverwaltung buchen Sie einzeln oder zusammen.
+      Abgerechnet wird {preise.abrechnung}. Alle Preise {preise.steuer}.
     </p>
     <table>
       <thead>
         <tr>
           <th>Tarif</th>
           <th>Wohneinheiten</th>
-          <th>im Monat</th>
-          <th>davon Messdienst</th>
-          <th>davon Verwaltung</th>
+          <th>nur Messdienst</th>
+          <th>nur Hausverwaltung</th>
+          <th>beides</th>
         </tr>
       </thead>
       <tbody>
@@ -42,16 +42,17 @@ const eur = (cent: number) =>
           <tr>
             <td>Pro {s.wohneinheiten}</td>
             <td>bis {s.wohneinheiten}</td>
-            <td>{eur(s.monatlich)}</td>
             <td>{eur(s.messdienst)}</td>
             <td>{eur(s.hausverwaltung)}</td>
+            <td>{eur(s.monatlich)}</td>
           </tr>
         ))}
       </tbody>
     </table>
     <p>
-      Der Messdienst ist als Heiz- und Wasserkostenerfassung umlagefähig, die Verwaltung nicht.
-      Für größere Gemeinschaften machen wir ein Angebot.
+      Zum Messdienst gehört ein Funkempfänger je sechs Wohneinheiten, als Leihgabe; ohne
+      Messdienst gibt es keine Geräte. Der Messdienst ist als Heiz- und Wasserkostenerfassung
+      umlagefähig, die Hausverwaltung nicht. Für größere Gemeinschaften machen wir ein Angebot.
     </p>
   </section>
 )}

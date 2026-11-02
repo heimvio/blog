@@ -1,0 +1,143 @@
+---
+title: heimvio als Messdienst — Zähler, Ablesung, Heiz- und Wasserkosten
+description: Der Messdienst ist in heimvio ein eigener Dienst mit eigener Rolle. Wer das sein kann, was er darf und was nicht, wie er Fachfirmen einbindet und warum das Ausstellen der Wärmeabrechnung die Eingaben des Jahres sperrt.
+section: Konzepte
+order: 70.3
+updated: 2026-11-02
+---
+
+Ein **Messdienst** sorgt dafür, dass die Heiz- und Wasserkosten gerecht verteilt werden: Er
+lässt Zähler einbauen, tauschen und einrichten, sammelt die Ablesungen und stellt jedes Jahr
+die Heiz- und Wasserkostenabrechnung aus. In heimvio ist das ein **eigener Dienst** neben der
+Hausverwaltung — eigens buchbar, mit einer eigenen Rolle.
+
+Wer der Messdienst ist, entscheidet die Gemeinschaft:
+
+- **ihre Hausverwaltung**, die beides übernimmt,
+- **ein eigener Dienstleister**, der nur den Messdienst macht,
+- oder **eine Person aus der WEG**, etwa ein technisch versierter Eigentümer.
+
+Diese Seite beschreibt heimvio **als** Messdienst. Rechnet dagegen ein klassischer Messdienst
+wie ista oder Techem weiter mit seinen eigenen Geräten ab, und heimvio übernimmt nur sein
+Ergebnis, lesen Sie [Mit Ihrem Messdienst abrechnen](/doku/messdienst).
+
+## Drei Aufstellungen
+
+Welche Dienste eine Gemeinschaft in heimvio nutzt, folgt aus ihrem Abo
+([Abo und Organisationen](/doku/abo-und-organisationen#messdienst-hausverwaltung-oder-beides)):
+
+| Abo | Verwaltung | Messdienst |
+| --- | --- | --- |
+| **beides** | in heimvio | in heimvio — dieselbe Firma oder zwei verschiedene |
+| **nur Messdienst** | außerhalb von heimvio, mit eigener Software; der Austausch läuft über Dateien | in heimvio |
+| **nur Hausverwaltung** | in heimvio | ein fremder Messdienst, dessen Ergebnis heimvio übernimmt |
+
+Eine Verwaltung ohne Messdienst hat in heimvio **nichts Zählerbezogenes**: keine Messstellen,
+keine Ablesung, keine Funkempfänger. Den Allgemeinstrom trägt sie als Pauschale je Jahr ein,
+Wärme und Wasser kommen vom fremden Messdienst.
+
+## Wer der Messdienst wird
+
+**Eine Firma.** Eine Firma führt in heimvio eine oder beide **Leistungsarten** —
+Hausverwaltung, Messdienst ([Hausverwaltung als Firma](/doku/hausverwaltung#hausverwaltung-messdienst-oder-beides)).
+Die Gemeinschaft lädt sie unter **Org-Einstellungen → Verwaltung** mit **„Hausverwaltung oder
+Messdienst einladen"** ein und setzt das Häkchen bei **Messdienst**. Nimmt die Firma an, teilt
+sie ihre Mitarbeiter der Gemeinschaft zu, und diese arbeiten dort als Messdienst. Verwaltung
+und Messdienst können zwei verschiedene Firmen sein.
+
+**Eine Person.** Ohne Firma laden Sie den Messdienst in der Karte **Benutzer einladen** mit
+**„Messdienst einladen"** ein — mit E-Mail-Adresse und Namen, wie einen Verwalter.
+
+## Was der Messdienst darf
+
+| Darf | Darf nicht |
+| --- | --- |
+| Liegenschaft, Wohnungen, Flächen und Vorlagen pflegen, Stammdaten per Datei übernehmen | Zahlungen, Bank, Lastschrift-Einzüge |
+| Mietverhältnisse und Eigentümer **lesen** | Mietverhältnisse und Eigentümer ändern |
+| Messstellen, Zähler, Tarife und Ablesungen | Wirtschaftsplan, Rücklage, Hausgeld |
+| Funkempfänger einrichten und den Zugang für Zählerstände aus anderer Software | Versammlungen und Beschlüsse |
+| Heiz- und Wasserkosten, Brennstofflieferungen | übrige Belege und Kosten der Gemeinschaft |
+| Wärme- und Wasserabrechnung rechnen, ausstellen und als Datei weitergeben | Anliegen, Angebote und Aufträge |
+| Ableser einladen und ausladen, Mietern einen Link zur Verbrauchsinformation geben | andere Mitglieder einladen, Org-Einstellungen, das Abo |
+
+Die Grenze zieht nicht die Oberfläche, sondern die Datenbank: Was der Messdienst nicht darf,
+bekommt er auch nicht über die Adresszeile zu sehen.
+
+## Fachfirmen einbinden
+
+Zähler tauscht und richtet meist eine Sanitär- oder Messtechnikfirma ein. Deren Techniker
+laden Sie in der Karte **Benutzer einladen** als **Ableser** ein. Ein Ableser sieht keine
+Kosten, keine Mieter und keine Abrechnungen; er ordnet die Zähler den Messstellen zu und
+trägt Ablesungen ein ([Messstelle und Zähler](/doku/messstelle-und-zaehler)). Sind die
+Arbeiten erledigt, laden Sie ihn wieder aus.
+
+Den Auftrag an die Fachfirma — Termin, Umfang, Preis — vereinbaren Sie außerhalb von heimvio.
+
+## Die Ansicht Messdienst
+
+Als Messdienst landen Sie auf der [Startseite](/doku/ueberblick#die-startseite) in der Ansicht
+**Messdienst**. Oben im Überblick steht, was ansteht, über alle Gemeinschaften:
+
+| Block | was dort steht |
+| --- | --- |
+| **Zähler und Ablesung** | „3 Messstellen ohne Zähler" (geplant, aber noch ohne Gerät), „2 Messstellen ohne Ablesung seit 45 Tagen", „1 Empfangsproblem · seit 12.10." (Meldungen der Funkempfänger) |
+| **Wärmeabrechnung** | „Wärmeabrechnung 2025 fehlt", solange das Vorjahr nicht ausgestellt ist |
+
+Darunter die gewählte Liegenschaft mit den Laschen **Einrichtung**, **Eingang** (hier die
+[Übernahme per Datei](/doku/uebernahme-per-datei)), **Ablage**, **Zähler**, **Jahreswechsel**
+und **Mehr**. Zahlungen, Versammlung und Anliegen gibt es in dieser Ansicht nicht. Sind Sie
+Verwalter und Messdienst zugleich, gibt es keine eigene Ansicht: Die Lasche **Zähler** steht
+dann in der Ansicht Verwaltung.
+
+## Eine Gemeinschaft mit fremder Verwaltung, in fünf Stationen
+
+1. **Stammdaten übernehmen.** Die fremde Verwaltung schickt ihre Stammdaten als Datei —
+   im Branchenstandard des bved oder als Tabelle. In der Lasche **Eingang** ziehen Sie sie
+   hinein, prüfen die Vorschau und übernehmen ([Übernahme per Datei](/doku/uebernahme-per-datei)).
+2. **Messstellen und Zähler.** Die Messstellen entstehen aus den Vorlagen der Wohnungen; die
+   Techniker hängen die Zähler daran, ein Funkempfänger liefert die Stände danach von selbst
+   ([Zählerstände automatisch einspeisen](/doku/zaehlerstaende-automatisch)).
+3. **Heizkosten und Brennstoff.** Heizöl, Pellets oder Gas bestellt die Gemeinschaft über ihre
+   Verwaltung, die Rechnung geht an sie. Die Kosten bekommen Sie mit der Kostenaufstellung der
+   Verwaltung und tragen sie samt Lieferungen ein. Den **Tankstand** am Stichtag erfassen Sie
+   oder Ihr Ableser als **Ablesung** an der Tank-Messstelle.
+4. **Wärme und Wasser abrechnen.** In der Lasche **Jahreswechsel** steht je Wohnung und Nutzer
+   der Stand — offen oder ausgestellt. 👁 zeigt die Abrechnung vorab, **„Ausstellen"** stellt
+   eine aus, **„Alle ausstellen"** alle offenen des Jahres.
+5. **Ergebnis an die Verwaltung.** **„Ergebnis als bved-Datei"** erzeugt die Ergebnisdateien
+   aus den ausgestellten Abrechnungen. Die schicken Sie der Verwaltung; ihre Software liest sie
+   ein, wie sie es von jedem anderen Messdienst kennt.
+
+## Ausstellen sperrt das Jahr
+
+Ist auch die Verwaltung in heimvio, stellt der Messdienst nur das **Wärme- und
+Wasserergebnis** aus — die Verwaltung rechnet ihre Nebenkostenabrechnung danach mit **genau
+diesen Zahlen**. Damit sich darunter nichts mehr bewegt, sperrt das Ausstellen die Eingaben
+des Zeitraums:
+
+- Ablesungen,
+- Brennstofflieferungen,
+- Tarife der Messstellen,
+- Heizkosten.
+
+Eine Änderung wird dann mit einem Hinweis abgewiesen. Ist doch noch etwas zu korrigieren,
+öffnet **„Wieder öffnen"** das Jahr. Die ausgestellten Abrechnungen bleiben als Fassung
+erhalten; nach der Korrektur stellen Sie neu aus. Solange das Wärmeergebnis fehlt, weist die
+Prüfung vor der Nebenkostenabrechnung die Verwaltung darauf hin.
+
+Sind Verwaltung und Messdienst dieselben Personen, bleibt alles wie gewohnt: Die Abrechnung
+entsteht in einem Schritt ([Das Abrechnungsjahr](/doku/abrechnungsjahr)).
+
+## Grenzen
+
+- **Kein Auftrag an die Fachfirma.** heimvio lädt den Techniker ein, schreibt aber keinen
+  Auftrag „Zählertausch" und verfolgt ihn nicht.
+- **Tankstände aus Dateien.** Anfangs- und Endbestand, die in der Datei der fremden Verwaltung
+  stehen, übernimmt heimvio nicht als Tankstand; tragen Sie sie als Ablesung ein.
+- **Funkempfänger nur mit dem Messdienst.** Ohne den Messdienst im Abo gibt es keine Geräte.
+- **Die Abrechnung bleibt eine Abrechnung nach der Heizkostenverordnung.** heimvio rechnet die
+  Verteilung; was die fremde Verwaltung daraus macht, liegt bei ihr.
+
+Wie Sie den Messdienst buchen oder nachbuchen, steht unter
+[Abo und Organisationen](/doku/abo-und-organisationen); wie Messstellen und Zähler
+zusammenhängen, unter [Messstelle und Zähler](/doku/messstelle-und-zaehler).

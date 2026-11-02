@@ -3,7 +3,7 @@ title: Abo und Organisationen — zahlen, wechseln, kündigen, löschen
 description: Das Abo hängt an der Organisation, und wer zahlt, entscheidet über ihren Fortbestand. Wo Sie kündigen oder widerrufen, den Zahler übergeben, eine Organisation löschen und Ihr eigenes Konto.
 section: Weitere Themen
 order: 95
-updated: 2026-10-21
+updated: 2026-11-02
 ---
 
 import Preise from '../src/components/Preise.astro';
@@ -26,10 +26,42 @@ dass sich am Abo etwas ändert:
 | --- | --- |
 | Sie richten eine Gemeinschaft ein | Sie |
 | Eine Hausverwaltung nimmt das Mandat an | der Mitarbeiter der Firma, der angenommen hat |
+| Eine Firma nimmt nur das Mandat als Messdienst an | unverändert — der Messdienst wird nie Zahler |
 | Der zahlende Mitarbeiter verlässt die Firma oder die Gemeinschaft | ein Kollege derselben Firma, der der Gemeinschaft zugeteilt ist; gibt es keinen, meldet heimvio, dass die Zahlung übergeben werden muss |
 | Sie übergeben selbst | das Mitglied, das Ihre Nominierung annimmt (Abschnitt 3) |
 
 <Preise />
+
+## Messdienst, Hausverwaltung oder beides
+
+Ein Abo besteht aus zwei Diensten, die Sie **einzeln** buchen können:
+
+| Dienst | was dazugehört |
+| --- | --- |
+| **Messdienst** | Messstellen, Zähler, Ablesung, Funkempfänger, Heiz- und Wasserkostenabrechnung ([heimvio als Messdienst](/doku/heimvio-als-messdienst)) |
+| **Hausverwaltung** | Nebenkosten, Hausgeld, Bank und Zahlungen, Versammlungen, Eingang und Ablage |
+
+Auf der Preisseite steht je Tarif **„Nur Messdienst"**, **„Nur Hausverwaltung"** und
+**„Beides auswählen"**; beim Abschluss können Sie die Auswahl im Abschnitt **Leistungen**
+noch ändern. Drei Regeln gelten immer:
+
+- **Die Gemeinschaft zahlt.** Auch wenn eine Firma als Messdienst oder als Verwaltung
+  arbeitet — das Abo gehört der Organisation, und Zahler ist ihr Verwalter in heimvio, nie
+  die Firma des Messdienstes.
+- **Funkempfänger gibt es nur mit dem Messdienst.** Ohne ihn liefern wir keine Geräte.
+- **Ohne Messdienst nichts Zählerbezogenes.** Eine reine Hausverwaltung hat keine
+  Messstellen und keine Ablesung; den Allgemeinstrom trägt sie als Pauschale ein, Wärme und
+  Wasser kommen von einem fremden Messdienst ([Mit Ihrem Messdienst abrechnen](/doku/messdienst)).
+
+**Dazubuchen.** Fehlt Ihnen ein Dienst, steht unter **„Abos"** bei der Organisation
+**„Messdienst dazubuchen"** bzw. **„Hausverwaltung dazubuchen"**. heimvio nennt den Preis —
+„Zusätzlich … monatlich (inkl. MwSt.), anteilig ab heute" —, beim Messdienst fragt es nach der
+Anzahl der Funkempfänger. **„Kostenpflichtig dazubuchen"** schließt ab; der Dienst gilt
+sofort. Buchen Sie zum Messdienst die Hausverwaltung dazu, führt heimvio ab dann auch die
+Verwaltung, und die Ergebnisdateien für eine fremde Verwaltung entfallen.
+
+Einen einzelnen Dienst wieder abbestellen geht nicht: **Eine Kündigung beendet immer das
+ganze Abo.**
 
 ## Wo Sie das finden
 
@@ -43,8 +75,9 @@ Gemeinschaft kostet: Tarif, Laufzeit, ob gekündigt ist und wer zahlt — nur le
 Knöpfe. Das sind Verwaltungskosten der Gemeinschaft, und die prüft er.
 
 Die Seite zeigt **alle Organisationen, für die Sie zahlen**, untereinander — auch die, in
-denen Sie gerade nicht arbeiten. Je Organisation stehen dort Art, Tarif, Wohneinheiten, die
-Zahl der Benutzer und der Status:
+denen Sie gerade nicht arbeiten. Je Organisation stehen dort Art, Tarif, die gebuchten
+**Leistungen** (Messdienst · Hausverwaltung), Wohneinheiten, die Zahl der Benutzer und der
+Status:
 
 | Status | Bedeutung |
 | --- | --- |
@@ -67,7 +100,8 @@ und keine Rechnungen.
 ## 2. Kündigen
 
 Das Abo wird monatlich abgerechnet und hat keine Mindestlaufzeit. **„Kündigen"** beendet es
-**zum Ende des laufenden Monats**. Bis dahin arbeiten Sie normal weiter, danach ist die
+**zum Ende des laufenden Monats** — immer das ganze Abo, Messdienst und Hausverwaltung
+zusammen. Bis dahin arbeiten Sie normal weiter, danach ist die
 Organisation schreibgeschützt. Bis zum Stichtag holt **„Kündigung zurücknehmen"** alles
 zurück, als wäre nichts gewesen. Den angefangenen Monat erstatten wir nicht anteilig.
 
@@ -176,17 +210,12 @@ Ihr Login bleibt in beiden Fällen derselbe.
 
 ## Die aktive Organisation wechseln
 
-Wer in mehreren Organisationen Mitglied ist, wechselt je nach Rolle an einer anderen
-Stelle:
-
-- **Als Verwalter** auf der Startseite. Der Name der Liegenschaft im Kopf ist eine Auswahl
-  über alle Liegenschaften Ihrer Organisationen; gehört die gewählte zu einer anderen
-  Organisation, wechselt heimvio diese gleich mit, ohne neu zu laden, und der offene Tab
-  bleibt. Auch ein Klick auf eine Zeile im Überblick oben wechselt, wenn nötig.
-- **Als Eigentümer, Beirat, Ableser oder Mieter** unten in der Fußleiste: Rechts steht die
-  aktive Organisation. Gibt es mehrere, ist es eine Auswahl; nach dem Wechsel lädt heimvio
-  neu und startet auf der passenden Startseite. Gibt es nichts zu wählen, steht dort nur der
-  Name.
+Wer in mehreren Organisationen Mitglied ist, wechselt auf der **Startseite**, in jeder
+Rolle an derselben Stelle: Der Name im Kopf der gewählten Ansicht — Liegenschaft, Wohnung
+oder Mietverhältnis — ist eine Auswahl über alle Ihre Organisationen. Gehört die gewählte
+Zeile zu einer anderen Organisation, wechselt heimvio diese gleich mit; als Verwalter und
+Messdienst ohne neu zu laden, und der offene Tab bleibt. Auch ein Klick auf eine Zeile im
+Überblick oben wechselt, wenn nötig. Das frühere Feld in der Fußleiste gibt es nicht mehr.
 
 „Aktiv" heißt nur: Hier arbeiten Sie gerade. Es legt keine Heimat fest und ändert nichts an
 Ihren Rechten in den anderen Organisationen.
