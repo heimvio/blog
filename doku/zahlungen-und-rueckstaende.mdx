@@ -3,7 +3,7 @@ title: Zahlungen und Rückstände — Soll gegen Ist
 description: Was heimvio jeden Monat erwartet, was auf dem Konto eingeht, und was Sie mit dem Rest tun. Für Verwalter und für Eigentümer.
 section: Konzepte
 order: 72
-updated: 2026-10-27
+updated: 2026-11-02
 ---
 
 heimvio weiß, was jeden Monat eingehen soll: das Hausgeld aus dem Wirtschaftsplan, die
@@ -57,8 +57,9 @@ Für den Abruf fragt heimvio einmal Ihre Einwilligung ab. Wechselt die Verwaltun
 Abruf an, bis die neue Verwaltung den Bankzugang übernommen hat; der Kontoverlauf bleibt
 ([Verwalterwechsel](/doku/verwalterwechsel)).
 
-**Kontoauszug hochladen.** Wer sein Konto nicht verbinden will, lädt den Kontoauszug als
-CSV-Datei hoch. heimvio liest die Buchungen selbst heraus, auch hier Eingänge wie
+**Kontoauszug hochladen.** Üblich ist die Verbindung zur Bank; wer sein Konto nicht verbinden
+will, lädt den Kontoauszug als CSV-Datei hoch (im Eingang, Teil **Konto**, dort steht auch der
+letzte Auszug). heimvio liest die Buchungen selbst heraus, auch hier Eingänge wie
 Abbuchungen. Ein Format, das heimvio nicht kennt, liest eine KI. Die Datei selbst liegt danach
 in der Ablage im Ordner **„Kontoauszüge 2026"** (das Jahr der ersten Buchung), den auch der
 Beirat lesen kann. Enthält Ihr Export eine
@@ -252,34 +253,34 @@ er, wenn Sie den Vorschlag bestätigen:
 | Die Rechnungsnummer eines Belegs steht im Verwendungszweck, der Betrag stimmt | Abbuchung und Beleg werden **von selbst** verbunden |
 | Keine Rechnungsnummer, aber genau ein Beleg dieses Geschäftspartners mit diesem Betrag, abgebucht bis 90 Tage nach dem Rechnungsdatum — den Partner erkennt heimvio an der Bankverbindung, die es sich bei der ersten Zuordnung gemerkt hat ([Geschäftspartner](/doku/geschaeftspartner)) | ebenfalls **von selbst** |
 | Mehrere Belege mit diesem Betrag, oder der Name passt nicht | ein **Vorschlag** an der Abbuchung: „Zuordnen" verbindet beide, „… mögliche Belege" zeigt alle zur Auswahl |
-| Kein Beleg mit diesem Betrag | die Abbuchung bleibt unter **„Ausgaben ohne Beleg"** |
+| Kein Beleg mit diesem Betrag | die Abbuchung bleibt unter **„Beleg fehlt“**, wenn sie auch keine Rate und kein planmäßiger Abschlag ist ([Raten und Abschläge](#7-raten-und-abschläge)) |
 
 Eine Rechnung mit zwei Steuersätzen steht unter **Belege** als zwei Zeilen; ergeben beide
 zusammen den abgebuchten Betrag, wird sie als Ganzes zugeordnet. Ein zugeordneter Beleg trägt
 dort das Kennzeichen **„bezahlt am …"**. War eine Zuordnung falsch, öffnen Sie den Beleg und
-wählen **Zuordnung aufheben** — die Abbuchung steht dann wieder unter „Ausgaben ohne Beleg".
+wählen **Zuordnung aufheben** — die Abbuchung steht dann wieder unter „Beleg fehlt“.
 In einem abgeschlossenen Jahr ändert sich nichts mehr.
 
-Was übrig bleibt — die Kontoführungsgebühr, ein Abschlag ohne Rechnung —, steht auf der Seite
-**Zahlungen** und im Eingang unter **„Ausgaben ohne Beleg"**:
+Was übrig bleibt, steht auf der Seite **Zahlungen** und im Eingang (Teil **Konto**) unter
+**„Beleg fehlt“**. Je Abbuchung haben Sie drei Wege:
 
-1. **Beleg anlegen.** Ein Klick macht aus der Abbuchung einen Beleg für die Abrechnung.
-   Betrag, Datum und Empfänger übernimmt heimvio aus der Buchung, die Steuerkategorie wählen
-   Sie. heimvio merkt sich Bankverbindung und Kategorie am Geschäftspartner des Empfängers und
-   schlägt beim nächsten Mal Partner und Kategorie vor.
-2. **Ergänzen.** Kostenart und Umlage tragen Sie danach unter **Belege** nach, wie bei
-   jedem anderen Beleg.
+1. **Zuordnen …** Die Abbuchung gehört zu einem Beleg, den heimvio nicht von selbst gefunden
+   hat — auch als Rate oder als Teilbetrag. Oder sie ist ein Abschlag an einen Versorger:
+   dann wählen Sie **„Abschlag an einen Partner“** ([Raten und Abschläge](#7-raten-und-abschläge)).
+2. **Beleg hochladen.** Laden Sie die Rechnung in den Eingang; der Abgleich ordnet sie danach
+   selbst zu.
+3. **Kein Beleg nötig …** mit einem Grund. Kontoführung, Bankgebühr und Sollzinsen werden als
+   Kosten erfasst; Umbuchung zwischen eigenen Konten, Rückbuchung / Storno und Sonstiges
+   (mit Notiz) blenden die Abbuchung nur aus. Unter **„ausgeblendet (n)“** holen Sie sie
+   zurück.
 
-3. **Ausblenden.** Braucht die Abbuchung keinen Beleg — Kontoführung, Bankgebühr,
-   Umbuchung —, blenden Sie sie mit **✕** aus, mit Grund und auf Wunsch einer Notiz. Unter
-   **„ausgeblendet (n)"** holen Sie sie zurück.
+heimvio legt **nie selbst einen Beleg an** — es ordnet nur zu oder schlägt vor. Einen Knopf,
+der aus einer Abbuchung einfach einen Beleg macht, gibt es nicht mehr: Ein Beleg ohne
+Rechnung wäre eine Buchung, die niemand geprüft hat.
 
-heimvio legt **nie selbst einen Beleg an** — es ordnet nur zu oder schlägt vor. Ein Beleg
-ohne Rechnung wäre eine Buchung, die niemand geprüft hat.
-
-Ein Kontoauszug kennt keine Umsatzsteuer: Ein Beleg, den Sie aus einer Abbuchung angelegt haben,
-steht deshalb zunächst auf „0 % angenommen — wird mit dem Beleg übernommen". Laden Sie die
-Rechnung danach hoch, sucht heimvio eine Abbuchung ohne
+Ein Kontoauszug kennt keine Umsatzsteuer: Eine Kostenzeile aus einer Abbuchung, etwa einer
+Bankgebühr, steht deshalb zunächst auf „0 % angenommen — wird mit dem Beleg übernommen". Liegt dazu eine
+Rechnung vor und laden Sie sie hoch, sucht heimvio eine Abbuchung ohne
 Beleg mit **genau demselben Betrag**, abgebucht ab zwei Wochen vor bis etwa vier Monate nach
 dem Rechnungsdatum. Gibt es genau eine, sagt das der Vorschlag, und mit Ihrer Bestätigung
 hängt die Rechnung an dieser Zeile, und ihr
@@ -295,6 +296,46 @@ legt dort private Belege für seine Wohnung an; die Zuordnung zu seinen eigenen 
 dort genauso. Seine Abbuchungen und Belege bleiben der Verwaltung verborgen und umgekehrt.
 
 Den **Kontostand** zeigt die Bank-Karte, und zwar so, wie er beim letzten Abruf war.
+
+## 7. Raten und Abschläge
+
+Nicht jede Rechnung wird in einer Summe bezahlt. Zwei Fälle kennt heimvio ausdrücklich.
+
+**Raten.** Ein Bescheid wie die Grundsteuer, die Abfallgebühr oder die Versicherung hat
+mehrere Fälligkeiten. Die Lesung übernimmt die Termine aus dem Dokument; beim Bestätigen
+stehen sie im Feld **„Fälligkeiten“** und lassen sich ändern, daneben die **„Belegnummer /
+Kassenzeichen“**. Jede Abbuchung, die das Kassenzeichen im Verwendungszweck trägt oder zu
+einem Fälligkeitstermin passt, ordnet heimvio selbst als Rate zu. Der Beleg zeigt dann, wie weit
+er ist: „2 von 4 Raten bezahlt“. Kommt ein Bescheid erst nach der ersten Abbuchung, holt
+heimvio die frühere Zahlung beim Anlegen des Belegs nach.
+
+**Abschläge.** Strom, Gas und Wasser zahlen Sie monatlich oder vierteljährlich, die
+Rechnung kommt einmal im Jahr. Für jeden Lieferanten gibt es dafür einen **Abschlagsplan**
+mit Betrag, Rhythmus (monatlich, alle zwei Monate, vierteljährlich) und Fälligkeitstag — er
+steht beim [Geschäftspartner](/doku/geschaeftspartner#abschlagsplan). Der Plan entsteht von
+Hand, beim Zuordnen einer Abbuchung als **„Abschlag an einen Partner“** (dann merkt sich heimvio
+auch das Konto), als Vorschlag **„Neuer Abschlag“** aus der Jahresrechnung oder aus drei
+gleichen Abbuchungen. Vorschläge übernehmen Sie mit einem Klick.
+
+Danach erkennt heimvio die Abschläge selbst: Weicht Betrag um höchstens 1 % und Termin um
+höchstens fünf Tage ab, ordnet es zu. Eine größere Abweichung ist kein Fehler, sondern eine
+Frage — **„Abschlag geändert?“** —, und mit Ihrer Bestätigung gilt der neue Betrag ab diesem
+Termin.
+
+**Die Jahresrechnung gleicht aus.** Kommt sie, rechnet heimvio die bisherigen Abschläge
+dagegen: „Abschläge 1.140,00 €, Rechnung 1.212,00 €, Nachzahlung 72,00 €“. Ist die Rechnung
+niedriger, ist es ein Guthaben; es wird mit dem nächsten Abschlag verrechnet oder kommt als
+Gutschrift. Fehlt die Jahresrechnung vier Monate nach Ende des Abrechnungszeitraums, steht das
+im Überblick der Startseite. Eine Gutschrift eines Lieferanten landet nie bei Mietern oder im
+Hausgeld.
+
+Ehrlich gesagt: **heimvio ist keine Buchhaltung.** Der Stand je Lieferant wird aus Belegen
+und Zahlungen gerechnet; gebucht wird beim Steuerberater ([DATEV und sevdesk](/doku/buchhaltung)).
+Auch die Nebenkostenabrechnung und der Jahresabschluss rechnen weiter mit den Kosten des
+Leistungszeitraums, nicht mit Zahlungen — ein Abschlag ist keine Kosten, sonst zählte der
+Versorger doppelt. Raten und Abschläge sagen nur, ob und wie weit bezahlt ist. Der
+Verwaltungsbeirat sieht Zahlungsstände und Abschlagspläne wie die Belege selbst erst für
+abgeschlossene Jahre ([Verwaltungsbeirat](/doku/verwaltungsbeirat)).
 
 ## Und dann?
 

@@ -22,10 +22,27 @@ Startseite (direkt hinter Eingang):
 
 | Reiter | was dort steht |
 | --- | --- |
-| **Eingang** | was zu tun ist: neue Dokumente und offene Vorschläge, dazu Hochladen, Kamera und der Stand des Postfachs |
+| **Eingang** | was zu tun ist, in drei Teilen: ① Hochladen, ② Post mit der Dokumentenliste, ③ Konto (unten) |
 | **Beschlüsse** | was aus Ihren Versammlungen und Umläufen folgt: je Niederschrift eine Zeile mit ihren Vorschlägen, dazu die laufenden Umläufe (unten) |
 | **Belege** | die Kostenzeilen, die aus bestätigten Rechnungen entstanden sind — die Grundlage der Abrechnung |
 | **Ablage** (eigene Lasche) | alle Dokumente in ihren Ordnern, mit Sichtbarkeit und Suche; neue Ordner legen Sie gleich dort an |
+
+## Der Reiter Eingang: Hochladen, Post, Konto
+
+Der Reiter Eingang hat drei Teile, in der Reihenfolge, in der Dinge bei Ihnen ankommen:
+
+1. **Hochladen.** Datei hineinziehen, auswählen oder mit dem Handy fotografieren.
+2. **Post.** Das Feld **„Per Mail“** mit **„Jetzt abrufen“** und darunter die Liste der
+   Dokumente, die auf Sie warten.
+3. **Konto.** Je Bankverbindung steht, wann heimvio zuletzt abgerufen hat — bzw. wann der
+   letzte CSV-Kontoauszug hochgeladen wurde. Üblich kommt das Konto über die Bankanbindung;
+   der CSV-Auszug ist die Ausnahme für alle, die ihr Konto nicht verbinden wollen. Hat ein
+   Abruf etwas Offenes hinterlassen, steht dazu ein Eintrag, etwa „12 neue Umsätze,
+   3 zugeordnet, 1 Beleg fehlt“; sobald nichts mehr offen ist, verschwindet er. Ein
+   CSV-Kontoauszug erscheint hier und **nicht** in der Dokumentenliste. Darunter stehen
+   **„Offen bei Lieferanten“** (Abschläge ohne Jahresrechnung, Raten, die noch fehlen —
+   [Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende#7-raten-und-abschläge))
+   und die Liste **„Beleg fehlt“** (unten).
 
 ## Der Weg in fünf Stationen
 
@@ -71,7 +88,9 @@ Startseite (direkt hinter Eingang):
    sicher ist, sind markiert — dort lohnt der Blick auf das Original. Passt ein Beleg zu
    einer Abbuchung auf dem Konto, sagt das ein Hinweis auf der Karte, und mit dem Bestätigen
    werden beide verbunden ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)).
-   Liegt dieselbe Rechnung schon vor, sagt die Karte auch das.
+   Kommt der Beleg erst nach der Abbuchung — ein Bescheid nach der ersten Rate, eine
+   Jahresrechnung nach den Abschlägen —, ordnet heimvio die schon gebuchten Zahlungen
+   beim Bestätigen selbst zu. Liegt dieselbe Rechnung schon vor, sagt die Karte auch das.
 5. **Ablegen.** Das Dokument liegt danach in seinem Ordner, mit seiner Sichtbarkeit: nur
    für die Verwaltung, zusätzlich für den Beirat, für alle Eigentümer oder auch für die
    Mieter. Im Mietshaus gibt es nur **Nur ich** und **+ Mieter**, und die Ordner „Beschlüsse &
@@ -82,18 +101,31 @@ Startseite (direkt hinter Eingang):
    Dokument ohne Vorschlag, etwa ein Vertrag oder ein Schreiben, ist mit dem Ablegen
    erledigt.
 
-## Ausgaben ohne Beleg
+## Beleg fehlt
 
-Abbuchungen, für die es keinen Beleg gibt und keinen braucht, räumen Sie aus der Liste
-**„Ausgaben ohne Beleg"**:
+Eine Abbuchung, zu der heimvio keinen Beleg findet, steht im Teil Konto in der Liste
+**„Beleg fehlt“** (früher „Ausgaben ohne Beleg“). Raten und planmäßige Abschläge stehen dort
+nicht, solange heimvio sie erkennt. Je Abbuchung haben Sie drei Wege:
 
-1. Wählen Sie an der Abbuchung **✕**.
-2. Wählen Sie den Grund — Kontoführung, Bankgebühr, Umbuchung oder Sonstiges — und tragen
-   Sie bei Bedarf eine Notiz ein.
-3. Die Abbuchung verschwindet aus der Liste. Unter **„ausgeblendet (n)"** finden Sie sie
-   wieder und holen sie zurück, wenn doch ein Beleg dazugehört.
+- **Zuordnen …** verbindet die Abbuchung mit einem vorhandenen Beleg — auch als Rate oder
+  als Teilbetrag, wenn eine Rechnung in mehreren Zahlungen beglichen wird. Bei Strom, Gas
+  und Wasser wählen Sie stattdessen **„Abschlag an einen Partner“**; dann merkt sich heimvio
+  das Konto und erkennt die nächsten Abschläge selbst
+  ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende#7-raten-und-abschläge)).
+- **Beleg hochladen.** Die Rechnung kommt in den Eingang wie jedes Dokument; der Abgleich
+  ordnet sie danach selbst der Abbuchung zu.
+- **Kein Beleg nötig …** verlangt einen Grund. Der Grund entscheidet, was geschieht:
 
-Die Buchung selbst bleibt unverändert auf dem Konto.
+| Grund | Folge |
+| --- | --- |
+| Kontoführung, Bankgebühr, Sollzinsen | die Abbuchung wird als **Kosten erfasst** |
+| Umbuchung zwischen eigenen Konten, Rückbuchung / Storno | nur **ausgeblendet** |
+| Sonstiges (mit Notiz) | nur **ausgeblendet** |
+
+Ausgeblendetes finden Sie unter **„ausgeblendet (n)“** und holen es zurück, wenn doch ein
+Beleg dazugehört; auch die erfassten Kosten lassen sich wieder lösen. Die Buchung selbst
+bleibt unverändert auf dem Konto. Einen Knopf, der aus einer Abbuchung einfach einen Beleg
+macht, gibt es nicht mehr: Ein Beleg ist ein Dokument, das jemand geprüft hat.
 
 ## Was solange nicht zählt
 
@@ -106,8 +138,8 @@ des Einrichtungsassistenten — damit nichts unbemerkt fehlt.
 
 | Art | was daraus wird |
 | --- | --- |
-| **Rechnung** | Kostenzeilen, bei Versorgern dazu Preise und Zählerstände — alles als Vorschlag. Nennt die Rechnung eine Auftragsnummer wie „L-2026-012-1", kommt der Vorschlag **„Rechnung zum Auftrag"** dazu ([Handwerker beauftragen](/doku/beauftragen)) |
-| **Kontoauszug** | die Zahlungen; heimvio ordnet sie nach festen Regeln zu, ohne dass Sie jede einzeln bestätigen, und legt den Auszug selbst ab ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)) |
+| **Rechnung** | Kostenzeilen, bei Versorgern dazu Preise und Zählerstände — alles als Vorschlag. Bescheide mit mehreren Fälligkeiten (Grundsteuer, Abfall, Versicherung) nehmen ihre Termine als Raten mit: beim Bestätigen stehen **„Fälligkeiten“** und **„Belegnummer / Kassenzeichen“** sichtbar da und lassen sich ändern. Nennt die Rechnung eine Auftragsnummer wie „L-2026-012-1", kommt der Vorschlag **„Rechnung zum Auftrag"** dazu ([Handwerker beauftragen](/doku/beauftragen)) |
+| **Kontoauszug** | die Zahlungen; heimvio ordnet sie nach festen Regeln zu, ohne dass Sie jede einzeln bestätigen, und legt den Auszug selbst ab. Er steht im Teil **Konto**, nicht in der Dokumentenliste ([Zahlungen und Rückstände](/doku/zahlungen-und-rueckstaende)) |
 | **Niederschrift** | die Beschlüsse einer alten Versammlung, zum Prüfen und Übernehmen in die Beschluss-Sammlung. Die Niederschrift einer Versammlung, die Sie in heimvio geführt haben, wird nicht noch einmal gelesen — sie kommt von selbst in den Reiter **Beschlüsse** |
 | **Angebot** | der Vorschlag **„Angebot an Vorgang"**: Mangel, Anbieter, Festpreis oder Stundensatz mit Budget, gültig bis — heimvio findet den Mangel über die Antwort auf die Anfrage oder das Zeichen ([Angebote einholen und vergeben](/doku/vergabe)) |
 | **Vertrag**, **Auslage** | eingeordnet und abgelegt |
