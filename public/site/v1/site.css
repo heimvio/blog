@@ -1,0 +1,106 @@
+/* /site/v1/site.css — das Aussehen der Site heimvio.de (Blog und Doku).
+ *
+ * VERTRAG (Plan #119 im heimvio-Repo): Diese Datei liefert der Blog unter einer
+ * FESTEN Adresse ohne Hash aus; die Benutzerdoku (heimvio-Repo, doku/) bindet sie
+ * zur Laufzeit per <link> ein. Der Blog benutzt dieselbe Datei — wer hier etwas
+ * bricht, sieht es zuerst am Blog.
+ *   - Hier steht nur das Aussehen der Site: Variablen, Grundschrift, Kopf
+ *     (.site-head, .brand, .nav, .spacer, .to-app), Fuss (footer.site),
+ *     Typografie, Tabellen, Code. Keine Klassen, die nur Blog oder Doku brauchen.
+ *   - Variablen und Klassen umbenennen oder entfernen = neue Fassung v2 anlegen
+ *     und v1 stehen lassen, bis die Doku umgestellt ist. Ergaenzen ist frei.
+ *   - Caddy liefert /site/* mit Cache-Control: no-cache (ETag) aus — eine
+ *     Aenderung ist nach dem Blog-Deploy sofort ueberall sichtbar.
+ */
+
+:root {
+  --fg: #1c2733;
+  --muted: #5b6b7b;
+  --border: #dde4ea;
+  --accent: #1976d2;
+  --bg: #ffffff;
+  --surface: #f5f7f9;
+  --measure: 44rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e4e9ee;
+    --muted: #93a3b3;
+    --border: #2e3b47;
+    --accent: #64a9e8;
+    --bg: #10161c;
+    --surface: #1a222b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.65 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+main { max-width: var(--measure); margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+footer.site {
+  max-width: var(--measure);
+  margin: 2rem auto 0;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+footer.site a { color: var(--accent); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 1rem 0 0.25rem; }
+h2 { font-size: 1.35rem; margin-top: 2rem; }
+h3 { font-size: 1.1rem; }
+
+.lead { color: var(--muted); }
+
+blockquote {
+  border-left: 3px solid var(--border);
+  margin: 1rem 0;
+  padding: 0.25rem 1rem;
+  color: var(--muted);
+}
+
+code { background: var(--surface); border-radius: 4px; padding: 0.1rem 0.35rem; font-size: 0.9em; }
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+
+/* Breite Tabellen scrollen in sich selbst, statt die Seite horizontal zu sprengen. */
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--border); padding: 0.4rem 0.6rem; text-align: left; }
+
+article img { max-width: 100%; height: auto; border-radius: 8px; }
+
+/* Kopf (Markup: SiteHeader.astro im Blog, Kopie in doku/ des heimvio-Repos) */
+.site-head {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.brand { display: inline-flex; align-items: center; }
+.brand img { display: block; }
+.nav {
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 1px;
+}
+.nav:hover { color: var(--fg); text-decoration: none; }
+.nav.active { color: var(--fg); border-bottom-color: var(--accent); }
+.spacer { flex: 1; }
+.to-app { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.to-app:hover { color: var(--accent); }
