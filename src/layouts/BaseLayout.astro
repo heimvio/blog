@@ -1,9 +1,9 @@
 ---
-// Gemeinsames Grundgerüst für Blog und Doku: <head> (SEO), Header, Footer, Styles.
-// Alles Sektions-Spezifische (Artikel-Meta, Doku-Navigation) liegt in den Layouts,
-// die dieses hier umschliessen — BlogPost.astro bzw. DocPage.astro.
+// Grundgerüst des Blogs: <head> (SEO), Header, Footer. Das Aussehen der Site steht
+// in public/site/v1/site.css (feste Adresse ohne Hash) — dieselbe Datei bindet die
+// Benutzerdoku des heimvio-Repos zur Laufzeit ein (Plan #119). Der Blog benutzt,
+// was er veröffentlicht: ein Bruch fällt hier zuerst auf.
 import SiteHeader from '../components/SiteHeader.astro';
-import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -31,6 +31,7 @@ const { title, description, canonical, section, jsonLd, ogType = 'website' } = A
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/site/v1/site.css" />
     {section === 'blog' && (
       <link rel="alternate" type="application/rss+xml" title="Heimvio Blog" href="/blog/rss.xml" />
     )}

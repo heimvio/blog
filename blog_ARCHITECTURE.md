@@ -33,7 +33,7 @@ Der Heimvio Blog ist eine eigenständige Astro-basierte Anwendung im Gitea-Repo 
 │  │    Caddy    │    │ /var/www/heimvio-    │   │
 │  │             │    │ content/             │   │
 │  │ /blog/*  ───│───▶│   blog/  (Astro-Out) │   │
-│  │ /doku/*  ───│───▶│   doku/  (Astro-Out) │   │
+│  │ /doku/*  ───│───▶│   doku/  (heimvio)   │   │
 │  │ /api/*   ───│───▶┐                      │   │
 │  │ /admin/* ───│───▶┤  └──────────────────┘   │
 │  └─────────────┘    │                          │
@@ -75,16 +75,18 @@ Der Heimvio Blog ist eine eigenständige Astro-basierte Anwendung im Gitea-Repo 
 
 ```
 heimvio.de/blog/*           → Caddy → /var/www/heimvio-content/blog/ (statisch, Astro)
-heimvio.de/doku/*           → Caddy → /var/www/heimvio-content/doku/ (statisch, Astro)
+heimvio.de/site/*           → Caddy → /var/www/heimvio-content/site/ (Aussehen, no-cache)
+heimvio.de/doku/*           → Caddy → /var/www/heimvio-content/doku/ (heimvio-Repo, Plan #119)
 heimvio.de/api/comments/*   → Caddy → Hono (öffentlich)
 heimvio.de/admin/comments   → Caddy → Hono (ZITADEL-geschützt)
 ```
 
-Beide statischen Sektionen kommen aus **einem** Astro-Build. Es gibt bewusst **kein**
-`base` in der astro.config: `base` ist ein globaler Wert pro Build, zwei Prefixe gingen
-damit nicht. Stattdessen sind `/blog/` und `/doku/` echte Verzeichnisse im Build — Caddy
-serviert `dist/` als Root und darf den Pfad daher **nicht** strippen (`handle`, nicht
-`handle_path`). Die Caddy-Konfiguration lebt im green-Repo (`ops/deploy/Caddyfile`).
+Zwei Lieferanten, ein Content-Root: dieser Build liefert `/blog/`, `/site/`,
+Sitemap-Index und `robots.txt`; die Benutzerdoku `/doku/` liefert seit Plan #119 das
+heimvio-Repo (`doku/`, `deploy-package.sh`). Es gibt bewusst **kein** `base` in der
+astro.config: die Prefixe sind echte Verzeichnisse im Build — Caddy serviert den
+Content-Root und darf den Pfad daher **nicht** strippen (`handle`, nicht
+`handle_path`). Die Caddy-Konfiguration lebt im heimvio-Repo (`docker/caddy/Caddyfile`).
 
 ---
 
@@ -207,9 +209,9 @@ jobs:
         run: rsync -a --delete --delay-updates dist/ /var/www/heimvio-content/
 ```
 
-Runner und Zielverzeichnis liegen auf demselben Server. `--delete` ist korrekt, weil
-`dist/` genau der Content-Root ist (`blog/`, `doku/`, `sitemap*`, `robots.txt`) — entfernte
-Seiten verschwinden damit auch wirklich. Caddy liest das Verzeichnis read-only über einen
+`--delete` ist korrekt, weil `dist/` der Content-Root ist (`blog/`, `site/`, `sitemap*`,
+`robots.txt`) — entfernte Seiten verschwinden damit auch wirklich. **Ausser `/doku/`**:
+das liefert das heimvio-Repo, der Deploy schliesst es per `--exclude=/doku/` aus. Caddy liest das Verzeichnis read-only über einen
 Bind-Mount; ein Reload ist nicht nötig.
 
 ---

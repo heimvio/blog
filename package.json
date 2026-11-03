@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "check:doc-topics": "node scripts/check-heimvio-doc-topics.mjs"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",

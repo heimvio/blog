@@ -1,7 +1,8 @@
 ---
-// Gemeinsamer Header beider Sektionen: heimvio-Logo (Absprung zur Startseite),
-// Doku + Blog als Geschwister, rechts der Weg in die App. Die aktive Sektion wird
-// unterstrichen — sonst weiss der Leser nicht, in welchem der beiden er gelandet ist.
+// Kopf der Site: heimvio-Logo (Absprung zur Startseite), Doku + Blog als
+// Geschwister, rechts der Weg in die App. Die aktive Sektion wird unterstrichen.
+// Stil in public/site/v1/site.css. Die Doku (heimvio-Repo, doku/) hat eine Kopie
+// dieses Markups — ein neuer Menüpunkt hier wird dort nachgezogen (Plan #119).
 interface Props {
   section: 'blog' | 'doku';
 }
@@ -17,28 +18,3 @@ const { section } = Astro.props;
   <span class="spacer"></span>
   <a class="to-app" href="https://heimvio.de/">heimvio.de →</a>
 </header>
-
-<style>
-  .site-head {
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .brand { display: inline-flex; align-items: center; }
-  .brand img { display: block; }
-  .nav {
-    font-weight: 700;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 1px;
-  }
-  .nav:hover { color: var(--fg); text-decoration: none; }
-  .nav.active { color: var(--fg); border-bottom-color: var(--accent); }
-  .spacer { flex: 1; }
-  .to-app { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
-  .to-app:hover { color: var(--accent); }
-</style>

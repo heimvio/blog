@@ -1,5 +1,7 @@
-# Alles crawlbar. Die Sitemap deckt beide statischen Sektionen ab (/blog/ und /doku/).
+# Alles crawlbar. Blog: Sitemap-Index dieses Builds; Doku: eigene Sitemap aus dem
+# heimvio-Repo (Plan #119).
 User-agent: *
 Allow: /
 
 Sitemap: https://heimvio.de/sitemap-index.xml
+Sitemap: https://heimvio.de/doku/sitemap.xml

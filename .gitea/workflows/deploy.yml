@@ -1,7 +1,8 @@
 # Content-Deploy: Push auf main → Astro-Build auf dem Gitea-Runner → per ssh
 # nach /var/www/heimvio-content auf heimvio.de (von Caddy read-only gemountet)
 # → blog-api-Image dort bauen und rollen → Smoke-Check.
-# EIN Build liefert beide Sektionen: dist/blog/ → /blog/ und dist/doku/ → /doku/.
+# Der Build liefert /blog/, /site/ (Aussehen der Site), Sitemap-Index und
+# robots.txt. Die Benutzerdoku (/doku/) kommt seit Plan #119 aus dem heimvio-Repo.
 #
 # Läuft auf ubuntu-latest (LXC heimvio-runner-fast auf ubuntupve), NICHT mehr
 # auf dem Zielhost: der früher genutzte Runner heimvio-de ist seit seiner
@@ -41,18 +42,6 @@ jobs:
       - name: Astro-Site bauen
         run: npm run build
 
-      # Gegenrichtung zu lint:doc-links im heimvio-Repo: die Info-Knoepfe der SPA
-      # (DOC_TOPICS auf heimvio/heimvio main) muessen nach diesem Deploy noch ein
-      # Ziel haben. Liest dist/doku/anchors.json aus dem Build oben.
-      # GITEAREADTOKEN ist ein Secret der Organisation heimvio (das heimvio-Repo
-      # benutzt es, hat es aber nicht als Repo-Secret) — Lesezugriff auf
-      # heimvio/heimvio genuegt.
-      - name: Doku-Links der heimvio-SPA haben ein Ziel
-        env:
-          CI: 'true'
-          HEIMVIO_REPO_TOKEN: ${{ secrets.GITEAREADTOKEN }}
-        run: node scripts/check-heimvio-doc-topics.mjs
-
       - name: Auf heimvio.de ausliefern
         env:
           HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
@@ -62,6 +51,8 @@ jobs:
         run: |
           sleep 3
           curl -fsS https://heimvio.de/blog/ >/dev/null && echo "ok /blog/"
-          curl -fsS https://heimvio.de/doku/ >/dev/null && echo "ok /doku/"
-          curl -fsS https://heimvio.de/doku/anchors.json >/dev/null && echo "ok /doku/anchors.json"
+          curl -fsS https://heimvio.de/site/v1/site.css >/dev/null && echo "ok /site/v1/site.css"
+          # Die Doku liefert das heimvio-Repo — hier nur pruefen, dass der
+          # rsync sie nicht geloescht hat (--exclude=/doku/).
+          curl -fsS https://heimvio.de/doku/ >/dev/null && echo "ok /doku/ (heimvio-Repo, unberuehrt)"
           curl -fsS https://heimvio.de/api/comments/smoke-test >/dev/null && echo "ok /api/comments"

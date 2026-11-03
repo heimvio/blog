@@ -1,17 +1,23 @@
 # Heimvio Content-Site
 
-Astro+MDX-Site mit **zwei Sektionen aus einem Build**:
+Astro+MDX-Site für den **Blog** unter <https://heimvio.de/blog/> — Artikel, mit
+Kommentar-API (Hono, Claude-Moderation) und Admin-Review-UI — und das **Aussehen
+der Site** unter `/site/v1/site.css`.
 
-- **Blog** unter <https://heimvio.de/blog/> — Artikel, mit Kommentar-API (Hono,
-  Claude-Moderation) und Admin-Review-UI
-- **Doku** unter <https://heimvio.de/doku/> — Benutzerdokumentation, ohne Kommentare
+Die **Benutzerdokumentation** (<https://heimvio.de/doku/>) liegt seit 11/2026 im
+heimvio-Repo unter `doku/` (Plan #119): sie geht dort im selben Commit wie die
+Funktion live, die sie beschreibt. Sie bindet `/site/v1/site.css` zur Laufzeit
+ein — **Marketing führt das Aussehen**: wer hier Variablen oder Klassen
+umbenennt, legt `site/v2/` an und lässt `v1` stehen (Vertrag oben in der Datei).
+Der Kopf der Doku ist eine Kopie von `src/components/SiteHeader.astro`; ein neuer
+Menüpunkt wird dort nachgezogen.
 
 Architektur: [blog_ARCHITECTURE.md](blog_ARCHITECTURE.md).
 
 ## Struktur
 
 - `blog/*.mdx` — die Posts (Frontmatter: title, description, date, tags, audience)
-- `doku/*.mdx` — die Doku-Seiten (Frontmatter: title, description, section, order)
+- `public/site/v1/site.css` — Aussehen der Site (Blog und Doku), feste Adresse ohne Hash
 - `src/` — Astro-Templates (Layouts, Kommentar-/Feedback-Islands, Seiten)
 - `api/` — Hono-Kommentar-Service (eigenes Docker-Image `heimvio-blog-api:prod`)
 - `deploy/` — Compose (hängt im externen Netz `heimvio-prod_default`) + Env-Vorlage
@@ -19,10 +25,11 @@ Architektur: [blog_ARCHITECTURE.md](blog_ARCHITECTURE.md).
 
 ## Warum kein `base`
 
-Astros `base` ist ein **globaler Wert pro Build** — mit `base: '/blog'` liesse sich keine
-zweite Sektion unter `/doku/` ausliefern. Stattdessen sind die Prefixe echte Verzeichnisse
-(`src/pages/blog/`, `src/pages/doku/` → `dist/blog/`, `dist/doku/`). Caddy serviert `dist/`
-als Root und darf den Pfad **nicht** strippen (`handle`, nicht `handle_path`).
+Astros `base` ist ein **globaler Wert pro Build**; der Build liefert aber `/blog/` und
+`/site/` in denselben Content-Root, in den das heimvio-Repo `/doku/` legt. Deshalb sind
+die Prefixe echte Verzeichnisse (`src/pages/blog/` → `dist/blog/`). Caddy serviert den
+Content-Root und darf den Pfad **nicht** strippen (`handle`, nicht `handle_path`). Der
+`rsync --delete` des Deploys schliesst `/doku/` aus.
 
 Nebeneffekt: absolute `/blog/…`-Links im Code und in den MDX-Querverweisen sind damit
 schlicht korrekt, statt von `base` abzuhängen.
@@ -31,7 +38,6 @@ schlicht korrekt, statt von `base` abzuhängen.
 
 ```bash
 npm install && npm run dev        # Blog: http://localhost:4321/blog/
-                                  # Doku: http://localhost:4321/doku/
 cd api && npm install && npm run dev   # API (braucht DATABASE_URL etc., siehe deploy/env.blog.example)
 ```
 
@@ -52,8 +58,7 @@ Läufe dieses Repos blieben ohne Fehlermeldung in der Warteschlange und die Doku
 war von Juli bis September nicht aktuell. Deshalb ssh statt Host-Runner.
 
 Neuer Post: `blog/<slug>.mdx` anlegen → push → live in <2 min.
-Neue Doku-Seite: `doku/<slug>.mdx` mit `section` + `order` → push. Navigation und
-Zurück/Weiter bauen sich daraus von selbst.
+Neue Doku-Seite: im heimvio-Repo unter `doku/seiten/`, nicht hier.
 
 ## Kommentar-Flow
 
@@ -61,5 +66,5 @@ Honeypot → Rate-Limit (1/IP/h) → `pending` → Claude-Moderation
 (approve/review/reject) → bei `review` E-Mail + Freigabe unter
 <https://heimvio.de/admin/> (Zitadel-Login, sub-Allowlist).
 
-Gilt **nur für Blog-Posts**. Doku-Seiten haben bewusst keine Kommentare: `post_slug` ist in
-der API ein globaler Namensraum — Doku- und Blog-Slugs würden sich sonst die Zähler teilen.
+Gilt **nur für Blog-Posts**. Doku-Seiten (heimvio-Repo) haben bewusst keine Kommentare:
+`post_slug` ist in der API ein globaler Namensraum.

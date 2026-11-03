@@ -15,7 +15,7 @@ WEBROOT="${DEPLOY_WEBROOT:-/var/www/heimvio-content}"
 WEBROOT_OWNER="${DEPLOY_WEBROOT_OWNER:-act-runner:act-runner}"
 WORK=/tmp/heimvio-blog-deploy
 
-[ -f dist/doku/index.html ] || { echo "FEHLER: dist/doku/index.html fehlt — wurde 'npm run build' ausgefuehrt?" >&2; exit 1; }
+[ -f dist/blog/index.html ] || { echo "FEHLER: dist/blog/index.html fehlt — wurde 'npm run build' ausgefuehrt?" >&2; exit 1; }
 [ -n "${HETZNER_SSH_KEY:-}" ] || { echo "FEHLER: HETZNER_SSH_KEY nicht gesetzt" >&2; exit 1; }
 
 # Key aus dem Secret. base64 einzeilig, weil Gitea mehrzeilige Secrets im
@@ -43,10 +43,13 @@ tar -cz --exclude='node_modules' --exclude='api/dist' dist deploy api \
 
 echo "Veroeffentliche die statische Site ..."
 # --delete ist richtig: dist/ IST der Content-Root, entfernte Seiten sollen weg.
+# AUSSER /doku/: die Benutzerdoku liefert seit Plan #119 das heimvio-Repo
+# (deploy-package.sh) in dasselbe Verzeichnis — ohne --exclude loeschte jeder
+# Blog-Deploy die Doku. Ausgeschlossene Pfade fasst --delete nicht an.
 # --delay-updates schaltet erst um, wenn alles uebertragen ist.
 ssh $SSH_OPTS "$HOST" "
   set -eu
-  rsync -a --delete --delay-updates --chown='$WEBROOT_OWNER' '$WORK/dist/' '$WEBROOT/'
+  rsync -a --delete --exclude=/doku/ --delay-updates --chown='$WEBROOT_OWNER' '$WORK/dist/' '$WEBROOT/'
 "
 
 echo "Baue und rolle die Kommentar-API ..."
