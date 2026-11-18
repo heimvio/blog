@@ -1,0 +1,11 @@
+.git
+.gitea
+.github
+node_modules
+dist
+.astro
+api/node_modules
+api/dist
+.env
+.env.*
+**/.DS_Store

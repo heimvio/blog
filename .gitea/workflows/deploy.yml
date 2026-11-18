@@ -1,3 +1,9 @@
+# ENTFAELLT mit heimvio Plan #160 R2c: das Image baut kuenftig GitHub
+# (.github/workflows/image.yml -> ghcr.io/heimvio/heimvio-blog), heimvio.de
+# zieht es selbst (ops/blog/blog-sync.sh, User-Timer von dockerd). Bis zum
+# rootless-Umbau von heimvio.de bleibt dieser Weg (ssh root@, tar) in Kraft;
+# danach wird die Datei geloescht.
+#
 # Content-Deploy: Push auf main → Astro-Build auf dem Gitea-Runner → per ssh
 # nach /var/www/heimvio-content auf heimvio.de (von Caddy read-only gemountet)
 # → blog-api-Image dort bauen und rollen → Smoke-Check.
